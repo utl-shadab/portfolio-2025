@@ -62,8 +62,8 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            Wij zijn een full-service digitaal bureau gespecialiseerd in e-commerce, online marketing, weboptimalisatie
-            en design.
+            We are a full-service digital agency specializing in e-commerce, online marketing, web optimization, and
+            design.
           </motion.p>
 
           <motion.div
@@ -77,8 +77,16 @@ export function HeroSection() {
               className="bg-white text-black hover:bg-gray-200 rounded-full px-8 py-4 font-medium group transition-all duration-300"
               data-cursor-hover
             >
-              <span>Ontdek Baker Studio</span>
+              <span>Discover Baker Studio</span>
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-4 font-medium group transition-all duration-300"
+              data-cursor-hover
+            >
+              <span>Our Work</span>
             </Button>
           </motion.div>
 

@@ -18,6 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bakerstudio.com"),
   title: "Baker Studio - Design Your Future",
   description: "We grow your online business with cutting-edge digital solutions, branding, and web design.",
   keywords: "web design, digital marketing, branding, online business, Baker Studio",
@@ -43,14 +44,17 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   manifest: "/manifest.json",
-  themeColor: "#0a0a0a",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
     title: "Baker Studio",
   },
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
     generator: 'v0.dev'
+}
+
+export const viewport = {
+  themeColor: "#0a0a0a",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
 }
 
 export default function RootLayout({
@@ -79,23 +83,6 @@ export default function RootLayout({
             {children}
           </SmoothScrollProvider>
         </ThemeProvider>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            if ('serviceWorker' in navigator) {
-              window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
-                  .then(function(registration) {
-                    console.log('SW registered: ', registration);
-                  })
-                  .catch(function(registrationError) {
-                    console.log('SW registration failed: ', registrationError);
-                  });
-              });
-            }
-          `,
-          }}
-        />
       </body>
     </html>
   )

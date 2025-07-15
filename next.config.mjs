@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+import withPWA from "next-pwa";
+
+const isProd = process.env.NODE_ENV === "production";
+
+const nextConfig = withPWA({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: !isProd,
+})({
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -7,9 +16,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['blob.v0.dev'],
+    domains: ["blob.v0.dev"],
     unoptimized: true,
   },
-}
+});
 
-export default nextConfig
+export default nextConfig;

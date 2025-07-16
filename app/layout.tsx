@@ -1,61 +1,57 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CustomCursor } from "@/components/custom-cursor"
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
 import { PWAInstaller } from "@/components/pwa-installer"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-})
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-})
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bakerstudio.com"),
-  title: "Baker Studio - Design Your Future",
-  description: "We grow your online business with cutting-edge digital solutions, branding, and web design.",
-  keywords: "web design, digital marketing, branding, online business, Baker Studio",
-  authors: [{ name: "Baker Studio" }],
+  metadataBase: new URL("https://arrowedge.netlify.app"),
+  title: "Arrow Edge – Build Digital Momentum",
+  description:
+    "We craft modern digital experiences and scalable solutions for brands ready to grow online.",
+  keywords: "web design, branding, digital strategy, UI UX, Arrow Edge Studio",
+  authors: [{ name: "Arrow Edge" }],
   openGraph: {
-    title: "Baker Studio - Design Your Future",
-    description: "We grow your online business with cutting-edge digital solutions",
+    title: "Arrow Edge – Build Digital Momentum",
+    description:
+      "We craft modern digital experiences and scalable solutions for brands ready to grow online.",
     type: "website",
-    url: "https://bakerstudio.com",
+    url: "https://arrowedge.netlify.app",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Baker Studio",
+        alt: "Arrow Edge Studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Baker Studio - Design Your Future",
-    description: "We grow your online business with cutting-edge digital solutions",
+    title: "Arrow Edge – Build Digital Momentum",
+    description:
+      "We craft modern digital experiences and scalable solutions for brands ready to grow online.",
     images: ["/og-image.png"],
   },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Baker Studio",
+    title: "Arrow Edge",
   },
-    generator: 'v0.dev'
 }
 
 export const viewport = {
   themeColor: "#0a0a0a",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
+  viewport:
+    "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
 }
+
+
+
 
 export default function RootLayout({
   children,
@@ -63,10 +59,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" suppressHydrationWarning >
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/arrow.svg" sizes="any" />
+        <link rel="icon" href="/arrow.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -75,7 +71,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#0a0a0a" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
-      <body className={inter.className}>
+      <body >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <SmoothScrollProvider>
             <CustomCursor />

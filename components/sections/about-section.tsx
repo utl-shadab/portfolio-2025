@@ -5,6 +5,8 @@ import { motion } from "framer-motion"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { ScrollHighlightText } from "@/components/RevealText"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -37,25 +39,24 @@ export function AboutSection() {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl">
           <motion.div className="about-content mb-12">
-            <span className="text-sm text-gray-400 font-space-grotesk tracking-wider uppercase">WIE ZIJN WIJ</span>
+            <span className="text-sm text-gray-400 font-space-grotesk tracking-wider uppercase"> <span className="h-2 w-2 bg-pink-500 mx-2">|</span>About Us <span className="h-2 w-2 mx-2 bg-pink-500">|</span></span>
           </motion.div>
 
-          <motion.h2 className="about-content text-4xl md:text-6xl font-bold font-space-grotesk mb-8 leading-tight">
-            Bij Baker Studio bieden we maatwerk digitale
-            <br />
-            oplossingen die helpen om het maximale
-            <br />
-            uit je <span className="text-pink-500">online business</span> te halen.
-          </motion.h2>
+          <ScrollHighlightText
+            text="At ArrowEdge Studio, we craft digital experiences that elevate your online presence."
+            highlightWords={["ArrowEdge", "Studio", "digital", "online"]}
+          />
 
           <motion.div className="about-content">
-            <Button
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 rounded-full px-6 py-3 bg-transparent"
-              data-cursor-hover
-            >
-              Ontdek Baker Studio
-            </Button>
+            <Link href='/about'>
+              <Button
+                variant="outline"
+                className="border-pink-500 text-white hover:bg-white/10 rounded-full px-6 py-3 bg-transparent"
+                data-cursor-hover
+              >
+                Arrow Edge Studio
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>

@@ -1,9 +1,16 @@
+@font-face {
+  font-family: 'Aventa';
+  src: url('/font/Aventa-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Aventa', Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {

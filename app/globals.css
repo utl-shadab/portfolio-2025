@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Aventa';
+  src: url('/font/Aventa-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -61,11 +69,12 @@
   body {
     @apply bg-background text-foreground;
     cursor: none;
-    font-family: var(--font-inter);
+    font-family: 'Aventa', Arial, Helvetica, sans-serif;
   }
-
+  
   .font-space-grotesk {
-    font-family: var(--font-space-grotesk);
+    /* font-family: var(--font-space-grotesk); */
+    font-family: 'Aventa', Arial, Helvetica, sans-serif;
   }
 }
 
@@ -113,9 +122,11 @@
   0% {
     box-shadow: 0 0 5px rgba(236, 72, 153, 0.3);
   }
+
   50% {
     box-shadow: 0 0 20px rgba(236, 72, 153, 0.6), 0 0 30px rgba(6, 182, 212, 0.4);
   }
+
   100% {
     box-shadow: 0 0 5px rgba(236, 72, 153, 0.3);
   }
@@ -127,13 +138,16 @@
 
 /* Tilde animation */
 @keyframes tilde-bounce {
+
   0%,
   100% {
     transform: translateY(0) rotate(0deg);
   }
+
   25% {
     transform: translateY(-5px) rotate(10deg);
   }
+
   75% {
     transform: translateY(5px) rotate(-10deg);
   }
@@ -145,11 +159,13 @@
 
 /* Floating particles */
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
     opacity: 0.3;
   }
+
   50% {
     transform: translateY(-20px);
     opacity: 1;
@@ -177,6 +193,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

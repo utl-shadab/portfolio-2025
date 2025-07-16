@@ -1,118 +1,164 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import clsx from "clsx";
+import { motion, AnimatePresence, Variants } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import Image from "next/image";
+
+// Define the structure for the navigation items
+const navItems = [
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Contact", href: "/contact" },
+];
+
+const socialLinks = [
+  { name: "Instagram", href: "#" },
+  { name: "LinkedIn", href: "#" },
+]
+
+// --- ANIMATION VARIANTS (Corrected & Updated) ---
+
+const menuVariants: Variants = {
+  initial: {
+    opacity: 0,
+    y: -20,
+    scale: 0.95,
+    pointerEvents: "none",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    pointerEvents: "auto",
+    transition: {
+      duration: 0.4,
+      ease: [0.25, 1, 0.5, 1],
+      when: "beforeChildren",
+      staggerChildren: 0.05,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    scale: 0.95,
+    pointerEvents: "none",
+    transition: {
+      duration: 0.3,
+      ease: [0.6, 0.05, 0.01, 0.9],
+    },
+  },
+};
+
+const navLinkVariants: Variants = {
+  initial: { opacity: 0, y: 15 },
+  animate: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+      delay: 0.3 + index * 0.06
+    }
+  }),
+  exit: { opacity: 0, y: 15 },
+}
+
+const Logo = ({ className = "text-black" }) => (
+ <Link href="/" data-cursor-hover className={className}>
+  <Image
+    src="/LogoArrow.png" 
+    alt=" LogoArrow Logo"
+    width={100}     
+    height={40}      
+    priority 
+  />
+</Link>
+);
 
 export function Navigation() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
-
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Work", href: "/work" },
-    { name: "Contact", href: "/contact" },
-  ]
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const toggleMenu = () => setIsMobileMenuOpen(prev => !prev);
 
   return (
     <>
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 p-6"
+        className="fixed top-0 left-0 right-0 z-50 p-4 sm:p-6"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <motion.div
-            className="bg-white/10 backdrop-blur-md rounded-full px-6 py-3 border border-white/20"
-            whileHover={{ scale: 1.05 }}
-            data-cursor-hover
-          >
-            <Link href="/" className="text-white font-bold text-lg font-space-grotesk">
-              Baker<span className="font-normal">studio</span>
-            </Link>
-          </motion.div>
+          <Logo className="text-white" />
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`text-white hover:text-pink-400 transition-colors relative group ${
-                  pathname === item.href ? "text-pink-400" : ""
-                }`}
-                data-cursor-hover
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
-          </div>
-
-          {/* Desktop Contact Button */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <Link href="/contact">
-              <Button
-                className="bg-white text-black hover:bg-gray-200 rounded-full px-6 py-3 font-medium transition-all duration-300"
-                data-cursor-hover
-              >
-                Let's talk
-              </Button>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden">
+          <div className="flex items-center gap-4">
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white hover:bg-white/10 rounded-full w-12 h-12"
+              onClick={toggleMenu}
               data-cursor-hover
+              className={clsx(
+                "rounded-full w-12 h-12 relative z-[50] transition-all duration-300",
+                isMobileMenuOpen
+                  ? "bg-black text-white hover:bg-pink-500 hover:text-black"
+                  : "bg-white text-black hover:bg-black hover:text-white"
+              )}
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={isMobileMenuOpen ? "x" : "menu"}
+                  initial={{ opacity: 0, rotate: -45 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: 45 }}
+                  transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                >
+                  {isMobileMenuOpen ? (
+                    <X className="h-6 w-6" />
+                  ) : (
+                    <Menu className="h-6 w-6" />
+                  )}
+                </motion.div>
+              </AnimatePresence>
             </Button>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl lg:hidden"
+            key="mobile-menu"
+            variants={menuVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="fixed top-4 right-4 z-40 w-[90%] max-w-md bg-white rounded-2xl shadow-2xl p-8 border border-neutral-200"
           >
-            <div className="flex flex-col items-center justify-center h-full space-y-8">
-              <div className="text-center mb-8">
-                <span className="text-white font-bold text-2xl font-space-grotesk">
-                  Baker<span className="font-normal">studio</span>
-                </span>
-              </div>
 
-              <div className="space-y-6">
+
+            <div className="flex flex-col h-full">
+              {/* Navigation Links */}
+              <div className="flex flex-col items-start space-y-2 mt-4">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    custom={index}
+                    variants={navLinkVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
                   >
                     <Link
                       href={item.href}
-                      className={`block text-2xl hover:text-pink-400 transition-colors font-space-grotesk ${
-                        pathname === item.href ? "text-pink-400" : "text-white"
-                      }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`block text-3xl font-light text-black hover:text-neutral-500 transition-colors py-2 ${pathname === item.href ? "font-medium" : ""}`}
+                      onClick={toggleMenu}
                       data-cursor-hover
                     >
                       {item.name}
@@ -121,39 +167,23 @@ export function Navigation() {
                 ))}
               </div>
 
-              <div className="border-t border-white/20 pt-8 mt-8">
-                <div className="flex space-x-4 text-sm text-gray-400">
-                  <span className="border-b border-white/40 text-white">NL</span>
-                  <span>EN</span>
+              <div className="mt-12">
+                <div className="border-t border-neutral-200 pt-6 flex items-center space-x-8">
+                  {socialLinks.map(link => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-black hover:text-neutral-600 transition-colors flex items-center group text-sm"
+                      data-cursor-hover
+                    >
+                      {link.name}
+                      <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  ))}
                 </div>
               </div>
-
-              <div className="space-y-4 text-center">
-                <a
-                  href="#"
-                  className="block text-white hover:text-pink-400 transition-colors underline"
-                  data-cursor-hover
-                >
-                  Instagram ↗
-                </a>
-                <a
-                  href="#"
-                  className="block text-white hover:text-pink-400 transition-colors underline"
-                  data-cursor-hover
-                >
-                  LinkedIn ↗
-                </a>
-              </div>
-
-              <Link href="/contact">
-                <Button
-                  className="bg-white text-black hover:bg-gray-200 rounded-full px-8 py-3 font-medium mt-8"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  data-cursor-hover
-                >
-                  Let's talk
-                </Button>
-              </Link>
             </div>
           </motion.div>
         )}

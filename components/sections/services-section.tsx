@@ -1,180 +1,183 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { motion } from "framer-motion"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useState, useMemo } from "react"
+import { motion, AnimatePresence, Variants } from "framer-motion"
+import { ArrowRight, MoveRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import Image from "next/image"
 
-gsap.registerPlugin(ScrollTrigger)
+// --- NEW DATA STRUCTURE FOR PORTFOLIO PROJECTS ---
+const projectCategories = ["All", "UI/UX", "Development", "Branding", "3D Animation"]
 
+const projects = [
+  {
+    id: "munity",
+    title: "Munity",
+    categories: ["UI/UX", "Development", "3D Animation"],
+    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=Munity", // Replace with your actual image path
+    link: "#",
+  },
+  {
+    id: "kong",
+    title: "Kong",
+    categories: ["UI/UX", "Development", "3D Animation"],
+    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=Kong", // Replace with your actual image path
+    link: "#",
+  },
+  {
+    id: "branding-project",
+    title: "Brand Identity",
+    categories: ["Branding"],
+    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=Branding", // Replace with your actual image path
+    link: "#",
+  },
+  {
+    id: "dev-project",
+    title: "Web App",
+    categories: ["Development"],
+    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=Web+App", // Replace with your actual image path
+    link: "#",
+  },
+    {
+    id: "another-3d",
+    title: "3D Showcase",
+    categories: ["3D Animation"],
+    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=3D+Showcase", // Replace with your actual image path
+    link: "#",
+  },
+  {
+    id: "ux-case-study",
+    title: "UX Case Study",
+    categories: ["UI/UX"],
+    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=UX+Study", // Replace with your actual image path
+    link: "#",
+  },
+]
+
+// --- ANIMATION VARIANTS ---
+const containerVariants: Variants = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  initial: { opacity: 0, y: 50, scale: 0.9 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    scale: 0.95,
+    transition: { duration: 0.3, ease: [0.5, 0, 0.75, 0] },
+  },
+};
+
+// --- COMPONENT ---
 export function ServicesSection() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const [activeCategory, setActiveCategory] = useState("All")
 
-  const services = [
-    {
-      id: 1,
-      title: "Branding",
-      description: "Complete brand identity design and strategy",
-      icon: "🎨",
-    },
-    {
-      id: 2,
-      title: "Web design",
-      description: "Modern, responsive websites that convert",
-      icon: "💻",
-    },
-    {
-      id: 3,
-      title: "Digitale marketing",
-      description: "Data-driven marketing campaigns that deliver results",
-      icon: "📈",
-    },
-  ]
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".service-card",
-        { y: 100, opacity: 0, rotateX: 45 },
-        {
-          y: 0,
-          opacity: 1,
-          rotateX: 0,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          },
-        },
-      )
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
+  // Memoize the filtered projects to avoid re-calculation on every render
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "All") {
+      return projects
+    }
+    return projects.filter((project) =>
+      project.categories.includes(activeCategory)
+    )
+  }, [activeCategory])
 
   return (
-    <section id="services" ref={sectionRef} className="py-32 bg-[#0a0a0a] relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+    <section id="work" className="py-24 md:py-32 bg-[#0a0a0a] text-white">
+      <div className="container mx-auto px-6">
+        
+        {/* Section Header */}
+        <motion.div 
+            className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
         >
-          <span className="text-sm text-gray-400 font-space-grotesk tracking-wider uppercase mb-4 block">
-            ONZE DIENSTEN
-          </span>
-          <h2 className="text-4xl md:text-6xl font-bold font-space-grotesk mb-8">
-            Design your
-            <br />
-            future with us
+          <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-4 md:mb-0">
+            Our Craft, Your Expression.
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Meer rendement uit je online business halen? Wij zorgen voor de juiste strategie die jouw bedrijf verder{" "}
-            <span className="text-pink-500">laat groeien</span>.
-          </p>
+          <Button variant="outline" className="rounded-full border-white/30 hover:bg-white/10 group">
+            View All
+            <MoveRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+          </Button>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              className="service-card group relative bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-pink-500/50 transition-all duration-500 cursor-pointer overflow-hidden"
-              whileHover={{
-                rotateY: 10,
-                rotateX: 5,
-                scale: 1.05,
-              }}
-              transition={{ duration: 0.3 }}
-              data-cursor-hover
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap gap-2 md:gap-4 mb-12">
+          {projectCategories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full"
             >
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-transparent to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Edge Glow */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10" />
-
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-gradient-to-br from-pink-500/20 to-cyan-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl">{service.icon}</span>
-                </div>
-
-                <h3 className="text-2xl font-bold font-space-grotesk mb-4 text-white group-hover:text-pink-400 transition-colors">
-                  {service.title}
-                </h3>
-
-                <p className="text-gray-300 leading-relaxed">{service.description}</p>
-
-                {/* Tilde Animation */}
+              {activeCategory === category && (
                 <motion.div
-                  className="absolute top-4 right-4 text-pink-500 opacity-0 group-hover:opacity-100"
-                  animate={{
-                    rotate: [0, 10, -10, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "easeInOut",
-                  }}
-                >
-                  ~
-                </motion.div>
-              </div>
-
-              {/* Floating Particles */}
-              <div className="absolute inset-0 pointer-events-none">
-                {[...Array(5)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-1 h-1 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100"
-                    style={{
-                      left: `${20 + i * 15}%`,
-                      top: `${30 + i * 10}%`,
-                    }}
-                    animate={{
-                      y: [-10, -20, -10],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Number.POSITIVE_INFINITY,
-                      delay: i * 0.2,
-                    }}
-                  />
-                ))}
-              </div>
-            </motion.div>
+                  layoutId="active-category-pill"
+                  className="absolute inset-0 bg-orange-500 rounded-full"
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                />
+              )}
+              <span className="relative z-10">{category}</span>
+            </button>
           ))}
         </div>
 
-        {/* Client Logos */}
+        {/* Projects Grid */}
         <motion.div
-          className="mt-24 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="initial"
+          animate="animate"
         >
-          <span className="text-sm text-gray-400 font-space-grotesk tracking-wider uppercase mb-8 block">
-            ONZE KLANTEN
-          </span>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
-            {["CHELLO", "VAN ZUTPHEN", "StaalBaron", "ALERON", "CLYRA", "LUNEXIS"].map((client) => (
-              <span key={client} className="text-white font-bold text-lg">
-                {client}
-              </span>
+          <AnimatePresence>
+            {filteredProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                layout
+                variants={cardVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="group"
+              >
+                <Link href={project.link}>
+                  <div className="overflow-hidden rounded-2xl mb-4">
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.title}
+                      width={600}
+                      height={400}
+                      className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-400 mb-1">
+                      {project.categories.join(" / ")}
+                    </p>
+                    <h3 className="text-xl font-medium flex items-center group-hover:text-orange-500 transition-colors">
+                      {project.title}
+                      <ArrowRight className="w-4 h-4 ml-2 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+                    </h3>
+                  </div>
+                </Link>
+              </motion.div>
             ))}
-          </div>
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>

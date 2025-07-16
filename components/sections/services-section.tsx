@@ -5,55 +5,63 @@ import { motion, AnimatePresence, Variants } from "framer-motion"
 import { ArrowRight, MoveRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import Image from "next/image"
+import LottiePlayer from "@/components/LottiePlayer"; 
+import AnimatedPathLine from "../AnimatedPathLine"
 
-// --- NEW DATA STRUCTURE FOR PORTFOLIO PROJECTS ---
-const projectCategories = ["All", "UI/UX", "Development", "Branding", "3D Animation"]
 
-const projects = [
+const serviceCategories = ["All", "Design", "Development", "Strategy"];
+
+const services = [
   {
-    id: "munity",
-    title: "Munity",
-    categories: ["UI/UX", "Development", "3D Animation"],
-    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=Munity", // Replace with your actual image path
-    link: "#",
+    id: "ui-ux",
+    title: "UI/UX Interface",
+    description: "Crafting intuitive and beautiful user interfaces that delight users and drive engagement.",
+    categories: ["Design"],
+    lottieName: "uiux", 
+    link: "/services/ui-ux",
   },
   {
-    id: "kong",
-    title: "Kong",
-    categories: ["UI/UX", "Development", "3D Animation"],
-    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=Kong", // Replace with your actual image path
-    link: "#",
+    id: "cross-platform",
+    title: "Cross-platform Design",
+    description: "Ensuring a seamless, consistent, and high-quality experience across all devices and operating systems.",
+    categories: ["Design", "Strategy"],
+    lottieName: "cross", 
+    link: "/services/cross-platform",
   },
   {
-    id: "branding-project",
-    title: "Brand Identity",
-    categories: ["Branding"],
-    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=Branding", // Replace with your actual image path
-    link: "#",
-  },
-  {
-    id: "dev-project",
-    title: "Web App",
+    id: "spa-ssr",
+    title: "SPA & SSR Development",
+    description: "Building fast, modern web apps with Single Page Application or Server-Side Rendering for optimal performance.",
     categories: ["Development"],
-    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=Web+App", // Replace with your actual image path
-    link: "#",
-  },
-    {
-    id: "another-3d",
-    title: "3D Showcase",
-    categories: ["3D Animation"],
-    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=3D+Showcase", // Replace with your actual image path
-    link: "#",
+    lottieName: "spa", 
+    link: "/services/development",
   },
   {
-    id: "ux-case-study",
-    title: "UX Case Study",
-    categories: ["UI/UX"],
-    imageUrl: "https://placehold.co/600x400/0a0a0a/ffffff?text=UX+Study", // Replace with your actual image path
-    link: "#",
+    id: "microinteractions",
+    title: "Microinteractions",
+    description: "Adding subtle, purposeful animations and feedback that enhance user engagement and usability.",
+    categories: ["Design", "Development"],
+    lottieName: "micro", 
+    link: "/services/microinteractions",
   },
-]
+  {
+    id: "performance-tuning",
+    title: "Performance Tuning",
+    description: "Optimizing your application for lightning-fast load times and a smooth, responsive user experience.",
+    categories: ["Development", "Strategy"],
+    lottieName: "performance", 
+    link: "/services/performance",
+  },
+  {
+    id: "headless-cms",
+    title: "Headless CMS & API",
+    description: "Integrating powerful headless content management systems and custom APIs for flexible content delivery.",
+    categories: ["Development"],
+    lottieName: "frontend", 
+    link: "/services/headless-cms",
+  },
+];
+
 
 // --- ANIMATION VARIANTS ---
 const containerVariants: Variants = {
@@ -86,20 +94,20 @@ const cardVariants: Variants = {
 export function ServicesSection() {
   const [activeCategory, setActiveCategory] = useState("All")
 
-  // Memoize the filtered projects to avoid re-calculation on every render
-  const filteredProjects = useMemo(() => {
+  
+  const filteredServices = useMemo(() => {
     if (activeCategory === "All") {
-      return projects
+      return services
     }
-    return projects.filter((project) =>
-      project.categories.includes(activeCategory)
+    return services.filter((service) =>
+      service.categories.includes(activeCategory)
     )
   }, [activeCategory])
 
   return (
-    <section id="work" className="py-24 md:py-32 bg-[#0a0a0a] text-white">
+    <section id="services" className="py-24 md:py-32 bg-[#0a0a0a] text-white">
       <div className="container mx-auto px-6">
-        
+        <AnimatedPathLine/>
         {/* Section Header */}
         <motion.div 
             className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12"
@@ -109,17 +117,19 @@ export function ServicesSection() {
             viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-4 md:mb-0">
-            Our Craft, Your Expression.
+            Services We Offer
           </h2>
-          <Button variant="outline" className="rounded-full border-white/30 hover:bg-white/10 group">
-            View All
-            <MoveRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-          </Button>
+          <Link href="/services">
+            <Button variant="outline" className="rounded-full border-white/30 hover:bg-white/10 group">
+              View All Services
+              <MoveRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
         </motion.div>
 
         {/* Filter Tabs */}
         <div className="flex flex-wrap gap-2 md:gap-4 mb-12">
-          {projectCategories.map((category) => (
+          {serviceCategories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
@@ -128,7 +138,7 @@ export function ServicesSection() {
               {activeCategory === category && (
                 <motion.div
                   layoutId="active-category-pill"
-                  className="absolute inset-0 bg-orange-500 rounded-full"
+                  className="absolute inset-0 bg-pink-500 rounded-full"
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 />
               )}
@@ -137,17 +147,17 @@ export function ServicesSection() {
           ))}
         </div>
 
-        {/* Projects Grid */}
+        {/* Services Grid */}
         <motion.div
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="initial"
           animate="animate"
         >
           <AnimatePresence>
-            {filteredProjects.map((project) => (
+            {filteredServices.map((service) => (
               <motion.div
-                key={project.id}
+                key={service.id}
                 layout
                 variants={cardVariants}
                 initial="initial"
@@ -155,24 +165,24 @@ export function ServicesSection() {
                 exit="exit"
                 className="group"
               >
-                <Link href={project.link}>
-                  <div className="overflow-hidden rounded-2xl mb-4">
-                    <Image
-                      src={project.imageUrl}
-                      alt={project.title}
-                      width={600}
-                      height={400}
-                      className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                <Link href={service.link}>
+                  {/* --- IMAGE REPLACED WITH LOTTIE PLAYER --- */}
+                  <div className="overflow-hidden rounded-2xl mb-4 bg-transparent border border-gray-500 flex items-center justify-center h-[250px]">
+                    <LottiePlayer
+                      name={service.lottieName as any}
+                       width={250}
+                      height={250}
+                      className="w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110"
                     />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400 mb-1">
-                      {project.categories.join(" / ")}
-                    </p>
-                    <h3 className="text-xl font-medium flex items-center group-hover:text-orange-500 transition-colors">
-                      {project.title}
+                    <h3 className="text-xl font-medium flex items-center group-hover:text-pink-500 transition-colors mb-2">
+                      {service.title}
                       <ArrowRight className="w-4 h-4 ml-2 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
                     </h3>
+                    <p className="text-sm text-gray-400">
+                      {service.description}
+                    </p>
                   </div>
                 </Link>
               </motion.div>

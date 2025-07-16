@@ -1,13 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { CustomCursor } from "@/components/custom-cursor"
-import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
-import { PWAInstaller } from "@/components/pwa-installer"
+import { AppShell } from "@/components/AppShell"
 
 
 export const metadata: Metadata = {
+
   metadataBase: new URL("https://arrowedge.netlify.app"),
   title: "Arrow Edge – Build Digital Momentum",
   description:
@@ -72,13 +70,10 @@ export default function RootLayout({
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
       <body >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <SmoothScrollProvider>
-            <CustomCursor />
-            <PWAInstaller />
-            {children}
-          </SmoothScrollProvider>
-        </ThemeProvider>
+        <AppShell>
+          {children}
+        </AppShell>
+
       </body>
     </html>
   )

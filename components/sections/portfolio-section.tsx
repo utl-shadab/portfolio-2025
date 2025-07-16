@@ -1,145 +1,170 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import * as Tone from 'tone';
 
-gsap.registerPlugin(ScrollTrigger)
+interface ProjectType {
+  id: number;
+  title: string;
+  category: string;
+  role: string;
+  year: number;
+}
+const projects: ProjectType[] = [
+  {
+    id: 1,
+    title: "XYLO",
+    category: "Frontend Development",
+    role: "Freelance with Code Resolution",
+    year: 2024,
+  },
+  {
+    id: 2,
+    title: "Society Studios",
+    category: "Frontend",
+    role: "Freelance with Code Resolution",
+    year: 2025,
+  },
+  {
+    id: 3,
+    title: "Prospect House",
+    category: "Frontend Development",
+    role: "Freelance",
+    year: 2024,
+  },
+  {
+    id: 4,
+    title: "Better Angels Ventures",
+    category: "Frontend",
+    role: "Freelance with Code Resolution",
+    year: 2022,
+  },
+  {
+    id: 5,
+    title: "Divino Harrogate",
+    category: "Frontend Development",
+    role: "Freelance",
+    year: 2023,
+  },
+  {
+    id: 6,
+    title: "A Touch Of Ink",
+    category: "Design & Frontend Development",
+    role: "Freelance",
+    year: 2021,
+  },
+];
 
-export function PortfolioSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [activeFilter, setActiveFilter] = useState("All")
+interface ProjectRowProps {
+  project: ProjectType;
+  playSound: () => void;
+}
 
-  const filters = ["Filter", "Branding", "Digital marketing", "Web design", "All"]
-
-  const projects = [
-    {
-      id: 1,
-      title: "DUST",
-      category: "Branding",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ql3esXr6q2X1ZEbDNmoNcn34M71uEQ.png",
-      description: "Complete brand identity and digital presence",
-    },
-    {
-      id: 2,
-      title: "StaalBaron",
-      category: "Web design",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ql3esXr6q2X1ZEbDNmoNcn34M71uEQ.png",
-      description: "Modern e-commerce platform with custom functionality",
-    },
-    {
-      id: 3,
-      title: "Van Zutphen",
-      category: "Digital marketing",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ql3esXr6q2X1ZEbDNmoNcn34M71uEQ.png",
-      description: "Comprehensive digital marketing campaign",
-    },
-  ]
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".portfolio-item",
-        { y: 100, opacity: 0, scale: 0.8 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          },
-        },
-      )
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
+const ProjectRow = ({ project, playSound }: ProjectRowProps) => {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section id="portfolio" ref={sectionRef} className="py-32 bg-[#0a0a0a] relative">
-      <div className="container mx-auto px-6">
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl md:text-6xl font-bold font-space-grotesk mb-8">Ons werk</h2>
+    <div
+      onMouseEnter={() => {
+        playSound();
+        setIsHovered(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+      }}
+      className="group relative cursor-pointer border-b border-neutral-800 transition-colors duration-300 hover:bg-neutral-900/50"
+    >
+      <div className="grid grid-cols-2 md:grid-cols-[1fr_auto_1.5fr_1.5fr_auto] md:items-center gap-x-6 gap-y-1 py-6 px-6">
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap gap-4 mb-12">
-            {filters.map((filter) => (
-              <Button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                variant={activeFilter === filter ? "default" : "outline"}
-                className={`rounded-full px-6 py-2 transition-all duration-300 ${
-                  activeFilter === filter
-                    ? "bg-white text-black"
-                    : "border-white/30 text-white hover:bg-white/10 bg-transparent"
-                }`}
-                data-cursor-hover
-              >
-                {filter}
-              </Button>
-            ))}
-          </div>
-        </motion.div>
+        <h2 className="col-span-1 text-2xl md:text-3xl font-medium text-neutral-300 group-hover:text-white transition-colors duration-300">
+          {project.title}
+        </h2>
+        <span className="col-span-1 md:col-start-5 text-right text-neutral-400 group-hover:text-white transition-colors duration-300 text-lg">
+          {project.year}
+        </span>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className="portfolio-item group relative bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer"
-              whileHover={{ y: -10, scale: 1.02 }}
-              data-cursor-hover
-            >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-2xl font-bold font-space-grotesk mb-2 text-white group-hover:text-pink-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-300 text-sm mb-4">{project.category}</p>
-                <p className="text-gray-400 text-sm">{project.description}</p>
-              </div>
-
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            </motion.div>
-          ))}
+        <div className="hidden md:flex items-center justify-center md:col-start-2">
+          <AnimatePresence>
+            {isHovered && (
+              <motion.div
+                className="w-2 h-2 rounded-full bg-pink-500"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0 }}
+                transition={{ duration: 0.2 }}
+              />
+            )}
+          </AnimatePresence>
         </div>
 
+        
+        <div className="col-span-2 md:col-span-1 md:col-start-3 flex flex-col md:flex-row md:items-center text-neutral-500 text-sm mt-1 md:mt-0">
+          <span className="md:pr-8">{project.category}</span>
+          <span className="hidden lg:inline-block">{project.role}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+export default function InteractiveProjectTable() {
+  const synth = useRef<Tone.Synth | null>(null);
+  const isAudioReady = useRef(false);
+  const lastPlayTime = useRef(0); 
+  useEffect(() => {
+    if (!synth.current) {
+      synth.current = new Tone.Synth({
+        oscillator: { type: 'sine' },
+        envelope: { attack: 0.01, decay: 0.2, sustain: 0.2, release: 0.5 }
+      }).toDestination();
+    }
+
+    return () => {
+     
+      if (synth.current) {
+        synth.current.dispose();
+        synth.current = null;
+      }
+    };
+  }, []);
+
+  const playSound = async () => {
+  const now = Tone.now();
+
+  if (now - lastPlayTime.current < 0.1) return;
+
+  lastPlayTime.current = now;
+
+  if (!isAudioReady.current) {
+    await Tone.start(); 
+    isAudioReady.current = true;
+  }
+
+  if (synth.current) {
+    synth.current.triggerAttackRelease("A4", "8n", now);
+  }
+};
+
+  return (
+    <section className="bg-black text-white py-20 md:py-32">
+      <div className="container mx-auto px-6 relative">
         <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <Button
-            className="bg-white text-black hover:bg-gray-200 rounded-full px-8 py-3 font-medium"
-            data-cursor-hover
-          >
-            Bekijk al onze projecten
-          </Button>
+          {projects.map((project) => (
+            <ProjectRow
+              key={project.id}
+              project={project}
+              playSound={playSound}
+            />
+          ))}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

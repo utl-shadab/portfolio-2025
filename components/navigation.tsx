@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import clsx from "clsx";
 import { motion, AnimatePresence, Variants } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -99,6 +99,7 @@ export function Navigation() {
 
           <div className="flex items-center gap-4">
             <Button
+             
               variant="ghost"
               size="icon"
               onClick={toggleMenu}

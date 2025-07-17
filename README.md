@@ -38,3 +38,4 @@ This project is a Progressive Web App (PWA). It can be installed on your device 
 - [Radix UI](https://www.radix-ui.com/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [next-pwa](https://www.npmjs.com/package/next-pwa)
+- [Gsap](https://gsap.com/)

@@ -5,7 +5,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion"
 import { ArrowRight, MoveRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import LottiePlayer from "@/components/LottiePlayer"; 
+import LottiePlayer from "@/components/LottiePlayer";
 import AnimatedPathLine from "../AnimatedPathLine"
 
 
@@ -17,7 +17,7 @@ const services = [
     title: "UI/UX Interface",
     description: "Crafting intuitive and beautiful user interfaces that delight users and drive engagement.",
     categories: ["Design"],
-    lottieName: "uiux", 
+    lottieName: "uiux",
     link: "/services/ui-ux",
   },
   {
@@ -25,7 +25,7 @@ const services = [
     title: "Cross-platform Design",
     description: "Ensuring a seamless, consistent, and high-quality experience across all devices and operating systems.",
     categories: ["Design", "Strategy"],
-    lottieName: "cross", 
+    lottieName: "cross",
     link: "/services/cross-platform",
   },
   {
@@ -33,7 +33,7 @@ const services = [
     title: "SPA & SSR Development",
     description: "Building fast, modern web apps with Single Page Application or Server-Side Rendering for optimal performance.",
     categories: ["Development"],
-    lottieName: "spa", 
+    lottieName: "spa",
     link: "/services/development",
   },
   {
@@ -41,7 +41,7 @@ const services = [
     title: "Microinteractions",
     description: "Adding subtle, purposeful animations and feedback that enhance user engagement and usability.",
     categories: ["Design", "Development"],
-    lottieName: "micro", 
+    lottieName: "micro",
     link: "/services/microinteractions",
   },
   {
@@ -49,7 +49,7 @@ const services = [
     title: "Performance Tuning",
     description: "Optimizing your application for lightning-fast load times and a smooth, responsive user experience.",
     categories: ["Development", "Strategy"],
-    lottieName: "performance", 
+    lottieName: "performance",
     link: "/services/performance",
   },
   {
@@ -57,7 +57,7 @@ const services = [
     title: "Headless CMS & API",
     description: "Integrating powerful headless content management systems and custom APIs for flexible content delivery.",
     categories: ["Development"],
-    lottieName: "frontend", 
+    lottieName: "frontend",
     link: "/services/headless-cms",
   },
 ];
@@ -94,7 +94,7 @@ const cardVariants: Variants = {
 export function ServicesSection() {
   const [activeCategory, setActiveCategory] = useState("All")
 
-  
+
   const filteredServices = useMemo(() => {
     if (activeCategory === "All") {
       return services
@@ -107,20 +107,29 @@ export function ServicesSection() {
   return (
     <section id="services" className="py-24 md:py-32 bg-[#0a0a0a] text-white">
       <div className="container mx-auto px-6">
-        <AnimatedPathLine/>
-        {/* Section Header */}
-        <motion.div 
-            className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+        <motion.div
+          className="flex flex-col md:flex-row items-start md:items-center mb-12 space-y-6 md:space-y-0 md:space-x-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-4 md:mb-0">
-            Services We Offer
+          {/* Left: Heading */}
+          <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk">
+            Services  
           </h2>
-          <Link href="/services">
-            <Button variant="outline" className="rounded-full border-white/30 hover:bg-white/10 group">
+
+          {/* Center: Animated line with flex-grow */}
+          <div className="flex-1 mx-6">
+            <AnimatedPathLine />
+          </div>
+
+          {/* Right: Button link */}
+          <Link href="/service">
+            <Button
+              variant="outline"
+              className="rounded-full border-white/30 hover:bg-white/10 group whitespace-nowrap"
+            >
               View All Services
               <MoveRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
@@ -170,7 +179,7 @@ export function ServicesSection() {
                   <div className="overflow-hidden rounded-2xl mb-4 bg-transparent border border-gray-500 flex items-center justify-center h-[250px]">
                     <LottiePlayer
                       name={service.lottieName as any}
-                       width={250}
+                      width={250}
                       height={250}
                       className="w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110"
                     />

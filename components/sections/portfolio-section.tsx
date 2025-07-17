@@ -3,6 +3,10 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import * as Tone from 'tone';
+import AnimatedPathLine from "../AnimatedPathLine";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { MoveRight } from "lucide-react";
 
 interface ProjectType {
   id: number;
@@ -98,7 +102,7 @@ const ProjectRow = ({ project, playSound }: ProjectRowProps) => {
           </AnimatePresence>
         </div>
 
-        
+
         <div className="col-span-2 md:col-span-1 md:col-start-3 flex flex-col md:flex-row md:items-center text-neutral-500 text-sm mt-1 md:mt-0">
           <span className="md:pr-8">{project.category}</span>
           <span className="hidden lg:inline-block">{project.role}</span>
@@ -112,7 +116,7 @@ const ProjectRow = ({ project, playSound }: ProjectRowProps) => {
 export default function InteractiveProjectTable() {
   const synth = useRef<Tone.Synth | null>(null);
   const isAudioReady = useRef(false);
-  const lastPlayTime = useRef(0); 
+  const lastPlayTime = useRef(0);
   useEffect(() => {
     if (!synth.current) {
       synth.current = new Tone.Synth({
@@ -122,7 +126,7 @@ export default function InteractiveProjectTable() {
     }
 
     return () => {
-     
+
       if (synth.current) {
         synth.current.dispose();
         synth.current = null;
@@ -131,24 +135,56 @@ export default function InteractiveProjectTable() {
   }, []);
 
   const playSound = async () => {
-  const now = Tone.now();
+    const now = Tone.now();
 
-  if (now - lastPlayTime.current < 0.1) return;
+    if (now - lastPlayTime.current < 0.1) return;
 
-  lastPlayTime.current = now;
+    lastPlayTime.current = now;
 
-  if (!isAudioReady.current) {
-    await Tone.start(); 
-    isAudioReady.current = true;
-  }
+    if (!isAudioReady.current) {
+      await Tone.start();
+      isAudioReady.current = true;
+    }
 
-  if (synth.current) {
-    synth.current.triggerAttackRelease("A4", "8n", now);
-  }
-};
+    if (synth.current) {
+      synth.current.triggerAttackRelease("A4", "8n", now);
+    }
+  };
 
   return (
     <section className="bg-black text-white py-20 md:py-32">
+      <div className="container mx-auto px-6">
+
+        {/* Section Header */}
+        <motion.div
+          className="flex flex-col md:flex-row items-start md:items-center mb-12 space-y-6 md:space-y-0 md:space-x-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          {/* Left: Heading */}
+          <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk">
+            Recent work
+          </h2>
+
+          {/* Center: Animated line with flex-grow */}
+          <div className="flex-1 mx-6">
+            <AnimatedPathLine />
+          </div>
+
+          {/* Right: Button link */}
+          <Link href="/porfolio">
+            <Button
+              variant="outline"
+              className="rounded-full border-white/30 hover:bg-white/10 group whitespace-nowrap"
+            >
+              View All Project
+              <MoveRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+        </motion.div>
+      </div>
       <div className="container mx-auto px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

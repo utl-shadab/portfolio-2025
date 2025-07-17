@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import * as Tone from "tone";
 
 export default function AnimatedPathLine() {
   const pathRef = useRef<SVGPathElement | null>(null);
@@ -9,8 +10,18 @@ export default function AnimatedPathLine() {
   let time = Math.PI / 2;
   let reqId: number | null = null;
 
+  const synthRef = useRef<Tone.Synth | null>(null);
+  const lastToneTime = useRef<number>(0);
+
   useEffect(() => {
     setPath(progress);
+
+    // Initialize Synth only once
+    synthRef.current = new Tone.Synth({
+      oscillator: {
+        type: "sine",
+      },
+    }).toDestination();
   }, []);
 
   const setPath = (progress: number) => {
@@ -26,11 +37,30 @@ export default function AnimatedPathLine() {
 
   const lerp = (x: number, y: number, a: number): number => x * (1 - a) + y * a;
 
-  const manageMouseEnter = () => {
+  const manageMouseEnter = async () => {
     if (reqId) {
       cancelAnimationFrame(reqId);
       resetAnimation();
     }
+
+    // Ensure Tone.js context is resumed on interaction (required in most browsers)
+    await Tone.start();
+  };
+
+  const playRandomTone = () => {
+    const now = Tone.now();
+    const toneGap = 0.1; // play new tone every 100ms max
+
+    if (now - lastToneTime.current >= toneGap) {
+      const note = getRandomNote();
+      synthRef.current?.triggerAttackRelease(note, "8n");
+      lastToneTime.current = now;
+    }
+  };
+
+  const getRandomNote = () => {
+    const notes = ["C4", "D4", "E4", "G4", "A4", "B4", "C5"];
+    return notes[Math.floor(Math.random() * notes.length)];
   };
 
   const manageMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -40,6 +70,7 @@ export default function AnimatedPathLine() {
     x = (clientX - pathBound.left) / pathBound.width;
     progress += movementY;
     setPath(progress);
+    playRandomTone();
   };
 
   const manageMouseLeave = () => {

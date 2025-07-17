@@ -81,7 +81,7 @@ export function PWAInstaller() {
                 <Smartphone className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-white font-space-grotesk">Install Baker Studio</h3>
+                <h3 className="font-bold text-white font-space-grotesk">Install Arrow  Studio</h3>
                 <p className="text-sm text-gray-300">Get the full app experience</p>
               </div>
             </div>
@@ -96,7 +96,7 @@ export function PWAInstaller() {
           </div>
 
           <p className="text-sm text-gray-300 mb-6 leading-relaxed">
-            Install Baker Studio for quick access, offline viewing, and the best mobile experience.
+            Install Arrow Edge Studio for quick access, offline viewing, and the best mobile experience.
           </p>
 
           <div className="flex space-x-3">

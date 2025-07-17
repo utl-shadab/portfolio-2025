@@ -1,6 +1,6 @@
 {
-  "name": "Baker Studio - Design Your Future",
-  "short_name": "Baker Studio",
+  "name": "Arrow Edge Studio - Design Your Future",
+  "short_name": "Arrow Studio",
   "description": "We grow your online business with cutting-edge digital solutions, branding, and web design.",
   "start_url": "/",
   "display": "standalone",
@@ -16,14 +16,14 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Baker Studio Desktop View"
+      "label": "Arrow Studio Desktop View"
     },
     {
       "src": "/screenshot-narrow.png",
       "sizes": "640x1136",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Baker Studio Mobile View"
+      "label": "Arrow Studio Mobile View"
     }
   ],
   "icons": [

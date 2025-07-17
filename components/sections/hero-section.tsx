@@ -1,12 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-// Centralized variants for cleaner, reusable animations
 const FADE_UP_VARIANTS = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
@@ -16,42 +15,28 @@ const FADE_UP_VARIANTS = {
 export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
 
-  // Replaced GSAP with Framer Motion hooks for parallax effect
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
-
   return (
     <section
       id="hero"
       ref={heroRef}
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Video Optimization:
-        - Added a 'poster' to improve LCP.
-        - Ensure your video is compressed (e.g., using HandBrake) 
-          and consider serving in modern formats like .webm.
-      */}
-      <motion.video
-        style={{ y: videoY }}
+      <video
         className="absolute inset-0 w-full h-full object-cover"
         src="/hero.mp4"
-        poster="/hero-poster.jpg" // <<< PERFORMANCE
+        poster="/hero-poster.jpg"
         autoPlay
         loop
         muted
         playsInline
+        style={{
+          willChange: "transform",
+        }}
       />
 
-      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
 
-      {/* Content */}
       <div className="container mx-auto px-6 relative z-10">
-        {/* Parent container orchestrates staggered animations for its children */}
         <motion.div
           className="max-w-4xl"
           initial="initial"
@@ -61,6 +46,9 @@ export function HeroSection() {
           <motion.h1
             className="text-5xl md:text-7xl lg:text-8xl font-bold font-space-grotesk mb-8 leading-tight"
             variants={FADE_UP_VARIANTS}
+            style={{
+              willChange: "transform, opacity",
+            }}
           >
             We grow your
             <br />
@@ -70,6 +58,9 @@ export function HeroSection() {
           <motion.p
             className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl leading-relaxed"
             variants={FADE_UP_VARIANTS}
+            style={{
+              willChange: "transform, opacity",
+            }}
           >
             We are a full-service digital agency specializing in e-commerce,
             online marketing, web optimization, and design.
@@ -78,6 +69,9 @@ export function HeroSection() {
           <motion.div
             className="flex items-center space-x-6"
             variants={FADE_UP_VARIANTS}
+            style={{
+              willChange: "transform, opacity",
+            }}
           >
             <Link href="/services">
               <Button
@@ -105,6 +99,9 @@ export function HeroSection() {
           <motion.div
             className="mt-16 text-sm text-gray-400"
             variants={FADE_UP_VARIANTS}
+            style={{
+              willChange: "transform, opacity",
+            }}
           >
             <span className="border-l-2 border-pink-500 pl-4">
               ARROW EDGE STUDIO

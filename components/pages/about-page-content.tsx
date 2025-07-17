@@ -31,6 +31,24 @@ export function AboutPageContent() {
     image: "/placeholder.svg?height=400&width=400",
     bio: "Abhishek specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
   },
+ {
+  name: "Javed Khan",
+  role: "App Developer",
+  image: "/placeholder.svg?height=400&width=400",
+  bio: "Javed specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
+},
+{
+  name: "Vikas Jain",
+  role: "Software Engineer",
+  image: "/placeholder.svg?height=400&width=400",
+  bio: "Vikas specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
+},
+{
+  name: "Ujala Yadav",
+  role: "UI/UX Designer",
+  image: "/placeholder.svg?height=400&width=400",
+  bio: "Ujala crafts user-centric and visually compelling designs. Her creativity and attention to detail ensure every interface is both beautiful and intuitive.",
+}
 ]
 
   useEffect(() => {

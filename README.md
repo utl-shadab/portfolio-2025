@@ -1,4 +1,4 @@
-# Baker Studio
+# Arrow Edge Studio
 
 This is a Next.js project for Baker Studio, a design and development agency.
 

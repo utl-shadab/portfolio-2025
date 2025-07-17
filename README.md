@@ -1,6 +1,6 @@
 # Arrow Edge Studio
 
-This is a Next.js project for Baker Studio, a design and development agency.
+This is a Next.js project for Arrow Edge Studio, a design and development agency.
 
 ## Getting Started
 

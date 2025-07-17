@@ -70,7 +70,7 @@ export function AboutPageContent() {
             <span className="text-4xl md:text-5xl">Est 2024</span>
           </h1>
           <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            Baker Studio is ontstaan met een duidelijke missie: marktvisionairs vertalen naar digitale ervaringen die{" "}
+            Arrow Edge Studio is ontstaan met een duidelijke missie: marktvisionairs vertalen naar digitale ervaringen die{" "}
             <span className="text-pink-500">de lat hoger leggen</span>.
           </p>
         </motion.div>

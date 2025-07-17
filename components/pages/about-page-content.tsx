@@ -44,10 +44,10 @@ export function AboutPageContent() {
   bio: "Vikas specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
 },
 {
-  name: "Ujala Yadav",
+  name: "Amit Kumar",
   role: "UI/UX Designer",
   image: "/placeholder.svg?height=400&width=400",
-  bio: "Ujala crafts user-centric and visually compelling designs. Her creativity and attention to detail ensure every interface is both beautiful and intuitive.",
+  bio: "Amit crafts user-centric and visually compelling designs. His creativity and attention to detail ensure every interface is both beautiful and intuitive.",
 }
 ]
 

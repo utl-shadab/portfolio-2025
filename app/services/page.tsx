@@ -3,7 +3,7 @@ import { Footer } from "@/components/footer"
 import { ServicesPageContent } from "@/components/pages/services-page-content"
 
 export const metadata = {
-  title: "Services - Baker Studio",
+  title: "Services - Arrow edge Studio",
   description: "Discover our comprehensive digital services including branding, web design, and digital marketing.",
 }
 

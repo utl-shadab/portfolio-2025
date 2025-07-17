@@ -6,6 +6,9 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Palette, Code, TrendingUp, Zap } from "lucide-react"
+import VideoHeroWithTrail from "../VideoHeroWithTrail"
+import AnimatedPathLine from "../AnimatedPathLine"
+import Link from "next/link"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,7 +23,7 @@ export function ServicesPageContent() {
       description: "We create powerful brand identities that resonate with your audience and stand out in the market.",
       features: ["Logo Design", "Brand Guidelines", "Visual Identity", "Brand Strategy", "Marketing Materials"],
       icon: Palette,
-      color: "from-pink-500 to-rose-500",
+
     },
     {
       id: 2,
@@ -29,7 +32,7 @@ export function ServicesPageContent() {
       description: "Custom websites that combine stunning design with exceptional user experience and performance.",
       features: ["Responsive Design", "User Experience", "Performance Optimization", "CMS Integration", "E-commerce"],
       icon: Code,
-      color: "from-cyan-500 to-blue-500",
+
     },
     {
       id: 3,
@@ -38,7 +41,7 @@ export function ServicesPageContent() {
       description: "Data-driven marketing campaigns that deliver measurable results and sustainable growth.",
       features: ["SEO Optimization", "Social Media", "Content Marketing", "PPC Campaigns", "Analytics"],
       icon: TrendingUp,
-      color: "from-purple-500 to-indigo-500",
+
     },
     {
       id: 4,
@@ -53,7 +56,7 @@ export function ServicesPageContent() {
         "ROI Improvement",
       ],
       icon: Zap,
-      color: "from-orange-500 to-red-500",
+
     },
   ]
 
@@ -81,41 +84,14 @@ export function ServicesPageContent() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="pt-32 pb-16 bg-[#0a0a0a] relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-      </div>
+    <section ref={sectionRef} className=" pb-16 bg-[#000000] relative overflow-hidden">
+
 
       {/* Hero Section */}
-      <div className="container mx-auto px-6 mb-32 relative z-10">
-        <motion.div
-          className="text-center max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-8 leading-tight">
-            Design your
-            <br />
-            future with us
-          </h1>
-          <p className="text-xl text-gray-300 leading-relaxed mb-12">
-            Meer rendement uit je online business halen? Wij zorgen voor de juiste strategie die jouw bedrijf verder{" "}
-            <span className="text-pink-500">laat groeien</span>.
-          </p>
-
-          <div className="flex items-center justify-center space-x-4 text-gray-400">
-            <ArrowRight className="w-6 h-6" />
-            <p>
-              Onze expertise in branding, digital marketing, webdesign en conversie-optimalisatie helpt je bedrijf
-              verder.
-            </p>
-          </div>
-        </motion.div>
+      <VideoHeroWithTrail />
+      <div className="container w-full mx-auto px-6 mt-32 flex justify-center items-center">
+        <AnimatedPathLine />
       </div>
-
       {/* Services Grid */}
       <div className="container mx-auto px-6 mb-32 relative z-10">
         <motion.div
@@ -125,7 +101,7 @@ export function ServicesPageContent() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <span className="text-sm text-gray-400 font-space-grotesk tracking-wider uppercase">ONZE DIENSTEN</span>
+          <span className="text-sm text-gray-400  font-space-grotesk tracking-wider uppercase">Services</span>
           <h2 className="text-4xl md:text-6xl font-bold font-space-grotesk mt-4 mb-8">What we offer</h2>
         </motion.div>
 
@@ -148,12 +124,12 @@ export function ServicesPageContent() {
                 <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-transparent to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Edge Glow */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10" />
+                <div className="absolute inset-0 rounded-3xl  opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10" />
 
                 {/* Content */}
                 <div className="relative z-10">
                   <div
-                    className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-16 h-16   rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                   >
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
@@ -174,16 +150,16 @@ export function ServicesPageContent() {
                       </li>
                     ))}
                   </ul>
-
-                  <Button
-                    variant="outline"
-                    className="border-white/30 text-white hover:bg-white/10 rounded-full px-6 py-2 bg-transparent group-hover:border-pink-400 group-hover:text-pink-400 transition-all duration-300"
-                    data-cursor-hover
-                  >
-                    Learn More
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-
+                  <Link href="/contact">
+                    <Button
+                      variant="outline"
+                      className="border-white/30 text-white hover:bg-white/10 rounded-full px-6 py-2 bg-transparent group-hover:border-pink-400 group-hover:text-pink-400 transition-all duration-300"
+                      data-cursor-hover
+                    >
+                      Contact us
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
                   {/* Tilde Animation */}
                   <motion.div
                     className="absolute top-6 right-6 text-2xl text-pink-500 opacity-0 group-hover:opacity-100"

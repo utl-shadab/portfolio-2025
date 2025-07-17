@@ -3,8 +3,8 @@ import { Footer } from "@/components/footer"
 import { AboutPageContent } from "@/components/pages/about-page-content"
 
 export const metadata = {
-  title: "About - Baker Studio",
-  description: "Learn more about Baker Studio and our team of creative professionals.",
+  title: "About - Arrow Edge Studio",
+  description: "Learn more about Arrow Edge Studio and our team of creative professionals.",
 }
 
 export default function AboutPage() {

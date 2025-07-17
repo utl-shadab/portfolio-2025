@@ -5,32 +5,33 @@ import { motion } from "framer-motion"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
+import Link from "next/link"
 
 gsap.registerPlugin(ScrollTrigger)
 
 export function AboutPageContent() {
   const sectionRef = useRef<HTMLElement>(null)
 
-  const teamMembers = [
-    {
-      name: "Jan Bakker",
-      role: "Founder & Creative Director",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "With over 10 years of experience in digital design, Jan leads our creative vision and strategy.",
-    },
-    {
-      name: "Lucas Keizer",
-      role: "Lead Developer",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "Lucas brings technical excellence to every project with his expertise in modern web technologies.",
-    },
-    {
-      name: "Sophia Nowak",
-      role: "Digital Marketing Specialist",
-      image: "/placeholder.svg?height=400&width=400",
-      bio: "Sophia drives results through data-driven marketing strategies and creative campaigns.",
-    },
-  ]
+ const teamMembers = [
+  {
+    name: "Supriya Dixit",
+    role: "UI/UX & Visual Designer",
+    image: "/placeholder.svg?height=400&width=400",
+    bio: "Supriya brings digital experiences to life through thoughtful user interfaces and impactful visual storytelling. With over 3 years of experience, she ensures every design is both beautiful and intuitive.",
+  },
+  {
+    name: "Ekram Khan",
+    role: "Senior Full Stack Developer",
+    image: "/placeholder.svg?height=400&width=400",
+    bio: "Ekram architects and develops robust, scalable applications from front to back. His deep knowledge of modern web technologies ensures flawless performance and seamless user experiences.",
+  },
+  {
+    name: "Abhishek Tomer",
+    role: "Senior Software Engineer",
+    image: "/placeholder.svg?height=400&width=400",
+    bio: "Abhishek specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
+  },
+]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -64,7 +65,7 @@ export function AboutPageContent() {
           transition={{ duration: 1 }}
         >
           <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-8 leading-tight">
-            Baker studio
+            Arrow Edge Studio
             <br />
             <span className="text-4xl md:text-5xl">Est 2024</span>
           </h1>
@@ -80,12 +81,16 @@ export function AboutPageContent() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div className="about-item">
             <div className="relative w-full h-[600px] rounded-3xl overflow-hidden">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.png-HKBviP6ADWIfLh1m1hu0ccO68iayvm.jpeg"
-                alt="Baker Studio Office"
-                fill
-                className="object-cover"
-              />
+              <video
+                className="absolute inset-0 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src="/communication.webm" type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
           </motion.div>
@@ -94,35 +99,30 @@ export function AboutPageContent() {
             <div>
               <span className="text-sm text-gray-400 font-space-grotesk tracking-wider uppercase">OUR STORY</span>
               <h2 className="text-4xl font-bold font-space-grotesk mt-4 mb-6">
-                Baker Studio is ontstaan met een duidelijke missie: marktvisionairs vertalen naar digitale ervaringen
+                Arrow Edge Studio was founded with a clear mission: to transform visionary ideas into exceptional digital experiences.
               </h2>
             </div>
 
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p>
-                Gespecialiseerd door de dynamiek van het ontwerp en bouw-cyclus die de digitale wereld kenmerkt, hebben
-                wij ons gevestigd als een studio die niet alleen meedenkt, maar ook daadwerkelijk meewerkt aan het
-                realiseren van jouw visie.
+                Shaped by the fast-paced rhythm of design and development in the digital world, we’ve established ourselves as a studio that not only thinks alongside you—but actively works with you to bring your vision to life.
               </p>
               <p>
-                Onze aanpak kent handen in de aarde-mentaliteit waarin we niet alleen adviseren, maar ook daadwerkelijk
-                meewerken aan het realiseren van jouw visie. We geloven in partnerships waarin we samen bouwen aan iets
-                bijzonders.
+                Our approach is grounded in a hands-on mentality. We’re not just consultants—we’re collaborators. We believe in building strong partnerships where creativity, strategy, and execution come together seamlessly.
               </p>
               <p>
-                Elke opdracht is voor ons een kans om grenzen te verleggen. Van conceptualisering tot realisatie, wij
-                begeleiden je door het hele proces heen. Onze expertise ligt in het vertalen van complexe ideeën naar
-                eenvoudige, krachtige digitale oplossingen.
+                Every project is an opportunity to break boundaries. From concept to launch, we guide you through every step of the journey. Our strength lies in translating bold ideas into elegant, powerful digital solutions.
               </p>
             </div>
-
-            <motion.button
-              className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-200 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              data-cursor-hover
-            >
-              Read more
-            </motion.button>
+            <Link href="/contact" className="mt-3">
+              <motion.button
+                className="bg-white text-black px-8 py-3 mt-5  rounded-full font-medium hover:bg-gray-200 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                data-cursor-hover
+              >
+                Contact Us
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </div>

@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, Variants } from "framer-motion"; // Import Variants
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import Link from "next/link";
+import Play from "../Play";
 
 // Define the animation variants with explicit Variants type
 const FADE_UP_VARIANTS: Variants = {
@@ -18,7 +19,15 @@ const FADE_UP_VARIANTS: Variants = {
 
 export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
+const [showPlay, setShowPlay] = useState(false)
 
+useEffect(() => {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Escape") setShowPlay(false);
+  };
+  window.addEventListener("keydown", handleKeyDown);
+  return () => window.removeEventListener("keydown", handleKeyDown);
+}, []);
   return (
     <section
       id="hero"
@@ -109,6 +118,30 @@ export function HeroSection() {
       {/* Decorative Dots */}
       <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-pink-500 rounded-full animate-pulse" />
       <div className="absolute bottom-1/3 left-1/4 w-1 h-1 bg-cyan-400 rounded-full animate-pulse delay-1000" />
+      <button
+        onClick={() => setShowPlay(true)}
+        className="fixed bottom-6 right-6 z-20 bg-pink-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-pink-700 transition-all"
+      >
+        ▶ Play
+      </button>
+
+      {/* === OVERLAY FOR PLAY PAGE === */}
+      {showPlay && (
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex justify-center items-center p-4">
+          {/* Close Button */}
+          <button
+            onClick={() => setShowPlay(false)}
+            className="absolute top-4 right-4 text-white hover:text-red-400 transition"
+          >
+            <X size={28} />
+          </button>
+
+          {/* Play Piano UI */}
+          <div className="w-full max-w-4xl">
+            <Play />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

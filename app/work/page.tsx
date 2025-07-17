@@ -3,7 +3,7 @@ import { Footer } from "@/components/footer"
 import { WorkPageContent } from "@/components/pages/work-page-content"
 
 export const metadata = {
-  title: "Our Work - Baker Studio",
+  title: "Our Work - Arrow Edge Studio",
   description: "Explore our portfolio of successful projects and creative solutions.",
 }
 

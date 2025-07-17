@@ -102,7 +102,10 @@ export default function AnimatedPathLine() {
         onMouseLeave={manageMouseLeave}
         className="relative z-[1] w-full h-10 -top-[20px] hover:h-[500px] hover:-top-[250px] transition-all duration-300 ease-in-out"
       ></div>
-      <svg className="absolute top-[-250px] w-full h-[500px]">
+      <svg
+      viewBox="0 0 1000 500"
+      preserveAspectRatio="none"
+      className="absolute top-[-250px] w-full h-[500px]">
         <path ref={pathRef} className="stroke-white stroke-[1px] fill-none" />
       </svg>
     </div>

@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github } from "lucide-react"
+import Link from "next/link"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -22,7 +23,7 @@ export function WorkPageContent() {
       title: "DUST",
       category: "Branding",
       year: "2024",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ql3esXr6q2X1ZEbDNmoNcn34M71uEQ.png",
+      image: "/placeholder.svg?height=400&width=600",
       description: "Complete brand identity and digital presence for a cutting-edge tech startup.",
       tags: ["Brand Identity", "Logo Design", "Digital Assets"],
       featured: true,
@@ -32,7 +33,7 @@ export function WorkPageContent() {
       title: "StaalBaron",
       category: "Web design",
       year: "2024",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ql3esXr6q2X1ZEbDNmoNcn34M71uEQ.png",
+     image: "/placeholder.svg?height=400&width=600",
       description: "Modern e-commerce platform with custom functionality and seamless user experience.",
       tags: ["E-commerce", "Custom Development", "UX/UI"],
       featured: true,
@@ -42,7 +43,7 @@ export function WorkPageContent() {
       title: "Van Zutphen",
       category: "Digital marketing",
       year: "2024",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ql3esXr6q2X1ZEbDNmoNcn34M71uEQ.png",
+     image: "/placeholder.svg?height=400&width=600",
       description: "Comprehensive digital marketing campaign that increased online presence by 300%.",
       tags: ["SEO", "Social Media", "Content Strategy"],
       featured: false,
@@ -52,7 +53,7 @@ export function WorkPageContent() {
       title: "Rietdekkersbedrijf",
       category: "Web design",
       year: "2024",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ql3esXr6q2X1ZEbDNmoNcn34M71uEQ.png",
+      image: "/placeholder.svg?height=400&width=600",
       description: "Traditional craftsmanship meets modern web design in this stunning portfolio site.",
       tags: ["Portfolio", "Responsive Design", "Photography"],
       featured: false,
@@ -114,10 +115,9 @@ export function WorkPageContent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-8 leading-tight">Ons werk</h1>
+          <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-8 leading-tight">Our Work </h1>
           <p className="text-xl text-gray-300 leading-relaxed mb-12">
-            Een selectie van onze meest succesvolle projecten waarin we creativiteit, strategie en technologie hebben
-            gecombineerd om <span className="text-pink-500">uitzonderlijke resultaten</span> te behalen.
+           A selection of our studio’s most impactful projects, where we bring  <span className="text-pink-500">stories to life</span>  through a combination of creativity, strategy, and technology 
           </p>
         </motion.div>
       </div>
@@ -250,6 +250,7 @@ export function WorkPageContent() {
           <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
             Let's discuss your project and see how we can help bring your vision to life.
           </p>
+          <Link href="/contact">
           <Button
             size="lg"
             className="bg-gradient-to-r from-pink-500 to-cyan-500 hover:from-pink-600 hover:to-cyan-600 text-white rounded-full px-8 py-4 font-medium"
@@ -257,6 +258,7 @@ export function WorkPageContent() {
           >
             Start Your Project
           </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

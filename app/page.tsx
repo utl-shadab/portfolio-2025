@@ -10,7 +10,6 @@ import { Footer } from "@/components/footer"
 import { useRef } from "react"
 import { CustomCursor } from "@/components/custom-cursor"
 import OurProcess from "@/components/OurProcess"
-
 export default function Home() {
   const stickyRef = useRef<HTMLDivElement>(null)
   return (

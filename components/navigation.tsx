@@ -70,15 +70,15 @@ const navLinkVariants: Variants = {
 }
 
 const Logo = ({ className = "text-black" }) => (
- <Link href="/" data-cursor-hover className={className}>
-  <Image
-    src="/LogoArrow.png" 
-    alt=" LogoArrow Logo"
-    width={100}     
-    height={40}      
-    priority 
-  />
-</Link>
+  <Link href="/" data-cursor-hover className={className}>
+    <Image
+      src="/LogoArrow.png"
+      alt=" LogoArrow Logo"
+      width={100}
+      height={40}
+      priority
+    />
+  </Link>
 );
 
 export function Navigation() {
@@ -99,7 +99,7 @@ export function Navigation() {
 
           <div className="flex items-center gap-4">
             <Button
-             
+              aria-label="toggle"
               variant="ghost"
               size="icon"
               onClick={toggleMenu}

@@ -64,7 +64,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Baker Studio" />
+        <meta name="apple-mobile-web-app-title" content="Arrow Studio" />
+        <meta name="google-site-verification" content="YbIcnIK4ATyyMj_SIKzgtpnRVGpCVvZIuR357BBn9-E" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#0a0a0a" />
         <meta name="msapplication-config" content="/browserconfig.xml" />

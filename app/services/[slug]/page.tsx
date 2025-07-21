@@ -20,7 +20,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
-  const service = getServiceBySlug(params.slug)
+  // Use an async IIFE to await the params resolution
+  const service = await (async () => getServiceBySlug(params.slug))();
   if (!service) {
     return {
       title: "Service Not Found",
@@ -57,6 +58,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 }
 
 export default function ServicePage({ params }: ServicePageProps) {
+  // Synchronous access to params is fine here since it's a page component
   const service = getServiceBySlug(params.slug)
   if (!service) {
     notFound()
@@ -94,7 +96,10 @@ export default function ServicePage({ params }: ServicePageProps) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main className="relative bg-[#0a0a0a] text-white overflow-hidden">
         <Navigation />
         <ServiceDetail service={service} relatedServices={relatedServices} />

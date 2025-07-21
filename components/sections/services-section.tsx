@@ -1,67 +1,31 @@
 "use client"
 
-import { useState, useMemo } from "react"
 import { motion, AnimatePresence, Variants } from "framer-motion"
 import { ArrowRight, MoveRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import LottiePlayer from "@/components/LottiePlayer";
+import LottiePlayer from "@/components/LottiePlayer"
 import AnimatedPathLine from "../AnimatedPathLine"
+import { services } from "@/lib/services"
 
+// Define the allowed lottieName values to match LottiePlayer's expected type
+type LottieName = "uiux" | "cross" | "spa" | "micro" | "performance" | "frontend"
 
-const serviceCategories = ["All", "Design", "Development", "Strategy"];
+// Define the structure of the lotties array
+interface LottieConfig {
+  slug: string
+  lottieName: LottieName
+}
 
-const services = [
-  {
-    id: "ui-ux",
-    title: "UI/UX Interface",
-    description: "Crafting intuitive and beautiful user interfaces that delight users and drive engagement.",
-    categories: ["Design"],
-    lottieName: "uiux",
-    link: "/services/ui-ux",
-  },
-  {
-    id: "cross-platform",
-    title: "Cross-platform Design",
-    description: "Ensuring a seamless, consistent, and high-quality experience across all devices and operating systems.",
-    categories: ["Design", "Strategy"],
-    lottieName: "cross",
-    link: "/services/cross-platform",
-  },
-  {
-    id: "spa-ssr",
-    title: "SPA & SSR Development",
-    description: "Building fast, modern web apps with Single Page Application or Server-Side Rendering for optimal performance.",
-    categories: ["Development"],
-    lottieName: "spa",
-    link: "/services/development",
-  },
-  {
-    id: "microinteractions",
-    title: "Microinteractions",
-    description: "Adding subtle, purposeful animations and feedback that enhance user engagement and usability.",
-    categories: ["Design", "Development"],
-    lottieName: "micro",
-    link: "/services/microinteractions",
-  },
-  {
-    id: "performance-tuning",
-    title: "Performance Tuning",
-    description: "Optimizing your application for lightning-fast load times and a smooth, responsive user experience.",
-    categories: ["Development", "Strategy"],
-    lottieName: "performance",
-    link: "/services/performance",
-  },
-  {
-    id: "headless-cms",
-    title: "Headless CMS & API",
-    description: "Integrating powerful headless content management systems and custom APIs for flexible content delivery.",
-    categories: ["Development"],
-    lottieName: "frontend",
-    link: "/services/headless-cms",
-  },
-];
-
+// Updated lotties array to match service slugs and LottiePlayer's expected name prop
+const lotties: LottieConfig[] = [
+  { slug: "ui-ux-interface", lottieName: "uiux" },
+  { slug: "cross-platform", lottieName: "cross" },
+  { slug: "spa-ssr-development", lottieName: "spa" },
+  { slug: "microinteractions", lottieName: "micro" },
+  { slug: "performance-tuning", lottieName: "performance" },
+  { slug: "headless-cms-api", lottieName: "frontend" }, // Reverted to "frontend" to match LottiePlayerProps
+]
 
 // --- ANIMATION VARIANTS ---
 const containerVariants: Variants = {
@@ -72,7 +36,7 @@ const containerVariants: Variants = {
       staggerChildren: 0.1,
     },
   },
-};
+}
 
 const cardVariants: Variants = {
   initial: { opacity: 0, y: 50, scale: 0.9 },
@@ -88,22 +52,10 @@ const cardVariants: Variants = {
     scale: 0.95,
     transition: { duration: 0.3, ease: [0.5, 0, 0.75, 0] },
   },
-};
+}
 
 // --- COMPONENT ---
 export function ServicesSection() {
-  const [activeCategory, setActiveCategory] = useState("All")
-
-
-  const filteredServices = useMemo(() => {
-    if (activeCategory === "All") {
-      return services
-    }
-    return services.filter((service) =>
-      service.categories.includes(activeCategory)
-    )
-  }, [activeCategory])
-
   return (
     <section id="services" className="py-24 md:py-32 bg-[#0a0a0a] text-white">
       <div className="container mx-auto px-6">
@@ -116,7 +68,7 @@ export function ServicesSection() {
         >
           {/* Left: Heading */}
           <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk">
-            Services  
+            Services
           </h2>
 
           {/* Center: Animated line with flex-grow */}
@@ -125,7 +77,7 @@ export function ServicesSection() {
           </div>
 
           {/* Right: Button link */}
-          <Link href="/service">
+          <Link href="/services">
             <Button
               variant="outline"
               className="rounded-full border-white/30 hover:bg-white/10 group whitespace-nowrap"
@@ -136,26 +88,6 @@ export function ServicesSection() {
           </Link>
         </motion.div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-2 md:gap-4 mb-12">
-          {serviceCategories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full"
-            >
-              {activeCategory === category && (
-                <motion.div
-                  layoutId="active-category-pill"
-                  className="absolute inset-0 bg-pink-500 rounded-full"
-                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                />
-              )}
-              <span className="relative z-10">{category}</span>
-            </button>
-          ))}
-        </div>
-
         {/* Services Grid */}
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -164,38 +96,43 @@ export function ServicesSection() {
           animate="animate"
         >
           <AnimatePresence>
-            {filteredServices.map((service) => (
-              <motion.div
-                key={service.id}
-                layout
-                variants={cardVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="group"
-              >
-                <Link href={service.link}>
-                  {/* --- IMAGE REPLACED WITH LOTTIE PLAYER --- */}
-                  <div className="overflow-hidden rounded-2xl mb-4 bg-transparent border border-gray-500 flex items-center justify-center h-[250px]">
-                    <LottiePlayer
-                      name={service.lottieName as any}
-                      width={250}
-                      height={250}
-                      className="w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-medium flex items-center group-hover:text-pink-500 transition-colors mb-2">
-                      {service.title}
-                      <ArrowRight className="w-4 h-4 ml-2 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-                    </h3>
-                    <p className="text-sm text-gray-400">
-                      {service.description}
-                    </p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+            {services.map((service) => {
+              // Find the corresponding lottie for the service slug
+              const lottie = lotties.find((l) => l.slug === service.slug) || {
+                lottieName: "uiux", // Fallback to a valid lottieName
+              }
+
+              return (
+                <motion.div
+                  key={service.id}
+                  layout
+                  variants={cardVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="group"
+                >
+                  <Link href={`/services/${service.slug}`}>
+                    {/* --- IMAGE REPLACED WITH LOTTIE PLAYER --- */}
+                    <div className="overflow-hidden rounded-2xl mb-4 bg-transparent border border-gray-500 flex items-center justify-center h-[250px]">
+                      <LottiePlayer
+                        name={lottie.lottieName}
+                        width={250}
+                        height={250}
+                        className="w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-medium flex items-center group-hover:text-pink-500 transition-colors mb-2">
+                        {service.title}
+                        <ArrowRight className="w-4 h-4 ml-2 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+                      </h3>
+                      <p className="text-sm text-gray-400">{service.description}</p>
+                    </div>
+                  </Link>
+                </motion.div>
+              )
+            })}
           </AnimatePresence>
         </motion.div>
       </div>

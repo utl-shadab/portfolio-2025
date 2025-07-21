@@ -22,36 +22,43 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
   const containerRef = useRef<HTMLDivElement>(null)
   const heroRef = useRef<HTMLDivElement>(null)
   const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 500], [0, 150])
+  const y = useTransform(scrollY, [0, 500], [0, 100], { clamp: true }) // Reduced range for smoother parallax
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Optimize animate-on-scroll elements
       gsap.utils.toArray(".animate-on-scroll").forEach((element: any) => {
         gsap.fromTo(
           element,
-          { y: 50, opacity: 0 },
+          { y: 30, autoAlpha: 0 },
           {
             y: 0,
-            opacity: 1,
+            autoAlpha: 1,
             duration: 0.8,
+            ease: "power2.out",
             scrollTrigger: {
               trigger: element,
-              start: "top 80%",
+              start: "top 85%",
+              end: "top 50%",
+              toggleActions: "play none none reverse", // Replaced scrub with toggleActions
             },
-          },
+          }
         )
       })
+
+      // Optimize hero background parallax
       gsap.to(".hero-bg", {
-        yPercent: -50,
-        ease: "none",
+        yPercent: -20, // Reduced range for smoother effect
+        ease: "power1.out",
         scrollTrigger: {
           trigger: heroRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: true,
+          toggleActions: "play none none reverse", // Replaced scrub with toggleActions
         },
       })
     }, containerRef)
+
     return () => ctx.revert()
   }, [])
 
@@ -94,28 +101,23 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
 
   return (
     <div ref={containerRef} className="bg-[#0a0a0a] text-white">
-      {/* Back Navigation */}
-      <div className="fixed top-24 left-6 z-50">
-        <Link href="/services">
-          <Button
-            variant="outline"
-            size="sm"
-            className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Services
-          </Button>
-        </Link>
-      </div>
       {/* Hero Section */}
       <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
-        <motion.div className="hero-bg absolute inset-0 scale-110" style={{ y }}>
+        <motion.div
+          className="hero-bg absolute inset-0 scale-105 will-change-transform"
+          style={{
+            y,
+            willChange: "transform",
+            transformStyle: "preserve-3d",
+            backfaceVisibility: "hidden",
+          }}
+        >
           <ResponsiveImage image={service.heroImage} className="w-full h-full" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
         </motion.div>
 
         <div className="relative z-10 text-center max-w-4xl px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <Badge className="mb-6 bg-white/20 text-white border-white/30">{service.title}</Badge>
             <h1 className="text-6xl md:text-8xl font-bold font-space-grotesk mb-6">{service.subtitle}</h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">{service.description}</p>
@@ -124,7 +126,7 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
               <Link href="/contact">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-pink-500 to-cyan-500 hover:from-pink-600 hover:to-cyan-600 text-white rounded-full px-8 py-4 font-medium"
+                  className="bg-gradient-to-r from-pink-500 to-cyan-500 hover:from-pink-600 hover:to-ever-600 text-white rounded-full px-8 py-4 font-medium"
                 >
                   Get a Quote
                 </Button>
@@ -176,7 +178,6 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
                         <p className="font-medium">{service.title}</p>
                       </div>
                     </div>
-                    {/* Add more service-specific details here if needed */}
                   </div>
                 </CardContent>
               </Card>
@@ -195,7 +196,7 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
                 <motion.div
                   key={index}
                   className="text-center group"
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
@@ -288,15 +289,15 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
                 <Link key={relatedService.id} href={`/services/${relatedService.slug}`}>
                   <motion.div
                     className="group cursor-pointer bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300"
-                    whileHover={{ y: -5, scale: 1.02 }}
+                    whileHover={{ y: -5 }}
                   >
-                    <div className="relative h-48 overflow-hidden flex items-center justify-center bg-gradient-to-br from-pink-500/10 to-cyan-500/10">
+                    <div className="relative h-48 overflow-hidden flex items-center justify-center bg-pink-900">
                       <Image
                         src={relatedService.icon || "/placeholder.svg"}
                         alt={relatedService.title}
-                        width={80}
-                        height={80}
-                        className="object-contain group-hover:scale-110 transition-transform duration-700"
+                        width={200}
+                        height={200}
+                        className="object-contain group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>

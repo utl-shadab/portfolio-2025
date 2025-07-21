@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     title: "Services | Arrow Edge Studio",
     description:
       "Explore our comprehensive digital services: branding, web design, digital marketing, and conversion optimization. Partner with us to transform your vision into reality.",
-    url: "https://yourwebsite.com/services", // Replace with your actual domain
+    url: "https://yourwebsite.com/services",
     siteName: "Arrow Edge Studio",
     images: [
       {
-        url: "/placeholder.svg?height=630&width=1200", // Placeholder image for services
+        url: "/placeholder.svg?height=630&width=1200", 
         width: 1200,
         height: 630,
         alt: "Arrow Edge Studio Services",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Services | Arrow Edge Studio",
     description: "Discover our comprehensive digital services including branding, web design, and digital marketing.",
-    images: ["/placeholder.svg?height=630&width=1200"], // Placeholder image for services
+    images: ["/placeholder.svg?height=630&width=1200"], 
   },
 }
 

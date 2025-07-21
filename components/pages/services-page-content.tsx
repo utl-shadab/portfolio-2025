@@ -58,7 +58,7 @@ export function ServicesPageContent() {
           <h2 className="text-4xl md:text-6xl font-bold font-space-grotesk mt-4 mb-8">What we offer</h2>
         </motion.div>
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {services.map((service, index) => {
+          {services.map((service) => {
             return (
               <Link key={service.id} href={`/services/${service.slug}`}>
                 <motion.div
@@ -77,17 +77,7 @@ export function ServicesPageContent() {
                   <div className="absolute inset-0 rounded-3xl  opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10" />
                   {/* Content */}
                   <div className="relative z-10">
-                    <div
-                      className={`w-16 h-16   rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <Image
-                        src={service.icon || "/placeholder.svg"}
-                        alt={service.title}
-                        width={32}
-                        height={32}
-                        className="text-white"
-                      />
-                    </div>
+                   
                     <h3 className="text-3xl font-bold font-space-grotesk mb-2 text-white group-hover:text-pink-400 transition-colors">
                       {service.title}
                     </h3>

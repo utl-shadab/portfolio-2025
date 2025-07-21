@@ -1,10 +1,37 @@
+import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { WorkPageContent } from "@/components/pages/work-page-content"
 
-export const metadata = {
-  title: "Our Work - Arrow Edge Studio",
-  description: "Explore our portfolio of successful projects and creative solutions.",
+export const metadata: Metadata = {
+  title: "Our Work | Arrow Edge Studio",
+  description:
+    "Explore a selection of our studio’s most impactful projects in branding, web design, and digital marketing.",
+  keywords: ["portfolio", "web design", "branding", "digital marketing", "case studies"],
+  openGraph: {
+    title: "Our Work | Arrow Edge Studio",
+    description:
+      "Explore a selection of our studio’s most impactful projects in branding, web design, and digital marketing.",
+    url: "https://yourwebsite.com/work",
+    siteName: "Arrow Edge Studio",
+    images: [
+      {
+        url: "/public/projects/dust/hero-desktop.png", // Using a specific image from the project data
+        width: 1200,
+        height: 630,
+        alt: "Our Work Page",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Work | Arrow Edge Studio",
+    description:
+      "Explore a selection of our studio’s most impactful projects in branding, web design, and digital marketing.",
+    images: ["/public/projects/dust/hero-desktop.png"], // Using a specific image from the project data
+  },
 }
 
 export default function WorkPage() {

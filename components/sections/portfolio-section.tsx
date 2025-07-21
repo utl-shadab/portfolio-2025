@@ -174,7 +174,7 @@ export default function InteractiveProjectTable() {
           </div>
 
           {/* Right: Button link */}
-          <Link href="/porfolio">
+          <Link href="/work">
             <Button
               variant="outline"
               className="rounded-full border-white/30 hover:bg-white/10 group whitespace-nowrap"

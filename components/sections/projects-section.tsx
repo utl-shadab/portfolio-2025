@@ -270,19 +270,9 @@ export function ProjectsSection() {
                     <ExternalLink className="w-4 h-4" />
                     <span>Live Demo</span>
                   </Button>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    className="flex items-center space-x-2 text-gray-300 hover:text-white hover:bg-white/10"
-                    data-cursor-hover
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>Code</span>
-                  </Button>
+                  
                 </div>
               </div>
-
-              {/* Hover Effect Overlay */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                 initial={false}

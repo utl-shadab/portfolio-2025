@@ -3,19 +3,17 @@ import type { Project } from "@/types/project"
 export const projects: Project[] = [
   {
     id: 1,
-    slug: "dust-brand-identity",
-    title: "DUST",
+    slug: "malik-architecture",
+    title: "Malik Architecture",
     category: "Branding",
     year: "2024",
-    client: "DUST Technologies",
-    duration: "3 months",
-    domain: "Technology",
-    liveUrl: "https://dust-tech.com",
-    githubUrl: "https://github.com/dust-project",
-
-    thumbnailImage: "/public/projects/dust/thumbnail.png",
+    client: "Kamal Malik",
+    duration: "1 months",
+    domain: "Architecture & Design",
+    liveUrl: "https://www.malikarchitecture.com/",
+    thumbnailImage: "/work/malik.jpg",
     heroImage: {
-      desktop: "/public/projects/dust/hero-desktop.png",
+      desktop: "/work/malik.jpg",
       tablet: "/public/projects/dust/hero-tablet.png",
       mobile: "/public/projects/dust/hero-mobile.png",
       alt: "DUST brand identity showcase",
@@ -35,43 +33,31 @@ export const projects: Project[] = [
       },
     ],
 
-    shortDescription: "Complete brand identity and digital presence for a cutting-edge tech startup.",
+    shortDescription: "Malik Architecture is an award-winning, Mumbai-based multidisciplinary design practice with over 47 years of experience, approaching architecture as a synthesis of 'ecology' and 'spirit' to define a contemporary Indian design language.",
     fullDescription:
-      "DUST Technologies approached us to create a comprehensive brand identity that would position them as innovative leaders in the AI automation space. The project encompassed everything from logo design to digital asset creation, establishing a cohesive visual language that resonates with their target audience of enterprise clients and tech enthusiasts.",
+      "Malik Architecture is a highly distinguished, award-winning design practice based in Mumbai, India, with over four decades of experience. Founded by Kamal Malik and now co-led by his son Arjun Malik, the firm is a leading voice in contemporary Indian architecture. Their work is celebrated for its powerful and context-sensitive designs that are deeply rooted in a unique philosophy. This core philosophy is a synthesis of Ecology (a building's holistic relationship with its environment, climate, and materials) and Spirit (its connection to India's cultural, historical, and philosophical heritage). This approach results in a distinct style of vernacular modernism, creating buildings that are both globally modern and authentically Indian.",
     objective:
-      "Create a modern, trustworthy brand identity that communicates innovation while maintaining professional credibility in the B2B tech sector.",
+      "The primary objective of Malik Architecture is to develop and define a contemporary design syntax for the Indian subcontinent. They aim to achieve this by approaching architecture as a seamless and holistic synthesis of 'ecology' and 'spirit,' creating meaningful spaces that are culturally resonant, environmentally sustainable, and timeless.",
 
     technologies: [
-      { name: "Adobe Illustrator", category: "tools", icon: "/public/icons/illustrator.png" },
-      { name: "Adobe Photoshop", category: "tools", icon: "/public/icons/photoshop.png" },
-      { name: "Figma", category: "tools", icon: "/public/icons/figma.png" },
-      { name: "After Effects", category: "tools", icon: "/public/icons/after-effects.png" },
+      { name: "HTML", category: "tools", icon: "/technology/html.svg" },
+      { name: "CSS", category: "tools", icon: "/technology/css.svg" },
+      { name: "JAVASCRIPT", category: "tools", icon: "/technology/js.svg" },
+      { name: "GSAP", category: "tools", icon: "/technology/greensock.svg" },
+      { name: "BOOTSTRAP", category: "tools", icon: "/technology/bootstrap.svg" },
+      { name: "PHP", category: "tools", icon: "/technology/cdi.svg" },
     ],
-    framework: ["Brand Guidelines", "Logo System", "Digital Assets", "Print Materials"],
-    colorTheme: {
-      primary: "#6366F1",
-      secondary: "#EC4899",
-      accent: "#06B6D4",
-      background: "#0F172A",
-      text: "#F1F5F9",
-    },
+    framework: [],
+   colorTheme: {
+    primary: "#6E6E6E",
+    secondary: "#A8A8A8",
+    accent: "#CFCFCF",
+    background: "#F5F5F5",
+    text: "#333333",
+  },
 
-    challenges: [
-      {
-        title: "Market Differentiation",
-        description:
-          "The AI/tech space is saturated with similar-looking brands using predictable color schemes and typography.",
-        solution:
-          "We developed a unique visual language combining organic shapes with technical precision, using an unexpected color palette that stands out while remaining professional.",
-      },
-      {
-        title: "Scalability Requirements",
-        description:
-          "The brand needed to work across multiple touchpoints from business cards to large-scale digital displays.",
-        solution:
-          "Created a modular logo system with multiple variations and established clear guidelines for usage across different mediums and sizes.",
-      },
-    ],
+
+    
 
     achievements: [
       { metric: "Brand Recognition", value: "+250%", description: "Increase in brand recall among target audience" },
@@ -108,27 +94,27 @@ export const projects: Project[] = [
         title: "Discovery & Research",
         description:
           "Deep dive into company culture, target audience, and competitive landscape to establish brand foundations.",
-        image: "/public/process/discovery.png",
+        image: "/svg/discover.webp",
       },
       {
         title: "Concept Development",
         description:
           "Exploring multiple creative directions through sketching, mood boards, and initial digital concepts.",
-        image: "/public/process/concept.png",
+        image: "/svg/concept.svg",
       },
       {
         title: "Design Refinement",
         description:
           "Iterating on selected concepts, testing across applications, and refining based on stakeholder feedback.",
-        image: "/public/process/refinement.png",
+        image: "/svg/designing.svg",
       },
       {
         title: "Brand Guidelines",
         description: "Creating comprehensive documentation and asset libraries for consistent brand implementation.",
-        image: "/public/process/guidelines.png",
+        image: "/svg/brand-guide.svg",
       },
     ],
-
+    challenges: [],
     results: {
       title: "Measurable Impact",
       description:
@@ -142,82 +128,106 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    slug: "staalbaron-ecommerce",
-    title: "StaalBaron",
+    slug: "vardhman-textile",
+    title: "Vardhman",
     category: "Web design",
-    year: "2024",
-    client: "StaalBaron Industries",
+    year: "2023",
+    client: "Vardhman textile",
     duration: "4 months",
-    domain: "Industrial Equipment",
-    liveUrl: "https://staalbaron.nl",
+    domain: "Textile",
+    liveUrl: "https://vardhman.com",
 
-    thumbnailImage: "/public/projects/staalbaron/thumbnail.png",
+    thumbnailImage: "/work/vardhman-thumb.jpg",
     heroImage: {
-      desktop: "/public/projects/staalbaron/hero-desktop.png",
-      tablet: "/public/projects/staalbaron/hero-tablet.png",
-      mobile: "/public/projects/staalbaron/hero-mobile.png",
-      alt: "StaalBaron e-commerce platform",
+      desktop: "/work/vardhman-thumb.jpg",
+      tablet: "/work/vardhman-thumb.jpg",
+      mobile: "/work/vardhman-thumb.jpg",
+      alt: "vardhman",
     },
     galleryImages: [
       {
-        desktop: "/public/projects/staalbaron/gallery-1-desktop.png",
+        desktop: "/work/vardhman.png",
         tablet: "/public/projects/staalbaron/gallery-1-tablet.png",
-        mobile: "/public/projects/staalbaron/gallery-1-mobile.png",
+        mobile: "/work/vmobile.jpg",
         alt: "Product catalog interface",
       },
       {
-        desktop: "/public/projects/staalbaron/gallery-2-desktop.png",
-        tablet: "/public/projects/staalbaron/gallery-2-tablet.png",
-        mobile: "/public/projects/staalbaron/gallery-2-mobile.png",
+        desktop: "/work/vardhman-thumb.jpg",
+        tablet: "/work/vardhman-thumb.jpg",
+        mobile: "/work/vmobile.jpg",
         alt: "Mobile shopping experience",
       },
     ],
 
-    shortDescription: "Modern e-commerce platform with custom functionality and seamless user experience.",
+    shortDescription: "In an industry that thrives on changing trends, agility and flexibility are vital contributors to success. Only those who can outpace stand a chance to out-grow.",
     fullDescription:
-      "StaalBaron needed a complete digital transformation to compete in the modern industrial equipment market. We built a comprehensive e-commerce solution that handles complex B2B transactions, custom product configurations, and integrates with their existing ERP systems.",
+      "Vardhman Group achieves excellence through a culture of innovation and continuous improvement. As an organisation, we believe in well-thought-out consistent growth and a holistic approach. We are committed to sustainability with initiatives directed at long-term positive impact through our sustainability framework 'PRO - Proactively Responsible Organisation’.",
     objective:
-      "Develop a user-friendly e-commerce platform that simplifies complex industrial equipment purchasing while maintaining the technical depth B2B customers require.",
+      "To digitally showcase Vardhman's leadership as a vertically integrated textile powerhouse, highlighting our commitment to innovation, quality, and sustainability to a global audience of partners, customers, and stakeholders.",
 
     technologies: [
-      { name: "Next.js", category: "frontend", icon: "/public/icons/nextjs.png" },
-      { name: "TypeScript", category: "frontend", icon: "/public/icons/typescript.png" },
-      { name: "Node.js", category: "backend", icon: "/public/icons/nodejs.png" },
-      { name: "PostgreSQL", category: "database", icon: "/public/icons/postgresql.png" },
-      { name: "Stripe", category: "tools", icon: "/public/icons/stripe.png" },
-      { name: "Docker", category: "deployment", icon: "/public/icons/docker.png" },
+     
+      { name: "HTML", category: "tools", icon: "/technology/html.svg" },
+      { name: "CSS", category: "tools", icon: "/technology/css.svg" },
+      { name: "JAVASCRIPT", category: "tools", icon: "/technology/js.svg" },
+      { name: "GSAP", category: "tools", icon: "/technology/greensock.svg" },
+      { name: "BOOTSTRAP", category: "tools", icon: "/technology/bootstrap.svg" },
+      { name: "PHP", category: "tools", icon: "/technology/cdi.svg" },
+      { name: "MYSQL", category: "tools", icon: "/technology/sql.svg" },
     ],
-    framework: ["Next.js", "Tailwind CSS", "Prisma ORM", "NextAuth.js"],
-    colorTheme: {
-      primary: "#1E40AF",
-      secondary: "#F59E0B",
-      accent: "#059669",
-      background: "#F9FAFB",
-      text: "#1F2937",
-    },
+    framework: [],
+   colorTheme: {
+  primary: "#008B47",
+  secondary: "#e8e8e8",
+  accent: "#008B47",
+  background: "#EFEFEF",
+  text: "#080808",
+},
 
-    challenges: [
-      {
-        title: "Complex Product Configurations",
-        description:
-          "Industrial equipment often requires custom specifications and configurations that traditional e-commerce platforms can't handle.",
-        solution:
-          "Built a dynamic product configurator that guides customers through complex specification choices while providing real-time pricing and availability.",
-      },
-      {
-        title: "ERP Integration",
-        description:
-          "Seamless integration with existing inventory and order management systems was critical for operational efficiency.",
-        solution:
-          "Developed custom API middleware that synchronizes product data, inventory levels, and order information in real-time with their SAP system.",
-      },
-    ],
+   challenges: [],
 
-    achievements: [
-      { metric: "Online Sales", value: "+320%", description: "Increase in online revenue within 6 months" },
-      { metric: "Order Processing", value: "-75%", description: "Reduction in manual order processing time" },
-      { metric: "Customer Satisfaction", value: "4.8/5", description: "Average customer rating for the platform" },
-    ],
+  achievements: [
+  {
+    metric: "API Response Time",
+    value: "< 50ms",
+    description: "Optimized database queries and implemented a multi-layered caching strategy, reducing the average API response time to under 50ms for a snappy user experience.",
+  },
+  {
+    metric: "Core Web Vitals",
+    value: "95+ Score",
+    description: "Achieved a Google Lighthouse score of over 95 by implementing code splitting, image optimization, and lazy loading, resulting in superior performance and improved SEO.",
+  },
+  {
+    metric: "Scalability",
+    value: "1M+ Users",
+    description: "Engineered a cloud-native architecture capable of handling over a million concurrent users during peak traffic without performance degradation.",
+  },
+  {
+    metric: "Development Velocity",
+    value: "+40%",
+    description: "Established a robust CI/CD pipeline with automated testing, increasing team development velocity by 40% and accelerating feature deployment.",
+  },
+  { 
+    metric: "Mobile Traffic", 
+    value: "+185%", 
+    description: "A mobile-first responsive design led to a significant increase in engagement from mobile users." 
+  },
+  { 
+    metric: "Support Tickets", 
+    value: "-60%", 
+    description: "An intuitive UI and comprehensive documentation led to a sharp reduction in customer service inquiries." 
+  },
+  {
+    metric: "Code Maintainability",
+    value: "A+ Grade",
+    description: "Refactored the legacy codebase into a modular, component-based architecture, achieving an A+ grade on code quality scans and reducing future technical debt."
+  },
+  {
+    metric: "Security Hardening",
+    value: "Zero Breaches",
+    description: "Implemented end-to-end security protocols, including content security policies and regular vulnerability scanning, resulting in zero security breaches post-launch."
+  }
+],
 
     keyFeatures: [
       "Advanced product search and filtering",
@@ -310,7 +320,7 @@ export const projects: Project[] = [
       { name: "Meta Ads", category: "tools", icon: "/public/icons/meta-ads.png" },
       { name: "SEMrush", category: "tools", icon: "/public/icons/semrush.png" },
     ],
-    framework: ["SEO Strategy", "Social Media Management", "Content Marketing", "Paid Advertising"],
+    framework: [],
     colorTheme: {
       primary: "#10B981",
       secondary: "#EF4444",
@@ -356,7 +366,7 @@ export const projects: Project[] = [
       { name: "JavaScript", category: "frontend", icon: "/public/icons/javascript.png" },
       { name: "Figma", category: "tools", icon: "/public/icons/figma.png" },
     ],
-    framework: ["Responsive Design", "Image Gallery", "Contact Form"],
+    framework: [],
     colorTheme: {
       primary: "#4B5563",
       secondary: "#D1D5DB",
@@ -400,7 +410,7 @@ export const projects: Project[] = [
       { name: "Adobe Illustrator", category: "tools", icon: "/public/icons/illustrator.png" },
       { name: "Adobe InDesign", category: "tools", icon: "/public/icons/indesign.png" },
     ],
-    framework: ["Brand Guidelines", "Logo System", "Stationery Design", "Presentation Templates"],
+    framework: [],
     colorTheme: {
       primary: "#1F2937",
       secondary: "#9CA3AF",
@@ -445,7 +455,7 @@ export const projects: Project[] = [
       { name: "Salesforce", category: "tools", icon: "/public/icons/salesforce.png" },
       { name: "Google Analytics", category: "tools", icon: "/public/icons/google-analytics.png" },
     ],
-    framework: ["Content Strategy", "Email Marketing", "Lead Nurturing", "CRM Integration"],
+    framework: [],
     colorTheme: {
       primary: "#3B82F6",
       secondary: "#F59E0B",
@@ -462,6 +472,7 @@ export const projects: Project[] = [
     tags: ["B2B Marketing", "Lead Generation", "Analytics", "Digital Marketing"],
     featured: false,
   },
+  
 ]
 
 export const getProjectBySlug = (slug: string): Project | undefined => projects.find((project) => project.slug === slug)

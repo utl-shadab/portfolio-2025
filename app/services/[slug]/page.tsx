@@ -6,9 +6,7 @@ import { ServiceDetail } from "@/components/service-detail"
 import { getServiceBySlug, getRelatedServices, services } from "@/lib/services"
 
 interface ServicePageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{ slug: string }> // Update type to reflect that params is a Promise
 }
 
 // Generate static params for all services
@@ -20,8 +18,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
-  // Use an async IIFE to await the params resolution
-  const service = await (async () => getServiceBySlug(params.slug))();
+  const { slug } = await params // Await params to resolve the Promise
+  const service = getServiceBySlug(slug) // Use the resolved slug
   if (!service) {
     return {
       title: "Service Not Found",
@@ -57,9 +55,9 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   }
 }
 
-export default function ServicePage({ params }: ServicePageProps) {
-  // Synchronous access to params is fine here since it's a page component
-  const service = getServiceBySlug(params.slug)
+export default async function ServicePage({ params }: ServicePageProps) {
+  const { slug } = await params // Await params to resolve the Promise
+  const service = getServiceBySlug(slug) // Use the resolved slug
   if (!service) {
     notFound()
   }

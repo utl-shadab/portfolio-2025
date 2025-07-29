@@ -117,8 +117,8 @@ export const services: Service[] = [
     tags: ["SPA", "SSR", "React", "Next.js", "Vue.js"],
     heroImage: {
       desktop: "/services/spa.avif",
-      tablet: "/services/spasmall.svif",
-      mobile: "/services/spasmall.svif",
+      tablet: "/services/spasmall.avif",
+      mobile: "/services/spasmall.avif",
       alt: "SPA & SSR development services hero image",
     },
   },

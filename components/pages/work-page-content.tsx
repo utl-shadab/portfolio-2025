@@ -113,20 +113,6 @@ export function WorkPageContent() {
                   <div className="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium text-white">
                     {project.year}
                   </div>
-                  {/* Hover Actions */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex space-x-4">
-                      <Button
-                        size="sm"
-                        variant="secondary"
-                        className="bg-white/20 backdrop-blur-sm border-white/30 hover:bg-white/30 text-white"
-                        data-cursor-hover
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        View
-                      </Button>
-                    </div>
-                  </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">

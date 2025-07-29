@@ -120,7 +120,7 @@ useEffect(() => {
       <div className="absolute bottom-1/3 left-1/4 w-1 h-1 bg-cyan-400 rounded-full animate-pulse delay-1000" />
       <button
         onClick={() => setShowPlay(true)}
-        className="fixed bottom-6 right-6 z-20 bg-pink-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-pink-700 transition-all"
+        className="fixed bottom-6 right-6  hidden md:block z-20 bg-pink-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-pink-700 transition-all"
       >
         ▶ Play
       </button>

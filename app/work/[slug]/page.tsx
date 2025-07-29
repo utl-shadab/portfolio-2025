@@ -6,9 +6,7 @@ import { ProjectDetail } from "@/components/project-detail"
 import { getProjectBySlug, getRelatedProjects, projects } from "@/lib/projects"
 
 interface ProjectPageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{ slug: string }> // Update type to reflect that params is a Promise
 }
 
 // Generate static params for all projects
@@ -20,7 +18,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const project = getProjectBySlug(params.slug)
+  const { slug } = await params // Await params to resolve the Promise
+  const project = getProjectBySlug(slug)
   if (!project) {
     return {
       title: "Project Not Found",
@@ -56,8 +55,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = getProjectBySlug(params.slug)
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params 
+  const project = getProjectBySlug(slug)
   if (!project) {
     notFound()
   }
@@ -76,7 +76,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     genre: project.category,
     keywords: project.tags.join(", "),
     image: project.heroImage.desktop,
-    url: project.liveUrl,
     ...(project.testimonial && {
       review: {
         "@type": "Review",

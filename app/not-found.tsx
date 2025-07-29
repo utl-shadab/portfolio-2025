@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Home, Search } from "lucide-react"
+import Play from "@/components/Play"
 
 export default function NotFound() {
   return (
@@ -12,8 +13,7 @@ export default function NotFound() {
           </h1>
           <h2 className="text-3xl md:text-5xl font-bold font-space-grotesk mb-6">Page Not Found</h2>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Oops! The page you're looking for doesn't exist. It might have been moved, deleted, or you might have typed
-            the address incorrectly.
+            Oops! The page you're looking for doesn't exist. 
           </p>
         </div>
 
@@ -38,7 +38,7 @@ export default function NotFound() {
             </Button>
           </Link>
         </div>
-        <div className="mt-12 p-6 bg-white/5 rounded-2xl border border-white/10">
+        {/* <div className="mt-12 p-6 bg-white/5 rounded-2xl border border-white/10">
           <Search className="w-8 h-8 mx-auto mb-4 text-gray-400" />
           <h3 className="text-lg font-semibold mb-2">Need help finding something?</h3>
           <p className="text-gray-400 mb-4">
@@ -49,7 +49,8 @@ export default function NotFound() {
               Contact Us
             </Button>
           </Link>
-        </div>
+        </div> */}
+       <Play/>
       </div>
     </div>
   )

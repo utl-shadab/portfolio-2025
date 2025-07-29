@@ -16,9 +16,54 @@ const keyRows = [
 // Generate tones for each key
 const allKeys = keyRows.flat();
 const notes = allKeys.map((_, i) => {
-  const baseNote = 48 + i; // MIDI notes starting from C3
-  return Tone.Frequency(baseNote, "midi").toNote(); // Convert MIDI to note (e.g., C4, D#4)
+  const baseNote = 48 + i;
+  return Tone.Frequency(baseNote, "midi").toNote();
 });
+
+// Define unique colors for each key (ensuring contrast with #0a0a0a background)
+const keyColors = [
+  "#EF4444", // Red-500
+  "#F97316", // Orange-500
+  "#F59E0B", // Amber-500
+  "#EAB308", // Yellow-500
+  "#22C55E", // Green-500
+  "#10B981", // Emerald-500
+  "#14B8A6", // Teal-500
+  "#06B6D4", // Cyan-500
+  "#3B82F6", // Blue-500
+  "#6366F1", // Indigo-500
+  "#8B5CF6", // Violet-500
+  "#A855F7", // Purple-500
+  "#D946EF", // Fuchsia-500
+  "#EC4899", // Pink-500
+  "#F43F5E", // Rose-500
+  "#EF4444", // Red-500 (cycle repeats for remaining keys)
+  "#F97316", // Orange-500
+  "#F59E0B", // Amber-500
+  "#EAB308", // Yellow-500
+  "#22C55E", // Green-500
+  "#10B981", // Emerald-500
+  "#14B8A6", // Teal-500
+  "#06B6D4", // Cyan-500
+  "#3B82F6", // Blue-500
+  "#6366F1", // Indigo-500
+  "#8B5CF6", // Violet-500
+  "#A855F7", // Purple-500
+  "#D946EF", // Fuchsia-500
+  "#EC4899", // Pink-500
+  "#F43F5E", // Rose-500
+  "#EF4444", // Red-500
+  "#F97316", // Orange-500
+  "#F59E0B", // Amber-500
+  "#EAB308", // Yellow-500
+  "#22C55E", // Green-500
+  "#10B981", // Emerald-500
+];
+
+// Map each key to its color
+const keyColorMap = Object.fromEntries(
+  allKeys.map((key, index) => [key, keyColors[index]])
+);
 
 export default function Play() {
   const [activeKey, setActiveKey] = useState<string | null>(null);
@@ -70,8 +115,10 @@ export default function Play() {
                 onClick={() => handlePress(key)}
                 whileTap={{ scale: 0.95 }}
                 className={clsx(
-                  "w-12 h-16 md:h-20 rounded-md border border-gray-600 bg-white text-black font-bold text-md shadow-md transition-all duration-100",
-                  activeKey === key && "bg-gray-300 shadow-inner scale-95"
+                  "w-20 h-20 rounded-md border border-gray-600 font-bold text-md shadow-md transition-all duration-100",
+                  activeKey === key
+                    ? `bg-[${keyColorMap[key]}] text-white shadow-inner scale-95`
+                    : "bg-white text-black"
                 )}
               >
                 {key}

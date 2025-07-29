@@ -11,7 +11,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import {
   ArrowLeft,
   ExternalLink,
-  Github,
   Calendar,
   Clock,
   User,
@@ -24,6 +23,7 @@ import {
   Quote,
 } from "lucide-react"
 import type { Project } from "@/types/project"
+import ProcessSlider from "./ProcessSlider"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -35,16 +35,14 @@ interface ProjectDetailProps {
 export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const heroRef = useRef<HTMLDivElement>(null)
-  const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 500], [0, 150])
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate sections on scroll
       gsap.utils.toArray(".animate-on-scroll").forEach((element: any) => {
         gsap.fromTo(
           element,
-          { y: 50, opacity: 0 },
+          { y: 40, opacity: 0 },
           {
             y: 0,
             opacity: 1,
@@ -52,19 +50,20 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
             scrollTrigger: {
               trigger: element,
               start: "top 80%",
+              toggleActions: "play none none reset",
             },
           },
         )
       })
       // Parallax hero image
       gsap.to(".hero-bg", {
-        yPercent: -50,
+        yPercent: 0,
         ease: "none",
         scrollTrigger: {
           trigger: heroRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: true,
+          scrub: 0.3,
         },
       })
     }, containerRef)
@@ -75,10 +74,12 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
     image,
     className = "",
     priority = false,
+    loading = "lazy",
   }: {
     image: { desktop: string; tablet: string; mobile: string; alt: string }
     className?: string
     priority?: boolean
+     loading?: "eager" | "lazy";
   }) => (
     <div className={`relative overflow-hidden ${className}`}>
       {/* Desktop Image */}
@@ -105,7 +106,8 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
         alt={image.alt}
         fill
         priority={priority}
-        className="object-cover block md:hidden"
+        loading={loading}
+        className="object-cover block md:hidden will-change-transform"
         sizes="(max-width: 768px) 100vw, 0vw"
       />
     </div>
@@ -113,23 +115,11 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
 
   return (
     <div ref={containerRef} className="bg-[#0a0a0a] text-white">
-      {/* Back Navigation */}
-      <div className="fixed top-24 left-6 z-50">
-        <Link href="/work">
-          <Button
-            variant="outline"
-            size="sm"
-            className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Work
-          </Button>
-        </Link>
-      </div>
+
       {/* Hero Section */}
-      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
-        <motion.div className="hero-bg absolute inset-0 scale-110" style={{ y }}>
-          <ResponsiveImage image={project.heroImage} className="w-full h-full" priority />
+      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden ">
+        <motion.div className="hero-bg absolute inset-0 scale-110">
+          <ResponsiveImage image={project.heroImage} className="w-full h-full" priority loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
         </motion.div>
 
@@ -153,19 +143,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
                   </a>
                 </Button>
               )}
-              {project.githubUrl && (
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="bg-transparent border-white/30 text-white hover:bg-white/10"
-                >
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-5 h-5 mr-2" />
-                    View Code
-                  </a>
-                </Button>
-              )}
+
             </div>
           </motion.div>
         </div>
@@ -252,7 +230,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
       {/* Technologies & Framework */}
       <section className="py-24 animate-on-scroll bg-white/5">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-1 gap-16">
             <div>
               <h2 className="flex items-center text-3xl font-bold font-space-grotesk mb-8">
                 <Code className="w-8 h-8 mr-4 text-cyan-400" />
@@ -291,18 +269,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
                 })}
               </div>
             </div>
-            <div>
-              <h2 className="text-3xl font-bold font-space-grotesk mb-8">Framework & Architecture</h2>
-              <div className="grid grid-cols-2 gap-4">
-                {project.framework.map((item) => (
-                  <Card key={item} className="bg-white/10 border-white/20">
-                    <CardContent className="p-4 text-center">
-                      <p className="font-medium">{item}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -321,6 +288,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
                   <ResponsiveImage
                     image={image}
                     className="w-full h-full group-hover:scale-110 transition-transform duration-700"
+                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.div>
@@ -329,26 +297,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
           </div>
         </section>
       )}
-      {/* Challenges & Solutions */}
-      <section className="py-24 animate-on-scroll bg-white/5">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold font-space-grotesk text-center mb-16">Challenges & Solutions</h2>
-          <div className="grid lg:grid-cols-2 gap-8">
-            {project.challenges.map((challenge, index) => (
-              <Card key={index} className="bg-gradient-to-br from-red-500/10 to-orange-500/10 border-white/10">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-bold mb-4 text-red-400">Challenge: {challenge.title}</h3>
-                  <p className="text-gray-300 mb-6 leading-relaxed">{challenge.description}</p>
-                  <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/20">
-                    <h4 className="font-semibold text-green-400 mb-2">Solution:</h4>
-                    <p className="text-gray-300 leading-relaxed">{challenge.solution}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+
       {/* Key Features */}
       <section className="py-24 animate-on-scroll">
         <div className="container mx-auto px-6">
@@ -400,54 +349,11 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
               </motion.div>
             ))}
           </div>
-          {project.results?.metrics && (
-            <div className="grid md:grid-cols-3 gap-6">
-              {project.results.metrics.map((metric, index) => (
-                <Card key={index} className="bg-white/5 border-white/10">
-                  <CardContent className="p-6 text-center">
-                    <div className="text-2xl font-bold text-cyan-400 mb-1">{metric.value}</div>
-                    <h4 className="font-semibold mb-2">{metric.metric}</h4>
-                    <p className="text-sm text-gray-400">{metric.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
+
         </div>
       </section>
       {/* Process Steps */}
-      {project.processSteps && (
-        <section className="py-24 animate-on-scroll">
-          <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold font-space-grotesk text-center mb-16">Our Process</h2>
-            <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8">
-              {project.processSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center group"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="relative mb-6">
-                    <div className="w-16 h-16 mx-auto bg-gradient-to-r from-pink-500 to-cyan-500 rounded-full flex items-center justify-center text-2xl font-bold mb-4">
-                      {index + 1}
-                    </div>
-                    {step.image && (
-                      <div className="relative aspect-square rounded-xl overflow-hidden mb-4 group-hover:scale-105 transition-transform duration-300">
-                        <Image src={step.image || "/placeholder.svg"} alt={step.title} fill className="object-cover" />
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">{step.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <ProcessSlider />
       {/* Client Testimonial */}
       {project.testimonial && (
         <section className="py-24 animate-on-scroll bg-white/5">
@@ -465,6 +371,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
                     width={60}
                     height={60}
                     className="rounded-full"
+                     loading="lazy"
                   />
                   <div className="text-left">
                     <p className="font-semibold text-lg">{project.testimonial.author}</p>
@@ -496,6 +403,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
                         alt={relatedProject.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
+                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>

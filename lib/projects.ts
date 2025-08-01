@@ -5,8 +5,8 @@ export const projects: Project[] = [
     id: 1,
     slug: "malik-architecture",
     title: "Malik Architecture",
-    category: "Branding",
-    year: "2024",
+    category: "Design & Development",
+    year: "2023",
     client: "Kamal Malik",
     duration: "1 months",
     domain: "Architecture & Design",
@@ -14,26 +14,20 @@ export const projects: Project[] = [
     thumbnailImage: "/work/malik.jpg",
     heroImage: {
       desktop: "/work/malik.jpg",
-      tablet: "/public/projects/dust/hero-tablet.png",
-      mobile: "/public/projects/dust/hero-mobile.png",
-      alt: "DUST brand identity showcase",
+      tablet: "/work/malik.jpg",
+      mobile: "/work/malik.jpg",
+      alt: "malik architecture",
     },
     galleryImages: [
       {
-        desktop: "/public/projects/dust/gallery-1-desktop.png",
-        tablet: "/public/projects/dust/gallery-1-tablet.png",
-        mobile: "/public/projects/dust/gallery-1-mobile.png",
-        alt: "DUST logo variations",
-      },
-      {
-        desktop: "/public/projects/dust/gallery-2-desktop.png",
-        tablet: "/public/projects/dust/gallery-2-tablet.png",
-        mobile: "/public/projects/dust/gallery-2-mobile.png",
-        alt: "DUST brand applications",
+        desktop: "/work/malika.png",
+        tablet: "/work/malika.png",
+        mobile: "/work/malika.png",
+        alt: "malik architecture",
       },
     ],
 
-    shortDescription: "Malik Architecture is an award-winning, Mumbai-based multidisciplinary design practice with over 47 years of experience, approaching architecture as a synthesis of 'ecology' and 'spirit' to define a contemporary Indian design language.",
+    shortDescription: "Malik Architecture is an award-winning, Mumbai-based multidisciplinary design practice with over 47 years of experience, approaching architecture as a synthesis.",
     fullDescription:
       "Malik Architecture is a highly distinguished, award-winning design practice based in Mumbai, India, with over four decades of experience. Founded by Kamal Malik and now co-led by his son Arjun Malik, the firm is a leading voice in contemporary Indian architecture. Their work is celebrated for its powerful and context-sensitive designs that are deeply rooted in a unique philosophy. This core philosophy is a synthesis of Ecology (a building's holistic relationship with its environment, climate, and materials) and Spirit (its connection to India's cultural, historical, and philosophical heritage). This approach results in a distinct style of vernacular modernism, creating buildings that are both globally modern and authentically Indian.",
     objective:
@@ -48,17 +42,13 @@ export const projects: Project[] = [
       { name: "PHP", category: "tools", icon: "/technology/cdi.svg" },
     ],
     framework: [],
-   colorTheme: {
-    primary: "#6E6E6E",
-    secondary: "#A8A8A8",
-    accent: "#CFCFCF",
-    background: "#F5F5F5",
-    text: "#333333",
-  },
-
-
-    
-
+    colorTheme: {
+      primary: "#6E6E6E",
+      secondary: "#A8A8A8",
+      accent: "#CFCFCF",
+      background: "#F5F5F5",
+      text: "#333333",
+    },
     achievements: [
       { metric: "Brand Recognition", value: "+250%", description: "Increase in brand recall among target audience" },
       { metric: "Engagement Rate", value: "+180%", description: "Improvement in social media engagement" },
@@ -74,19 +64,19 @@ export const projects: Project[] = [
       "Implementation roadmap and training materials",
     ],
 
-    metaTitle: "DUST Brand Identity - Complete Rebranding Project | Arrow Edge Studio",
+    metaTitle: "Malik architechture - Complete Rebranding Project | Arrow Edge Studio",
     metaDescription:
-      "Discover how we transformed DUST Technologies with a complete brand identity redesign, increasing brand recognition by 250% and lead quality by 95%.",
-    tags: ["Brand Identity", "Logo Design", "Digital Assets", "B2B Branding"],
-    featured: true,
+      "Discover how we transformed Malik Architechture with a complete brand identity redesign, increasing brand recognition by 250% and lead quality by 95%.",
+    tags: ["Web Design", "Logo Design", "Digital Assets", "Architecture"],
+    featured: false,
 
     testimonial: {
       quote:
         "Arrow Edge Studio didn't just design a logo – they crafted our entire brand story. The new identity has transformed how our clients perceive us and significantly improved our market positioning.",
-      author: "Sarah Chen",
-      position: "CEO & Founder",
-      company: "DUST Technologies",
-      avatar: "/public/testimonials/sarah-chen.png",
+      author: "Sarah sain",
+      position: "Manager",
+      company: "Malik Architechture",
+      avatar: "/work/malik_logo_sm.png",
     },
 
     processSteps: [
@@ -118,7 +108,7 @@ export const projects: Project[] = [
     results: {
       title: "Measurable Impact",
       description:
-        "The new brand identity delivered significant improvements across all key metrics, positioning DUST as a premium player in the AI automation space.",
+        "The new brand identity delivered significant improvements across all key metrics, positioning Malik Architecture as a premium player in the architecture and design space.",
       metrics: [
         { metric: "Website Conversion", value: "+67%", description: "Improvement in visitor-to-lead conversion" },
         { metric: "Brand Valuation", value: "+$2.1M", description: "Estimated increase in company valuation" },
@@ -147,16 +137,11 @@ export const projects: Project[] = [
     galleryImages: [
       {
         desktop: "/work/vardhman.png",
-        tablet: "/public/projects/staalbaron/gallery-1-tablet.png",
-        mobile: "/work/vmobile.jpg",
+        tablet: "/work/vardhman.png",
+        mobile: "/work/vardhman.png",
         alt: "Product catalog interface",
       },
-      {
-        desktop: "/work/vardhman-thumb.jpg",
-        tablet: "/work/vardhman-thumb.jpg",
-        mobile: "/work/vmobile.jpg",
-        alt: "Mobile shopping experience",
-      },
+
     ],
 
     shortDescription: "In an industry that thrives on changing trends, agility and flexibility are vital contributors to success. Only those who can outpace stand a chance to out-grow.",
@@ -166,7 +151,7 @@ export const projects: Project[] = [
       "To digitally showcase Vardhman's leadership as a vertically integrated textile powerhouse, highlighting our commitment to innovation, quality, and sustainability to a global audience of partners, customers, and stakeholders.",
 
     technologies: [
-     
+
       { name: "HTML", category: "tools", icon: "/technology/html.svg" },
       { name: "CSS", category: "tools", icon: "/technology/css.svg" },
       { name: "JAVASCRIPT", category: "tools", icon: "/technology/js.svg" },
@@ -176,58 +161,58 @@ export const projects: Project[] = [
       { name: "MYSQL", category: "tools", icon: "/technology/sql.svg" },
     ],
     framework: [],
-   colorTheme: {
-  primary: "#008B47",
-  secondary: "#e8e8e8",
-  accent: "#008B47",
-  background: "#EFEFEF",
-  text: "#080808",
-},
+    colorTheme: {
+      primary: "#008B47",
+      secondary: "#e8e8e8",
+      accent: "#008B47",
+      background: "#EFEFEF",
+      text: "#080808",
+    },
 
-   challenges: [],
+    challenges: [],
 
-  achievements: [
-  {
-    metric: "API Response Time",
-    value: "< 50ms",
-    description: "Optimized database queries and implemented a multi-layered caching strategy, reducing the average API response time to under 50ms for a snappy user experience.",
-  },
-  {
-    metric: "Core Web Vitals",
-    value: "95+ Score",
-    description: "Achieved a Google Lighthouse score of over 95 by implementing code splitting, image optimization, and lazy loading, resulting in superior performance and improved SEO.",
-  },
-  {
-    metric: "Scalability",
-    value: "1M+ Users",
-    description: "Engineered a cloud-native architecture capable of handling over a million concurrent users during peak traffic without performance degradation.",
-  },
-  {
-    metric: "Development Velocity",
-    value: "+40%",
-    description: "Established a robust CI/CD pipeline with automated testing, increasing team development velocity by 40% and accelerating feature deployment.",
-  },
-  { 
-    metric: "Mobile Traffic", 
-    value: "+185%", 
-    description: "A mobile-first responsive design led to a significant increase in engagement from mobile users." 
-  },
-  { 
-    metric: "Support Tickets", 
-    value: "-60%", 
-    description: "An intuitive UI and comprehensive documentation led to a sharp reduction in customer service inquiries." 
-  },
-  {
-    metric: "Code Maintainability",
-    value: "A+ Grade",
-    description: "Refactored the legacy codebase into a modular, component-based architecture, achieving an A+ grade on code quality scans and reducing future technical debt."
-  },
-  {
-    metric: "Security Hardening",
-    value: "Zero Breaches",
-    description: "Implemented end-to-end security protocols, including content security policies and regular vulnerability scanning, resulting in zero security breaches post-launch."
-  }
-],
+    achievements: [
+      {
+        metric: "API Response Time",
+        value: "< 50ms",
+        description: "Optimized database queries and implemented a multi-layered caching strategy, reducing the average API response time to under 50ms for a snappy user experience.",
+      },
+      {
+        metric: "Core Web Vitals",
+        value: "95+ Score",
+        description: "Achieved a Google Lighthouse score of over 95 by implementing code splitting, image optimization, and lazy loading, resulting in superior performance and improved SEO.",
+      },
+      {
+        metric: "Scalability",
+        value: "1M+ Users",
+        description: "Engineered a cloud-native architecture capable of handling over a million concurrent users during peak traffic without performance degradation.",
+      },
+      {
+        metric: "Development Velocity",
+        value: "+40%",
+        description: "Established a robust CI/CD pipeline with automated testing, increasing team development velocity by 40% and accelerating feature deployment.",
+      },
+      {
+        metric: "Mobile Traffic",
+        value: "+185%",
+        description: "A mobile-first responsive design led to a significant increase in engagement from mobile users."
+      },
+      {
+        metric: "Support Tickets",
+        value: "-60%",
+        description: "An intuitive UI and comprehensive documentation led to a sharp reduction in customer service inquiries."
+      },
+      {
+        metric: "Code Maintainability",
+        value: "A+ Grade",
+        description: "Refactored the legacy codebase into a modular, component-based architecture, achieving an A+ grade on code quality scans and reducing future technical debt."
+      },
+      {
+        metric: "Security Hardening",
+        value: "Zero Breaches",
+        description: "Implemented end-to-end security protocols, including content security policies and regular vulnerability scanning, resulting in zero security breaches post-launch."
+      }
+    ],
 
     keyFeatures: [
       "Advanced product search and filtering",
@@ -385,94 +370,219 @@ export const projects: Project[] = [
   },
   {
     id: 5,
-    slug: "lunexis-branding",
-    title: "Lunexis",
-    category: "Branding",
-    year: "2023",
-    client: "Lunexis Consulting",
+    slug: "acecogat-ai",
+    title: "AceCogAT",
+    category: "Design & Development",
+    year: "2025",
+    client: "Acecogat Ai",
     duration: "3 months",
-    domain: "Consulting",
-    liveUrl: "https://lunexis.com",
-    thumbnailImage: "/public/projects/lunexis/thumbnail.png",
+    domain: "Education",
+    liveUrl: "https://www.acecogat.com/",
+    thumbnailImage: "/work/ud.png",
     heroImage: {
-      desktop: "/public/projects/lunexis/hero-desktop.png",
-      tablet: "/public/projects/lunexis/hero-tablet.png",
-      mobile: "/public/projects/lunexis/hero-mobile.png",
-      alt: "Lunexis luxury brand identity showcase",
+      desktop: "/work/acecogat.webp",
+      tablet: "/work/acecogat.webp",
+      mobile: "/work/acecogat.webp",
+      alt: "Acecogat Ai",
     },
-    galleryImages: [],
-    shortDescription: "Luxury brand identity for a high-end consulting firm.",
+    galleryImages: [
+      {
+        desktop: "/work/acecogat.png",
+        tablet: "/work/acecogat.png",
+        mobile: "/work/acecogat.png",
+        alt: "Acecogat Ai",
+      },
+    ],
+    shortDescription: "AI‑powered CogAT test prep platform enabling unlimited practice tests, personalized feedback, and instant assistance for students.",
     fullDescription:
-      "Lunexis Consulting required a sophisticated and exclusive brand identity to reflect their premium services in strategic consulting. We developed a minimalist yet impactful visual system, including logo, typography, and a refined color palette, to convey professionalism and prestige.",
+      "AceCogAT delivers AI‑driven CogAT preparation that supports students through unlimited practice tests, personalized question generation targeting weak areas, and on-demand guidance via an AI chatbot. Built to boost test confidence, minimize mistakes, and support gifted program eligibility through continuous adaptive learning and detailed explanations.",
     objective:
-      "Craft a luxurious and professional brand identity that resonates with high-profile clients in the consulting sector.",
+      "Design a brand identity and digital visuals that convey innovation, trust, intelligence, and student-friendly AI‑powered education.",
     technologies: [
-      { name: "Adobe Illustrator", category: "tools", icon: "/public/icons/illustrator.png" },
-      { name: "Adobe InDesign", category: "tools", icon: "/public/icons/indesign.png" },
+      { name: "Adobe XD", category: "tools", icon: "/technology/xd.svg" },
+      { name: "Next.js", category: "tools", icon: "/technology/nextjs.svg" },
+      { name: "React", category: "tools", icon: "/technology/react.svg" },
+      { name: "Tailwind CSS", category: "tools", icon: "/technology/tailwind.svg" },
+      { name: "Framer Motion", category: "tools", icon: "/technology/framer.svg" },
+      { name: "GSAP", category: "tools", icon: "/technology/greensock.svg" },
     ],
     framework: [],
     colorTheme: {
-      primary: "#1F2937",
-      secondary: "#9CA3AF",
-      accent: "#FCD34D",
-      background: "#F9FAFB",
-      text: "#1F2937",
+      primary: "#E43F5A",
+      secondary: "#0479D0",
+      accent: "#DC2626",
+      background: "#EAF6FF",
+      text: "#374151",
     },
     challenges: [],
-    achievements: [],
-    keyFeatures: ["Elegant logo design", "Premium stationery suite", "Consistent brand messaging"],
-    metaTitle: "Lunexis Brand Identity - Luxury Consulting | Arrow Edge Studio",
+    results: {
+      title: "Creative & Performance Impact",
+      description:
+        "The redesigned experience with performance-focused UX, lazy loading, and subtle animations significantly improved user satisfaction and brand perception for Reverse Thought Creative Studio.",
+      metrics: [
+        {
+          metric: "Page Load Speed",
+          value: "−43%",
+          description: "Reduction in initial load time with lazy loading and optimized assets",
+        },
+        {
+          metric: "User Engagement",
+          value: "+65%",
+          description: "Increase in average session duration post-redesign",
+        },
+        {
+          metric: "Client Satisfaction",
+          value: "4.9/5",
+          description: "Feedback from partners citing improved experience and brand clarity",
+        },
+      ],
+    },
+   achievements: [
+
+      {
+        metric: "Core Web Vitals",
+        value: "95+ Score",
+        description: "Achieved a Google Lighthouse score of over 95 by implementing code splitting, image optimization, and lazy loading, resulting in superior performance and improved SEO.",
+      },
+
+      {
+        metric: "Development Velocity",
+        value: "+40%",
+        description: "Established a robust CI/CD pipeline with automated testing, increasing team development velocity by 40% and accelerating feature deployment.",
+      },
+      {
+        metric: "Mobile Traffic",
+        value: "+185%",
+        description: "A mobile-first responsive design led to a significant increase in engagement from mobile users."
+      },
+      {
+        metric: "Support Tickets",
+        value: "-60%",
+        description: "An intuitive UI and comprehensive documentation led to a sharp reduction in customer service inquiries."
+      },
+      {
+        metric: "Code Maintainability",
+        value: "A+ Grade",
+        description: "Refactored the legacy codebase into a modular, component-based architecture, achieving an A+ grade on code quality scans and reducing future technical debt."
+      },
+      {
+        metric: "Security Hardening",
+        value: "Zero Breaches",
+        description: "Implemented end-to-end security protocols, including content security policies and regular vulnerability scanning, resulting in zero security breaches post-launch."
+      }
+    ],
+    keyFeatures: ["Unlimited AI‑generated CogAT-style practice tests", "Personalized practice based on weak‑spot identification", "Instant, step‑by‑step AI explanations and video lessons", "Friendly AI chatbot “Lumi” guiding the student without giving away answers"],
+    metaTitle: "AI-Powered CogAT Prep Platform | Arrow Edge Studio",
     metaDescription:
       "See our work on Lunexis Consulting's luxury brand identity, designed to convey professionalism and prestige.",
-    tags: ["Luxury Branding", "Print Design", "Corporate Identity", "Branding"],
-    featured: false,
+    tags: ["Test Prep", "CogAT Preparation", "Personalized Learning", "AI Chatbot"],
+    featured: true,
+    testimonial: {
+      quote:
+        "Arrow Edge Studio captured the essence of our AI-driven learning platform perfectly. The new design not only elevated our brand but also made the platform more intuitive and engaging for both students and parents.",
+      author: "Krishna Chintalapudi",
+      position: "Founder",
+      company: "AceCogAT.ai",
+      avatar: "/work/LOGO.png",
+    },
+
   },
   {
     id: 6,
-    slug: "aleron-marketing",
-    title: "Aleron",
-    category: "Digital marketing",
+    slug: "reverse-thought-creative-studio",
+    title: "RTCS",
+    category: "Design & Development",
     year: "2023",
-    client: "Aleron Software",
-    duration: "4 months",
-    domain: "Software",
-    liveUrl: "https://aleron.com",
-    thumbnailImage: "/public/projects/aleron/thumbnail.png",
+    client: "Tushar Garg",
+    duration: "1 month",
+    domain: "Digital Agency",
+    liveUrl: "https://www.reversethought.com/",
+    thumbnailImage: "/work/reverse.png",
     heroImage: {
-      desktop: "/public/projects/aleron/hero-desktop.png",
-      tablet: "/public/projects/aleron/hero-tablet.png",
-      mobile: "/public/projects/aleron/hero-mobile.png",
-      alt: "Aleron B2B marketing campaign showcase",
+      desktop: "/work/reverse.png",
+      tablet: "/work/reverse.png",
+      mobile: "/work/reverse.png",
+      alt: "reverse thought creative studio",
     },
-    galleryImages: [],
-    shortDescription: "Multi-channel marketing campaign for B2B software company.",
-    fullDescription:
-      "Aleron Software, a B2B SaaS provider, aimed to increase their market share and generate high-quality leads. We developed and implemented a robust multi-channel digital marketing strategy, integrating content marketing, email campaigns, and targeted advertising to reach their enterprise audience effectively.",
-    objective:
-      "Drive lead generation and market share growth for a B2B SaaS company through integrated digital marketing.",
-    technologies: [
-      { name: "HubSpot", category: "tools", icon: "/public/icons/hubspot.png" },
-      { name: "Salesforce", category: "tools", icon: "/public/icons/salesforce.png" },
-      { name: "Google Analytics", category: "tools", icon: "/public/icons/google-analytics.png" },
+    galleryImages: [
+      {
+        desktop: "/work/revg.png",
+        tablet: "/work/revg.png",
+        mobile: "/work/revg.png",
+        alt: "reverse thought creative studio",
+      },
     ],
+    shortDescription: "Reverse Thought creates innovative design solutions that inspire. Collaborate with a digital design agency that will make you proud.",
+    fullDescription:
+      "Reverse Thought is a highly recognized Design Agency In Mumbai. they offer a complete package of services including Websites/App development, Video Production, Digital Marketing, Creative Design, Digital Activations and Photography. Also, they offer regular performance reports to ensure they are in the right place.",
+    objective:
+      "Reverse Thought is a leading digital design agency based in Mumbai, known for crafting innovative design solutions that spark inspiration and elevate brands. As a trusted partner, we've had the privilege of collaborating with their dynamic team to help shape digital experiences that truly stand out.",
+    technologies: [
+      { name: "SaSS", category: "tools", icon: "/technology/sass.svg" },
+      { name: "React", category: "tools", icon: "/technology/react.svg" },
+      { name: "Bootstrap", category: "tools", icon: "/technology/bootstrap.svg" },
+      { name: "GSAP", category: "tools", icon: "/technology/greensock.svg" },
+      { name: "Node.js", category: "tools", icon: "/technology/nodejs.svg" },
+    ],
+    testimonial: {
+      quote:
+        "Arrow Edge Studio truly understood the heart of our AI-driven learning platform. Their design elevated our brand presence and transformed the user experience—making it more intuitive, engaging, and accessible for both students and parents alike.",
+      author: "Tushar Garg",
+      position: "Founder",
+      company: "RT",
+      avatar: "/work/rt-logo.svg",
+    },
     framework: [],
     colorTheme: {
-      primary: "#3B82F6",
-      secondary: "#F59E0B",
-      accent: "#10B981",
-      background: "#0F172A",
-      text: "#F1F5F9",
+      primary: "#FA323D",
+      secondary: "#727272",
+      accent: "#000",
+      background: "#fff",
+      text: "#000",
     },
     challenges: [],
-    achievements: [],
-    keyFeatures: ["Targeted content creation", "Automated email sequences", "CRM integration for lead tracking"],
-    metaTitle: "Aleron Digital Marketing - B2B SaaS Case Study | Arrow Edge Studio",
+    achievements: [
+
+      {
+        metric: "Core Web Vitals",
+        value: "95+ Score",
+        description: "Achieved a Google Lighthouse score of over 95 by implementing code splitting, image optimization, and lazy loading, resulting in superior performance and improved SEO.",
+      },
+
+      {
+        metric: "Development Velocity",
+        value: "+40%",
+        description: "Established a robust CI/CD pipeline with automated testing, increasing team development velocity by 40% and accelerating feature deployment.",
+      },
+      {
+        metric: "Mobile Traffic",
+        value: "+185%",
+        description: "A mobile-first responsive design led to a significant increase in engagement from mobile users."
+      },
+      {
+        metric: "Support Tickets",
+        value: "-60%",
+        description: "An intuitive UI and comprehensive documentation led to a sharp reduction in customer service inquiries."
+      },
+      {
+        metric: "Code Maintainability",
+        value: "A+ Grade",
+        description: "Refactored the legacy codebase into a modular, component-based architecture, achieving an A+ grade on code quality scans and reducing future technical debt."
+      },
+      {
+        metric: "Security Hardening",
+        value: "Zero Breaches",
+        description: "Implemented end-to-end security protocols, including content security policies and regular vulnerability scanning, resulting in zero security breaches post-launch."
+      }
+    ],
+    keyFeatures: ["API Response Time", "Core Web Vitals", "Scalability", "Increase in Mobile Traffic", "Reduced Support Tickets"],
+    metaTitle: "Digital Marketing & Lead Generation Agency |  | Arrow Edge Studio",
     metaDescription:
-      "Learn how our multi-channel digital marketing campaign helped Aleron Software achieve significant lead generation and market growth.",
-    tags: ["B2B Marketing", "Lead Generation", "Analytics", "Digital Marketing"],
-    featured: false,
+      "A digital marketing and creative agency that helps B2B SaaS companies grow. We specialize in multi-channel lead generation, strategic campaigns, and data-driven marketing to boost your brand and revenue.",
+    tags: ["B2B Marketing", "Web Design", "Creative Agency", "Digital Marketing", "Branding"],
+    featured: true,
   },
-  
+
 ]
 
 export const getProjectBySlug = (slug: string): Project | undefined => projects.find((project) => project.slug === slug)

@@ -27,7 +27,7 @@ export interface Project {
   id: number
   slug: string
   title: string
-  category: "Branding" | "Digital marketing" | "Web design"
+  category: "Branding" | "Digital marketing" | "Web design" | "Design & Development" | "Digital agency"
   year: string
   client: string
   duration: string

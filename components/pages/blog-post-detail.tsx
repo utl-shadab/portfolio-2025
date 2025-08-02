@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter, usePathname } from "next/navigation"
-import { Heart, MessageCircle, Bookmark, Share2 } from "lucide-react"
+import { Heart, Bookmark, Share2, ChevronLeft, ChevronRight } from "lucide-react"
 import type { BlogPost } from "@/lib/blog-data"
 import { blogPosts } from "@/lib/blog-data"
 
@@ -23,21 +23,10 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
   const contentRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const progressRef = useRef<HTMLDivElement>(null)
-  const hasNavigated = useRef(false)
-  const isTransitioning = useRef(false)
-const animationFrameId = useRef<number | null>(null)
+  const isNavigating = useRef(false)
+  const navigationTimeout = useRef<NodeJS.Timeout | null>(null)
 
-  useEffect(() => {
-    hasNavigated.current = false
-    isTransitioning.current = false
-  }, [post.slug])
-
-  const getNextPost = useCallback(() => {
-    const currentPostIndex = blogPosts.findIndex((p) => p.slug === post.slug)
-    const nextPostIndex = (currentPostIndex + 1) % blogPosts.length
-    return blogPosts[nextPostIndex]
-  }, [post.slug])
-
+  // Get background color based on post slug
   const getBackgroundColor = useCallback(() => {
     const vibrantColors = [
       'from-gray-950 via-gray-900 to-black',
@@ -59,164 +48,133 @@ const animationFrameId = useRef<number | null>(null)
     return vibrantColors[Math.abs(hash) % vibrantColors.length]
   }, [post.slug])
 
-  const backgroundGradient = getBackgroundColor()
+  // Handle navigation to next or previous post
+  const navigateToPost = useCallback((direction: 'next' | 'prev') => {
+    if (isNavigating.current) return
 
-  const smoothTransition = useCallback(() => {
-    if (hasNavigated.current || isTransitioning.current) return
-    
-    hasNavigated.current = true
-    isTransitioning.current = true
-    
-    const nextPost = getNextPost()
-    
+    isNavigating.current = true
+
+    // Calculate target post
+    const currentIndex = blogPosts.findIndex((p) => p.slug === post.slug)
+    const targetIndex = direction === 'next' 
+      ? (currentIndex + 1) % blogPosts.length 
+      : (currentIndex - 1 + blogPosts.length) % blogPosts.length
+    const targetPost = blogPosts[targetIndex]
+
+    // Smooth exit animation
     const exitTl = gsap.timeline({
-      defaults: { 
-        ease: "power2.inOut",
-        force3D: true 
+      onComplete: () => {
+        // Clear any existing timeout
+        if (navigationTimeout.current) {
+          clearTimeout(navigationTimeout.current)
+        }
+
+        // Force scroll to top before navigation
+        window.scrollTo({ top: 0, behavior: 'instant' })
+        document.documentElement.scrollTop = 0
+        document.body.scrollTop = 0
+
+        // Navigate to target post
+        router.push(`/blog/${targetPost.slug}`)
+        
+        // Reset navigation state after a delay
+        navigationTimeout.current = setTimeout(() => {
+          isNavigating.current = false
+        }, 1000)
       }
     })
 
     exitTl
       .to(".blog-content-item", {
         opacity: 0,
-        y: -30,
-        scale: 0.98,
-        duration: 0.4,
-        stagger: {
-          amount: 0.2,
-          from: "end"
-        }
+        y: -20,
+        duration: 0.3,
+        stagger: 0.05,
+        ease: "power2.inOut"
       })
-      .to(progressRef.current, {
-        scaleX: 0,
-        duration: 0.25,
-        ease: "power2.in"
-      }, 0.15)
       .to(wrapperRef.current, {
         opacity: 0,
-        y: 50,
-        scale: 0.98,
-        duration: 0.5,
-        ease: "power2.inOut",
-        onComplete: () => {
-          if (animationFrameId.current) {
-            cancelAnimationFrame(animationFrameId.current)
-          }
-          animationFrameId.current = requestAnimationFrame(() => {
-            router.push(`/blog/${nextPost.slug}`)
-          })
-        }
-      }, 0.2)
-  }, [router, getNextPost])
+        y: 30,
+        duration: 0.4,
+        ease: "power2.inOut"
+      }, 0.1)
+  }, [post.slug, router])
 
+  // Main animation effect and progress bar
   useEffect(() => {
-    const nextPost = getNextPost()
-    let scrollTimeout: NodeJS.Timeout
+    // Reset navigation state
+    isNavigating.current = false
+
+    // Force scroll to top on mount
+    window.scrollTo({ top: 0, behavior: 'instant' })
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+
+    // Clean up all existing ScrollTriggers
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill())
 
     const ctx = gsap.context(() => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      // Initial state
+      gsap.set(wrapperRef.current, { opacity: 0, y: 20 })
+      gsap.set(".blog-content-item", { opacity: 0, y: 30 })
 
-      gsap.set(wrapperRef.current, { 
-        opacity: 0, 
-        y: 15,
-        force3D: true 
-      })
-      gsap.set(".blog-content-item", { 
-        opacity: 0, 
-        y: 30,
-        force3D: true 
-      })
-
-      const entryTl = gsap.timeline({
-        defaults: { 
-          ease: "power2.out",
-          force3D: true 
-        }
-      })
-
+      // Entry animation
+      const entryTl = gsap.timeline()
       entryTl
         .to(wrapperRef.current, {
           opacity: 1,
           y: 0,
-          duration: 0.4
+          duration: 0.5,
+          ease: "power2.out"
         })
         .to(".blog-content-item", {
           opacity: 1,
           y: 0,
           duration: 0.6,
-          stagger: {
-            amount: 0.4,
-            from: "start"
-          }
-        }, 0.1)
+          stagger: 0.1,
+          ease: "power2.out"
+        }, 0.2)
 
-      let lastProgress = 0
-      const progressBar = progressRef.current
-
+      // Progress bar trigger
       ScrollTrigger.create({
         trigger: contentRef.current,
         start: "top bottom",
         end: "bottom top",
         onUpdate: (self) => {
-          const progress = self.progress
-          const diff = Math.abs(progress - lastProgress)
-          
-          if (diff > 0.001) {
-            gsap.to(progressBar, {
-              scaleX: progress,
+          if (progressRef.current) {
+            gsap.to(progressRef.current, {
+              scaleX: self.progress,
               duration: 0.1,
-              ease: "none",
-              force3D: true,
-              transformOrigin: "left center"
+              ease: "none"
             })
-            lastProgress = progress
           }
-        },
-        refreshPriority: -1
+        }
       })
-
-      ScrollTrigger.create({
-        trigger: contentRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        onUpdate: (self) => {
-          if (scrollTimeout) {
-            clearTimeout(scrollTimeout)
-          }
-          
-          scrollTimeout = setTimeout(() => {
-            if (self.progress > 0.85 && !hasNavigated.current && !isTransitioning.current) {
-              smoothTransition()
-            }
-          }, 50)
-        },
-        invalidateOnRefresh: true,
-        refreshPriority: -1
-      })
-
     }, wrapperRef)
 
+    // Cleanup
     return () => {
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout)
-      }
-      if (animationFrameId.current) {
-        cancelAnimationFrame(animationFrameId.current)
+      if (navigationTimeout.current) {
+        clearTimeout(navigationTimeout.current)
       }
       ctx.revert()
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
-  }, [post.slug, smoothTransition, getNextPost])
+  }, [post.slug])
 
+  // Handle browser navigation
   useEffect(() => {
     const handlePopState = () => {
-      hasNavigated.current = false
-      isTransitioning.current = false
+      isNavigating.current = false
+      window.scrollTo({ top: 0, behavior: 'instant' })
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
     }
 
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
+
+  const backgroundGradient = getBackgroundColor()
 
   const renderContent = (contentBlock: BlogPost["content"][0], index: number) => {
     switch (contentBlock.type) {
@@ -238,12 +196,12 @@ const animationFrameId = useRef<number | null>(null)
         } as const
         const HeadingTag = headingComponents[level]
         const headingClasses = {
-          1: 'text-4xl font-bold mb-6 mt-12 ',
-          2: 'text-3xl font-bold mb-4 mt-10 ',
-          3: 'text-2xl font-bold mb-4 mt-8 ',
-          4: 'text-xl font-semibold mb-3 mt-6 ',
-          5: 'text-lg font-semibold mb-3 mt-6 ',
-          6: 'text-base font-semibold mb-2 mt-4 ',
+          1: 'text-4xl font-bold mb-6 mt-12',
+          2: 'text-3xl font-bold mb-4 mt-10',
+          3: 'text-2xl font-bold mb-4 mt-8',
+          4: 'text-xl font-semibold mb-3 mt-6',
+          5: 'text-lg font-semibold mb-3 mt-6',
+          6: 'text-base font-semibold mb-2 mt-4',
         }
         return (
           <HeadingTag key={index} className={`${headingClasses[level]} blog-content-item text-white`}>
@@ -267,7 +225,7 @@ const animationFrameId = useRef<number | null>(null)
     <AnimatePresence mode="wait">
       <motion.section
         key={post.slug}
-        className={`min-h-screen bg-gradient-to-br ${backgroundGradient} text-white relative overflow-hidden will-change-transform`}
+        className={`min-h-screen bg-gradient-to-br ${backgroundGradient} text-white relative overflow-hidden`}
         ref={wrapperRef}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -338,12 +296,23 @@ const animationFrameId = useRef<number | null>(null)
                 {post.content.map((block, index) => renderContent(block, index))}
 
                 <div className="blog-content-item mt-20 pt-8 border-t border-white/20">
-                  <div className="text-center">
-                    <div className="inline-flex items-center space-x-2 text-white/70 text-sm">
-                      <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
-                      <p className="font-medium">Keep scrolling for the next article...</p>
-                      <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
-                    </div>
+                  <div className="flex justify-between items-center">
+                    <button
+                      onClick={() => navigateToPost('prev')}
+                      className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isNavigating.current}
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                      <span>Previous Article</span>
+                    </button>
+                    <button
+                      onClick={() => navigateToPost('next')}
+                      className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isNavigating.current}
+                    >
+                      <span>Next Article</span>
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
                   </div>
                 </div>
               </article>
@@ -354,7 +323,7 @@ const animationFrameId = useRef<number | null>(null)
                     {[
                       { Icon: Heart, label: "Like", color: "hover:text-red-400" },
                       { Icon: Bookmark, label: "Save", color: "hover:text-green-400" },
-                      { Icon: Share2, label: "Share", color: "hover:text-purple-400" }
+                      { Icon: Share2, label: "Share", color: "hover:text-purple-400" },
                     ].map(({ Icon, label, color }, i) => (
                       <button
                         key={i}
@@ -364,13 +333,29 @@ const animationFrameId = useRef<number | null>(null)
                         <Icon className="w-5 h-5" />
                       </button>
                     ))}
+                    <button
+                      onClick={() => navigateToPost('prev')}
+                      title="Previous Article"
+                      className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 hover:bg-white/20 transition-all duration-200 text-white/80 hover:text-blue-400 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isNavigating.current}
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => navigateToPost('next')}
+                      title="Next Article"
+                      className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 hover:bg-white/20 transition-all duration-200 text-white/80 hover:text-blue-400 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isNavigating.current}
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
                   </div>
 
                   <div className="mt-4 p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-lg">
                     <div className="relative w-full bg-white/20 rounded-full h-2.5 overflow-hidden">
                       <div
                         ref={progressRef}
-                        className="absolute top-0 left-0 h-full bg-gradient-to-r from-pink-400 to-pink-600 rounded-full shadow-sm will-change-transform"
+                        className="absolute top-0 left-0 h-full bg-gradient-to-r from-pink-400 to-pink-600 rounded-full shadow-sm"
                         style={{
                           transformOrigin: 'left center',
                           transform: 'scaleX(0)'

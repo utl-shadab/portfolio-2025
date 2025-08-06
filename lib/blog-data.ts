@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     author: "John Doe",
     excerpt:
       "Explore the cutting-edge trends shaping web design in the coming year, from AI integration to immersive experiences.",
-    image: "/images/ai-robot.png",
+    image: "/blog/ai.jpeg",
     readTime: "5 mins read",
     category: "Artificial Intelligence",
     content: [
@@ -68,7 +68,7 @@ export const blogPosts: BlogPost[] = [
     author: "Jan Bakker",
     excerpt:
       "Explore the cutting-edge trends shaping web design in the coming year, from AI integration to immersive experiences.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/blog/fowd.jpg",
     readTime: "7 mins read",
     category: "Web Design",
     content: [
@@ -109,7 +109,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-07-15",
     author: "Sophia Nowak",
     excerpt: "Discover essential strategies for startups to build a compelling brand identity from the ground up.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/blog/branding.jpg",
     readTime: "6 mins read",
     category: "Branding",
     content: [
@@ -144,7 +144,7 @@ export const blogPosts: BlogPost[] = [
     author: "Lucas Keizer",
     excerpt:
       "Practical SEO strategies for small businesses to improve search engine rankings and drive organic traffic.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/blog/seo.jpg",
     readTime: "8 mins read",
     category: "SEO",
     content: [

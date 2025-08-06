@@ -152,7 +152,7 @@ export function ContactSection() {
               ease: "linear",
             }}
           >
-            <div className="w-full h-full bg-gradient-to-br from-pink-500 to-cyan-500 rounded-3xl transform rotate-45" />
+            {/* <div className="w-full h-full bg-gradient-to-br from-pink-500 to-cyan-500 rounded-3xl transform rotate-45" /> */}
           </motion.div>
         </div>
 

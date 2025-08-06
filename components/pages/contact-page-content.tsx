@@ -138,9 +138,38 @@ export function ContactPageContent() {
 
   return (
     <>
-      <section ref={sectionRef} className="pt-32 pb-16 bg-[#0a0a0a] relative overflow-hidden">
+      <section 
+        ref={sectionRef} 
+        className="pt-32 pb-16 relative overflow-hidden min-h-screen"
+      >
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/services/spa.avif')`,
+          }}
+        >
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+        {/* Alternative: Using Next.js Image for better optimization */}
+        {/* 
+        <div className="absolute inset-0">
+          <Image
+            src="/path-to-your-background-image.jpg"
+            alt="Contact background"
+            fill
+            className="object-cover"
+            priority
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+        */}
+
         {/* 3D Geometric Element */}
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 opacity-20">
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 opacity-20 z-10">
           <motion.div
             className="w-full h-full"
             animate={{
@@ -153,26 +182,28 @@ export function ContactPageContent() {
               ease: "linear",
             }}
           >
-            <div className="w-full h-full bg-gradient-to-br from-pink-500 to-cyan-500 rounded-3xl transform rotate-45" />
+            {/* <div className="w-full h-full bg-gradient-to-br from-pink-500 to-cyan-500 rounded-3xl transform rotate-45" /> */}
           </motion.div>
         </div>
 
         {/* Hero Section */}
-        <div className="container mx-auto px-6 mb-32 relative z-10">
+        <div className="container mx-auto px-6 mb-32 relative z-20">
           <motion.div
             className="text-center max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-8 leading-tight">Let's connect!</h1>
+            <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-8 leading-tight text-white">
+              Let's connect!
+            </h1>
             <p className="text-xl text-gray-300 leading-relaxed mb-12">
               Contact me and create something extraordinary together
             </p>
           </motion.div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-20">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left Content */}
             <div className="space-y-8">
@@ -235,7 +266,7 @@ export function ContactPageContent() {
                   <motion.a
                     key={title}
                     href={href}
-                    className="flex items-center space-x-4 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group"
+                    className="flex items-center space-x-4 p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/30 hover:bg-white/15 transition-all duration-300 group"
                     whileHover={{ x: 10, scale: 1.02 }}
                     data-cursor-hover
                   >
@@ -253,7 +284,7 @@ export function ContactPageContent() {
 
             {/* Right Contact Form */}
             <motion.div className="contact-item">
-              <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10">
+              <div className="bg-white/10 backdrop-blur-lg p-8 rounded-3xl border border-white/20">
                 <h3 className="text-sm text-gray-400 font-space-grotesk tracking-wider uppercase mb-6">
                   SEND ME A MESSAGE
                 </h3>

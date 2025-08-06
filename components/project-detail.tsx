@@ -109,8 +109,8 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
         fill
         priority={priority}
         loading={loading}
-        className="object-cover block md:hidden will-change-transform"
-        sizes="(max-width: 768px) 100vw, 0vw"
+        className="object-cover block md:hidden "
+        // sizes="(max-width: 768px) 100vw, 0vw"
       />
     </div>
   )
@@ -275,7 +275,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
                 >
                   <ResponsiveImage
                     image={image}
-                    className="w-full object-contain h-full group-hover:scale-110 transition-transform duration-700"
+                    className="w-full object-contain h-full  "
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

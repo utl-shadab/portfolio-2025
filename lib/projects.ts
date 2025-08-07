@@ -205,7 +205,7 @@ export const projects: Project[] = [
     metaDescription:
       "See how we built a modern e-commerce platform for StaalBaron that increased online sales by 320% and reduced order processing time by 75%.",
     tags: ["E-commerce", "Custom Development", "UX/UI", "B2B Platform"],
-    featured: true,
+    featured: false,
 
     testimonial: {
       quote:
@@ -332,7 +332,7 @@ export const projects: Project[] = [
     "A corporate website overhaul for Dodhia Group highlighting their textile, chemical, and plastic recycling verticals with a sustainable, mobile-first design and 98+ performance score.",
   
   tags: ["Corporate Website", "B2B", "Sustainability", "UI/UX", "Textile", "Chemicals", "Plastic Recycling"],
-  featured: true,
+  featured: false,
 
   testimonial: {
     quote:
@@ -469,7 +469,7 @@ export const projects: Project[] = [
     "We developed the Nifi Payments web dashboard and site using Next.js, React, Node.js and MongoDB—supporting UPI, bulk payouts, cards, wallets, and instant bank transfers.",
   
   tags: ["Fintech", "Payment Gateway", "Dashboard", "Next.js", "Node.js", "SaaS"],
-  featured: true,
+  featured: false,
 
   testimonial: {
     quote:
@@ -614,7 +614,7 @@ export const projects: Project[] = [
     metaDescription:
       "See our work on Lunexis Consulting's luxury brand identity, designed to convey professionalism and prestige.",
     tags: ["Test Prep", "CogAT Preparation", "Personalized Learning", "AI Chatbot"],
-    featured: true,
+    featured: false,
     testimonial: {
       quote:
         "Arrow Edge Studio captured the essence of our AI-driven learning platform perfectly. The new design not only elevated our brand but also made the platform more intuitive and engaging for both students and parents.",
@@ -718,13 +718,13 @@ export const projects: Project[] = [
     metaDescription:
       "A digital marketing and creative agency that helps B2B SaaS companies grow. We specialize in multi-channel lead generation, strategic campaigns, and data-driven marketing to boost your brand and revenue.",
     tags: ["B2B Marketing", "Web Design", "Creative Agency", "Digital Marketing", "Branding"],
-    featured: true,
+    featured: false,
   },
 {
   id: 7,
   slug: "full-bore",
   title: "Full‑Bore ",
-  category: "Dashboard / Web App Design",
+  category: "Web design",
   year: "2025",
   client: "Full‑Bore (Manufacturing Technology & Consulting)",
   duration: "2 months",
@@ -961,7 +961,7 @@ export const projects: Project[] = [
     "Designed a sleek and smooth‑scroll visual website for Innersmith using Next.js, Tailwind CSS, GSAP, Framer Motion, and Lenis—high performance, lightweight and fluid.",
 
   tags: ["Creative Brand", "Website Design", "Smooth Scroll", "Next.js", "Tailwind", "GSAP", "Framer Motion", "Lenis"],
-  featured: true,
+  featured: false,
 
   testimonial: {
     quote:

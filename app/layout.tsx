@@ -5,34 +5,39 @@ import { AppShell } from "@/components/AppShell"
 
 
 export const metadata: Metadata = {
-
-  metadataBase: new URL("https://arrowedge.netlify.app"),
-  title: "Arrow Edge – Build Digital Momentum",
+  metadataBase: new URL("https://arrow-2025.netlify.app/"),
+  title: "Arrow Edge – UI/UX, Web Design, and Scalable Digital Solutions",
   description:
-    "We craft modern digital experiences and scalable solutions for brands ready to grow online.",
-  keywords: "web design, branding, digital strategy, UI UX, Arrow Edge Studio",
+    "Arrow Edge Studio crafts innovative digital experiences — from UI/UX design and SPA development to cross-platform apps, performance tuning, and headless CMS integrations. Empowering brands to grow fast and smart.",
+  keywords: [
+    "UI/UX design", "web design", "single page applications", "Next.js development",
+    "React development", "cross-platform apps", "React Native", "Flutter",
+    "microinteractions", "motion design", "performance optimization",
+    "headless CMS", "Strapi", "Contentful", "API integration", "digital strategy",
+    "interactive web", "modern web apps", "Arrow Edge Studio"
+  ],
   authors: [{ name: "Arrow Edge" }],
   openGraph: {
-    title: "Arrow Edge – Build Digital Momentum",
+    title: "Arrow Edge – UI/UX, Web Design, and Scalable Digital Solutions",
     description:
-      "We craft modern digital experiences and scalable solutions for brands ready to grow online.",
+      "From user-centered design to cross-platform development, Arrow Edge delivers modern, scalable, and high-performing digital experiences for businesses.",
     type: "website",
-    url: "https://arrowedge.netlify.app",
+    url: "https://arrow-2025.netlify.app/",
     images: [
       {
-        url: "/og-image.png",
+        url: "/Meta/home.png", 
         width: 1200,
         height: 630,
-        alt: "Arrow Edge Studio",
+        alt: "Arrow Edge Studio – Digital Services",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arrow Edge – Build Digital Momentum",
+    title: "Arrow Edge – UI/UX, Web Design, and Scalable Digital Solutions",
     description:
-      "We craft modern digital experiences and scalable solutions for brands ready to grow online.",
-    images: ["/og-image.png"],
+      "We deliver premium UI/UX, SPA & SSR apps, cross-platform mobile solutions, and performance-first websites with headless CMS integrations.",
+    images: ["/Meta/home.png"],
   },
   manifest: "/manifest.json",
   appleWebApp: {

@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     title: "Contact | Arrow Edge Studio",
     description:
       "Reach out to Arrow Edge Studio for inquiries, project discussions, or to get a quote. We're ready to help you achieve your digital goals.",
-    url: "https://yourwebsite.com/contact", 
+    url: "https://arrow-2025.netlify.app/contact", 
     siteName: "Arrow Edge Studio",
     images: [
       {
-        url: "/placeholder.svg?height=630&width=1200", 
+        url: "/Meta/contact.png", 
         width: 1200,
         height: 630,
         alt: "Contact Arrow Edge Studio",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact | Arrow Edge Studio",
     description: "Get in touch with Arrow Edge Studio to discuss your next project.",
-    images: ["/placeholder.svg?height=630&width=1200"], // Placeholder image for contact page
+    images: ["/Meta/contact.png"], 
   },
 }
 

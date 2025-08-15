@@ -1,10 +1,14 @@
 const blogPosts = require("./lib/blog-data.json");
 
+/** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://arrow-2025.netlify.app",
+  siteUrl: process.env.SITE_URL || 'https://arrow-2025.netlify.app',
   generateRobotsTxt: true,
+  
   sitemapSize: 5000,
+  
   changefreq: "weekly",
+  
   priority: 0.8,
   additionalPaths: async () => {
     const today = new Date().toISOString();
@@ -24,5 +28,8 @@ module.exports = {
     }));
 
     return [...staticPages, ...blogPages];
-  }
+  },
+  
+  outDir: './public',
+  filename: 'sitemap.xml',
 };

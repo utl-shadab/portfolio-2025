@@ -5,7 +5,6 @@ module.exports = {
   siteUrl: process.env.SITE_URL || 'https://arrow-2025.netlify.app',
   generateRobotsTxt: true,
   
-  sitemapSize: 5000,
   
   changefreq: "weekly",
   

@@ -1,6 +1,9 @@
+# *
 User-agent: *
-Disallow: /api/
-Disallow: /admin/
 Allow: /
 
+# Host
+Host: https://arrow-2025.netlify.app
+
+# Sitemaps
 Sitemap: https://arrow-2025.netlify.app/sitemap.xml

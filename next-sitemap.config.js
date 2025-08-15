@@ -30,6 +30,7 @@ module.exports = {
     return [...staticPages, ...blogPages];
   },
   
-  outDir: './public',
+  // outDir: './public',
+  sitemapSize: 0,
   filename: 'sitemap.xml',
 };

@@ -6,15 +6,24 @@ import PositiveImpact from "@/components/PositiveImpact"
 import ProcessSlider from "@/components/ProcessSlider"
 
 export const metadata: Metadata = {
-  title: "Our Work | Arrow Edge Studio",
+  title: "Our Work | Arrow Edge - Portfolio & Case Studies",
   description:
-    "Explore a selection of our studio’s most impactful projects in branding, web design, and digital marketing.",
-  keywords: ["portfolio", "web design", "branding", "digital marketing", "case studies"],
+    "Explore our portfolio of successful projects in UI/UX, web development, and digital marketing. See how we help brands achieve their goals with our impactful and scalable digital solutions.",
+  keywords: [
+    "digital portfolio",
+    "web design case studies",
+    "UI/UX projects",
+    "web development work",
+    "branding portfolio",
+    "successful projects",
+    "digital agency portfolio",
+    "Arrow Edge"
+  ],
   openGraph: {
-    title: "Our Work | Arrow Edge Studio",
+    title: "Our Work | Arrow Edge - Portfolio & Case Studies",
     description:
       "Explore a selection of our studio’s most impactful projects in branding, web design, and digital marketing.",
-    url: "https://yourwebsite.com/work",
+    url: "https://arrow-2025.netlify.app/work",
     siteName: "Arrow Edge Studio",
     images: [
       {
@@ -29,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Work | Arrow Edge Studio",
+    title: "Our Work | Arrow Edge - Portfolio & Case Studies",
     description:
       "Explore a selection of our studio’s most impactful projects in branding, web design, and digital marketing.",
     images: ["/public/projects/dust/hero-desktop.png"],

@@ -4,14 +4,26 @@ import { Footer } from "@/components/footer"
 import { ServicesPageContent } from "@/components/pages/services-page-content"
 
 export const metadata: Metadata = {
-  title: "Services | Arrow Edge Studio",
+  title: "Services | Arrow Edge: Digital Solutions & Web Development",
   description:
-    "Discover our comprehensive digital services including branding, web design, and digital marketing. We craft innovative solutions to elevate your online presence and drive growth.",
-  keywords: ["services", "web development", "web design", "ui ux ", "digital agency", "landing page", "awwward", "agency", "studio"],
+    "Explore our comprehensive digital services, including UI/UX design, cross-platform app development, and performance tuning. We craft innovative, scalable solutions to elevate your brand's online presence and drive tangible growth.",
+  keywords: [
+    "digital services",
+    "web development",
+    "web design",
+    "UI/UX design", 
+    "cross-platform apps",
+    "mobile app development",
+    "headless CMS",
+    "performance optimization",
+    "digital agency",
+    "web studio",
+    "Arrow Edge"
+  ],
   openGraph: {
-    title: "Services | Arrow Edge Studio",
+    title: "Services | Arrow Edge: Digital Solutions & Web Development",
     description:
-      "Explore our comprehensive digital services: branding, web design, digital marketing, and conversion optimization. Partner with us to transform your vision into reality.",
+      "Explore our comprehensive digital services: UI/UX design, cross-platform development, and modern web solutions. Partner with us to transform your vision into reality.",
     url: "https://arrow-2025.netlify.app/services",
     siteName: "Arrow Edge Studio",
     images: [
@@ -27,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Services | Arrow Edge Studio",
-    description: "Discover our comprehensive digital services including branding, web design, and digital marketing.",
+    title: "Services | Arrow Edge: Digital Solutions & Web Development",
+    description: "Discover our comprehensive digital services including UI/UX design, web development, and performance tuning.",
     images: ["/Meta/services.png"], 
   },
 }

@@ -6,19 +6,28 @@ import { AppShell } from "@/components/AppShell"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://arrow-2025.netlify.app/"),
-  title: "Arrow Edge – UI/UX, Web Design, and Scalable Digital Solutions",
+  title: "Arrow Edge: UI/UX, Web Design, & Scalable Digital Solutions",
   description:
-    "Arrow Edge Studio crafts innovative digital experiences — from UI/UX design and SPA development to cross-platform apps, performance tuning, and headless CMS integrations. Empowering brands to grow fast and smart.",
-  keywords: [
-    "UI/UX design", "web design", "single page applications", "Next.js development",
-    "React development", "cross-platform apps", "React Native", "Flutter",
-    "microinteractions", "motion design", "performance optimization",
-    "headless CMS", "Strapi", "Contentful", "API integration", "digital strategy",
-    "interactive web", "modern web apps", "Arrow Edge Studio"
+    "Arrow Edge is a digital studio specializing in UI/UX design, modern SPA & SSR development, cross-platform apps, and performance tuning. We help businesses build fast, scalable, and intuitive digital experiences.",
+    keywords: [
+    "UI/UX design", 
+    "web design agency", 
+    "single-page applications", 
+    "Next.js development",
+    "React development", 
+    "cross-platform apps", 
+    "mobile app development",
+    "website performance optimization",
+    "headless CMS", 
+    "API integration", 
+    "digital solutions", 
+    "modern web apps",
+    "Arrow Edge Studio",
+    "digital studio"
   ],
   authors: [{ name: "Arrow Edge" }],
   openGraph: {
-    title: "Arrow Edge – UI/UX, Web Design, and Scalable Digital Solutions",
+    title: "Arrow Edge: UI/UX, Web Design, & Scalable Digital Solutions",
     description:
       "From user-centered design to cross-platform development, Arrow Edge delivers modern, scalable, and high-performing digital experiences for businesses.",
     type: "website",
@@ -36,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Arrow Edge – UI/UX, Web Design, and Scalable Digital Solutions",
     description:
-      "We deliver premium UI/UX, SPA & SSR apps, cross-platform mobile solutions, and performance-first websites with headless CMS integrations.",
+     "We deliver premium UI/UX, SPA & SSR apps, cross-platform mobile solutions, and performance-first websites with headless CMS integrations.",
     images: ["/Meta/home.png"],
   },
   manifest: "/manifest.json",

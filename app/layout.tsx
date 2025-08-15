@@ -70,7 +70,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Arrow Studio" />
-        <meta name="google-site-verification" content="YbIcnIK4ATyyMj_SIKzgtpnRVGpCVvZIuR357BBn9-E" />
+        <meta name="google-site-verification" content="oPh_x6rcOpVpYEwm2qz1V_n-3XNialTzq19Tm8Tu3Z4" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#0a0a0a" />
         <meta name="msapplication-config" content="/browserconfig.xml" />

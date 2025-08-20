@@ -29,7 +29,7 @@ export function ContactPageContent() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
   const [loading, setLoading] = useState(false)
 
-  const services = ["Branding", "Web Design", "Digital Marketing", "Other"]
+  const services = ["Cross-Platform Apps", "UI/UX ", " Web Design", "Microinteractions", "Performance Tuning", "Headless CMS", "API Integration"]
 
   // Generate random math question
   useEffect(() => {
@@ -138,12 +138,12 @@ export function ContactPageContent() {
 
   return (
     <>
-      <section 
-        ref={sectionRef} 
+      <section
+        ref={sectionRef}
         className="pt-32 pb-16 relative overflow-hidden min-h-screen"
       >
         {/* Background Image */}
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('/services/spa.avif')`,
@@ -345,15 +345,20 @@ export function ContactPageContent() {
                     <p className="text-white mb-2">Select Service(s)</p>
                     <div className="flex flex-wrap gap-3">
                       {services.map((service) => (
-                        <label key={service} className="inline-flex items-center space-x-2 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={selectedServices.includes(service)}
-                            onChange={() => handleServiceToggle(service)}
-                            className="w-4 h-4 accent-pink-500"
-                          />
-                          <span className="text-sm text-white">{service}</span>
-                        </label>
+                        <button
+                          key={service}
+                          type="button"
+                          onClick={() => handleServiceToggle(service)}
+                          className={`
+                            py-2 px-4 rounded-full transition-colors font-medium text-sm
+                            ${selectedServices.includes(service)
+                              ? "bg-pink-500 text-white"
+                              : "bg-white/10 text-white hover:bg-white/20"
+                            }
+                          `}
+                        >
+                          {service}
+                        </button>
                       ))}
                     </div>
                   </div>

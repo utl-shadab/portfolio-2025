@@ -59,7 +59,7 @@ export function CustomCursor() {
           type: "spring",
           stiffness: 150,
           damping: 15,
-        }}
+        
       />
     </>
   )

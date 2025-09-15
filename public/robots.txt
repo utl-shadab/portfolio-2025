@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://arrow-2025.netlify.app
+Host: https://arrowedge.in/
 
 # Sitemaps
-Sitemap: https://arrow-2025.netlify.app/sitemap.xml
+Sitemap: https://arrowedge.in/sitemap.xml

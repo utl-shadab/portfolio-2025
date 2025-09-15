@@ -5,7 +5,6 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { projects } from "@/lib/projects"
 import type { Project } from "@/types/project"
@@ -15,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger)
 export function WorkPageContent() {
   const sectionRef = useRef<HTMLElement>(null)
   const [activeFilter, setActiveFilter] = useState("All")
-  const filters = ["All", "Branding", "Digital marketing", "Web design"]
+  const filters = ["All", "Design & Development", "Web design", "Web application"]
 
   const filteredProjects =
     activeFilter === "All" ? projects : projects.filter((project: Project) => project.category === activeFilter)

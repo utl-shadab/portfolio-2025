@@ -3,15 +3,15 @@ import type { Service } from "@/types/service"
 export const services: Service[] = [
   {
     id: 1,
-    slug: "ui-ux-interface",
-    title: "UI/UX Interface",
+    slug: "web-design",
+    title: "UI/UX Interface & Web Design",
     subtitle: "Intuitive & Engaging Designs",
     description: "Crafting user-friendly interfaces that enhance user experience and engagement.",
     fullDescription:
       "Our UI/UX design services focus on creating intuitive, visually appealing, and user-centered interfaces. We conduct user research, create wireframes, and design interactive prototypes to ensure seamless user experiences across all devices.",
     features: ["User Research", "Wireframing", "Prototyping", "Usability Testing", "Visual Design"],
     icon: "/svg/uiux.svg",
-    metaTitle: "UI/UX Interface Design Services | Arrow Edge Studio",
+    metaTitle: "UI/UX Interface Web Design Services | Arrow Edge Studio",
     metaDescription: "Create intuitive and engaging UI/UX designs with our user-centered design services.",
     tags: ["UI/UX", "User Interface", "User Experience", "Design"],
     heroImage: {

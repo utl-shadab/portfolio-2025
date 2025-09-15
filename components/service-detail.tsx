@@ -10,6 +10,9 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, CheckCircle, Quote, Target, TrendingUp } from "lucide-react"
 import type { Service } from "@/types/service"
+import ProcessSlider from "./ProcessSlider"
+import PositiveImpact from "./PositiveImpact"
+import { TestimonialSection } from "./sections/testimonial-section"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -22,7 +25,9 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
   const containerRef = useRef<HTMLDivElement>(null)
   const heroRef = useRef<HTMLDivElement>(null)
   const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 500], [0, 100], { clamp: true }) // Reduced range for smoother parallax
+  
+  // Adjusted parallax with less movement and proper clamping
+  const y = useTransform(scrollY, [0, 800], [0, -120], { clamp: true });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -40,23 +45,23 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
               trigger: element,
               start: "top 85%",
               end: "top 50%",
-              toggleActions: "play none none reverse", // Replaced scrub with toggleActions
+              toggleActions: "play none none reverse", 
             },
           }
         )
       })
 
-      // Optimize hero background parallax
-      gsap.to(".hero-bg", {
-        yPercent: -20, // Reduced range for smoother effect
-        ease: "power1.out",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          toggleActions: "play none none reverse", // Replaced scrub with toggleActions
-        },
-      })
+      // Alternative GSAP parallax (optional - you can use either this or framer-motion)
+      // gsap.to(".hero-bg", {
+      //   yPercent: -15, 
+      //   ease: "none",
+      //   scrollTrigger: {
+      //     trigger: heroRef.current,
+      //     start: "top bottom",
+      //     end: "bottom top",
+      //     scrub: 1,
+      //   },
+      // })
     }, containerRef)
 
     return () => ctx.revert()
@@ -71,14 +76,14 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
     className?: string
     priority?: boolean
   }) => (
-    <div className={`relative overflow-hidden ${className}`}>
+    <div className={`relative w-full h-full overflow-hidden ${className}`}>
       <Image
         src={image.desktop || "/placeholder.svg"}
         alt={image.alt}
         fill
         priority={priority}
         className="object-cover hidden lg:block"
-        sizes="(max-width: 1024px) 0vw, 100vw"
+        sizes="100vw"
       />
       <Image
         src={image.tablet || "/placeholder.svg"}
@@ -86,7 +91,7 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
         fill
         priority={priority}
         className="object-cover hidden md:block lg:hidden"
-        sizes="(max-width: 768px) 0vw, (max-width: 1024px) 100vw, 0vw"
+        sizes="100vw"
       />
       <Image
         src={image.mobile || "/placeholder.svg"}
@@ -94,7 +99,7 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
         fill
         priority={priority}
         className="object-cover block md:hidden"
-        sizes="(max-width: 768px) 100vw, 0vw"
+        sizes="100vw"
       />
     </div>
   )
@@ -102,31 +107,53 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
   return (
     <div ref={containerRef} className="bg-[#0a0a0a] text-white">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section 
+        ref={heroRef} 
+        className="relative h-screen min-h-[100vh] flex items-center justify-center overflow-hidden"
+      >
+        {/* Background with parallax - increased height to compensate for movement */}
         <motion.div
-          className="hero-bg absolute inset-0 scale-105 will-change-transform"
+          className="hero-bg absolute inset-0 will-change-transform"
           style={{
             y,
             willChange: "transform",
             transformStyle: "preserve-3d",
             backfaceVisibility: "hidden",
+            // Add extra height to ensure coverage during parallax
+            height: "120%",
+            top: "-10%",
           }}
         >
-          <ResponsiveImage image={service.heroImage} className="w-full h-full" priority />
+          <ResponsiveImage 
+            image={service.heroImage} 
+            className="w-full h-full" 
+            priority 
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
         </motion.div>
 
+        {/* Content */}
         <div className="relative z-10 text-center max-w-4xl px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <Badge className="mb-6 bg-white/20 text-white border-white/30">{service.title}</Badge>
-            <h1 className="text-6xl md:text-8xl font-bold font-space-grotesk mb-6">{service.subtitle}</h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">{service.description}</p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8 }}
+          >
+            <Badge className="mb-6 bg-white/20 text-white border-white/30">
+              {service.title}
+            </Badge>
+            <h1 className="text-6xl md:text-8xl font-bold font-space-grotesk mb-6">
+              {service.subtitle}
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+              {service.description}
+            </p>
 
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/contact">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-pink-500 to-cyan-500 hover:from-pink-600 hover:to-ever-600 text-white rounded-full px-8 py-4 font-medium"
+                  className="bg-gradient-to-r from-pink-500 to-cyan-500 hover:from-pink-600 hover:to-cyan-600 text-white rounded-full px-8 py-4 font-medium"
                 >
                   Get a Quote
                 </Button>
@@ -187,38 +214,8 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
       </section>
 
       {/* Process Steps */}
-      {service.processSteps && (
-        <section className="py-24 animate-on-scroll bg-white/5">
-          <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold font-space-grotesk text-center mb-16">Our Process</h2>
-            <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8">
-              {service.processSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center group"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="relative mb-6">
-                    <div className="w-16 h-16 mx-auto bg-gradient-to-r from-pink-500 to-cyan-500 rounded-full flex items-center justify-center text-2xl font-bold mb-4">
-                      {index + 1}
-                    </div>
-                    {step.image && (
-                      <div className="relative aspect-square rounded-xl overflow-hidden mb-4 group-hover:scale-105 transition-transform duration-300">
-                        <Image src={step.image || "/placeholder.svg"} alt={step.title} fill className="object-cover" />
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">{step.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+     <ProcessSlider/>
+     <PositiveImpact/>
 
       {/* Results Section */}
       {service.results && (
@@ -248,37 +245,7 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
         </section>
       )}
 
-      {/* Client Testimonial */}
-      {service.testimonial && (
-        <section className="py-24 animate-on-scroll">
-          <div className="container mx-auto px-6">
-            <Card className="max-w-4xl mx-auto bg-gradient-to-r from-pink-500/10 to-cyan-500/10 border-white/20">
-              <CardContent className="p-12 text-center">
-                <Quote className="w-12 h-12 text-pink-400 mx-auto mb-6" />
-                <blockquote className="text-2xl font-medium mb-8 leading-relaxed italic">
-                  "{service.testimonial.quote}"
-                </blockquote>
-                <div className="flex items-center justify-center space-x-4">
-                  <Image
-                    src={service.testimonial.avatar || "/placeholder.svg"}
-                    alt={service.testimonial.author}
-                    width={60}
-                    height={60}
-                    className="rounded-full"
-                  />
-                  <div className="text-left">
-                    <p className="font-semibold text-lg">{service.testimonial.author}</p>
-                    <p className="text-gray-400">
-                      {service.testimonial.position} at {service.testimonial.company}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-      )}
-
+     <TestimonialSection/>
       {/* Related Services (if any) */}
       {relatedServices.length > 0 && (
         <section className="py-24 animate-on-scroll bg-white/5">

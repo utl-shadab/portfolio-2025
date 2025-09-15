@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { motion } from "framer-motion"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -16,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger)
 export function TestimonialSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const [isNavigating, setIsNavigating] = useState(false)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -25,10 +26,12 @@ export function TestimonialSection() {
         {
           x: 0,
           opacity: 1,
-          duration: 1,
+          duration: 1.5, // Increased duration for smoother effect
+          ease: "power2.out", // Smoother easing
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
+            toggleActions: "play none none none",
           },
         },
       )
@@ -37,13 +40,23 @@ export function TestimonialSection() {
     return () => ctx.revert()
   }, [])
 
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-  }
+  // Debounced navigation to prevent rapid clicks
+  const debounceNavigation = useCallback((direction: "next" | "prev") => {
+    if (isNavigating) return
+    setIsNavigating(true)
 
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
+    if (direction === "next") {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+    } else {
+      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    }
+
+    // Reset navigation lock after animation completes
+    setTimeout(() => setIsNavigating(false), 500) // Matches motion transition duration
+  }, [isNavigating])
+
+  const nextTestimonial = () => debounceNavigation("next")
+  const prevTestimonial = () => debounceNavigation("prev")
 
   const testimonial = testimonials[currentTestimonial]
 
@@ -66,10 +79,10 @@ export function TestimonialSection() {
               {/* Testimonial Content with Framer Motion Animation */}
               <motion.div
                 key={testimonial.id}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }} // Custom easing for smoother feel
                 className="space-y-6"
               >
                 {/* Profile */}
@@ -82,6 +95,7 @@ export function TestimonialSection() {
                         width={60}
                         height={60}
                         className="w-full h-full object-cover"
+                        priority // Load image eagerly for smoother transitions
                       />
                     </div>
                   </div>
@@ -109,6 +123,7 @@ export function TestimonialSection() {
                       onClick={prevTestimonial}
                       className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20"
                       data-cursor-hover
+                      disabled={isNavigating}
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </Button>
@@ -118,6 +133,7 @@ export function TestimonialSection() {
                       onClick={nextTestimonial}
                       className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20"
                       data-cursor-hover
+                      disabled={isNavigating}
                     >
                       <ChevronRight className="w-5 h-5" />
                     </Button>
@@ -127,11 +143,12 @@ export function TestimonialSection() {
                     {testimonials.map((_, index) => (
                       <button
                         key={index}
-                        onClick={() => setCurrentTestimonial(index)}
+                        onClick={() => !isNavigating && setCurrentTestimonial(index)}
                         className={`w-2 h-2 rounded-full transition-all duration-300 ${
                           index === currentTestimonial ? "bg-pink-500" : "bg-white/30"
                         }`}
                         data-cursor-hover
+                        disabled={isNavigating}
                       />
                     ))}
                   </div>

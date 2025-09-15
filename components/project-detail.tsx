@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import {
   ArrowLeft,
+  ArrowUpRight,
   ExternalLink,
   Calendar,
   Clock,
@@ -24,6 +25,7 @@ import {
 } from "lucide-react"
 import type { Project } from "@/types/project"
 import ProcessSlider from "./ProcessSlider"
+import LiveSiteButton from "./LiveSiteButton"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -79,7 +81,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
     image: { desktop: string; tablet: string; mobile: string; alt: string }
     className?: string
     priority?: boolean
-     loading?: "eager" | "lazy";
+    loading?: "eager" | "lazy";
   }) => (
     <div className={`relative overflow-hidden ${className}`}>
       {/* Desktop Image */}
@@ -88,7 +90,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
         alt={image.alt}
         fill
         priority={priority}
-        className="object-cover hidden lg:block"
+        className="object-fill hidden lg:block"
         sizes="(max-width: 1024px) 0vw, 100vw"
       />
       {/* Tablet Image */}
@@ -107,8 +109,8 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
         fill
         priority={priority}
         loading={loading}
-        className="object-cover block md:hidden will-change-transform"
-        sizes="(max-width: 768px) 100vw, 0vw"
+        className="object-cover block md:hidden "
+        // sizes="(max-width: 768px) 100vw, 0vw"
       />
     </div>
   )
@@ -130,21 +132,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">{project.shortDescription}</p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 justify-center">
-              {project.liveUrl && (
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30"
-                >
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-5 h-5 mr-2" />
-                    View Live Site
-                  </a>
-                </Button>
-              )}
-
-            </div>
+           <LiveSiteButton url={project.liveUrl ?? "#"} />
           </motion.div>
         </div>
       </section>
@@ -278,17 +266,17 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
         <section className="py-24 animate-on-scroll">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold font-space-grotesk text-center mb-16">Project Showcase</h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="gap-8">
               {project.galleryImages.map((image, index) => (
                 <motion.div
                   key={index}
-                  className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer"
+                  className="relative h-screen w-full  mx-auto  rounded-2xl overflow-hidden group cursor-pointer"
                   whileHover={{ scale: 1.02 }}
                 >
                   <ResponsiveImage
                     image={image}
-                    className="w-full h-full group-hover:scale-110 transition-transform duration-700"
-                     loading="lazy"
+                    className="w-full object-contain h-full  "
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.div>
@@ -368,10 +356,9 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
                   <Image
                     src={project.testimonial.avatar || "/placeholder.svg"}
                     alt={project.testimonial.author}
-                    width={60}
-                    height={60}
-                    className="rounded-full"
-                     loading="lazy"
+                    width={100}
+                    height={100}
+                    loading="lazy"
                   />
                   <div className="text-left">
                     <p className="font-semibold text-lg">{project.testimonial.author}</p>
@@ -403,7 +390,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
                         alt={relatedProject.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
-                         loading="lazy"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>

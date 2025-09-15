@@ -28,7 +28,7 @@ export function ContactSection() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
   const [loading, setLoading] = useState(false)
 
-  const services = ["Branding", "Web Design", "Digital Marketing", "Other"]
+  const services = ["Cross-Platform Apps", "UI/UX ", " Web Design", "Microinteractions", "Performance Tuning", "Headless CMS", "API Integration"]
 
   // Generate random math question
   useEffect(() => {
@@ -152,7 +152,7 @@ export function ContactSection() {
               ease: "linear",
             }}
           >
-            <div className="w-full h-full bg-gradient-to-br from-pink-500 to-cyan-500 rounded-3xl transform rotate-45" />
+            {/* <div className="w-full h-full bg-gradient-to-br from-pink-500 to-cyan-500 rounded-3xl transform rotate-45" /> */}
           </motion.div>
         </div>
 
@@ -269,7 +269,7 @@ export function ContactSection() {
                   </div>
 
                   {/* Services */}
-                  <div>
+                  {/* <div>
                     <p className="text-white mb-2">Select Service(s)</p>
                     <div className="flex flex-wrap gap-3">
                       {services.map((service) => (
@@ -284,8 +284,28 @@ export function ContactSection() {
                         </label>
                       ))}
                     </div>
+                  </div> */}
+                  <div>
+                    <p className="text-white mb-2">Select Service(s)</p>
+                    <div className="flex flex-wrap gap-3">
+                      {services.map((service) => (
+                        <button
+                          key={service}
+                          type="button"
+                          onClick={() => handleServiceToggle(service)}
+                          className={`
+                            py-2 px-4 rounded-full transition-colors font-medium text-sm
+                            ${selectedServices.includes(service)
+                              ? "bg-pink-500 text-white"
+                              : "bg-white/10 text-white hover:bg-white/20"
+                            }
+                          `}
+                        >
+                          {service}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-
                   {/* Message */}
                   <Textarea
                     name="message"

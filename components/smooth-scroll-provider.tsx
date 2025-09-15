@@ -11,14 +11,16 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       const Lenis = (await import("lenis")).default
 
       lenis = new Lenis({
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        duration:  2, 
+        easing: (t: number) => 1 - Math.pow(1 - t, 4), 
         smoothWheel: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 2,
+        wheelMultiplier: 0.6, 
+        touchMultiplier: 1.2, 
+        lerp: 0.03, 
+        infinite: false,
       })
 
-      function raf(time: number) {
+      const raf = (time: number) => {
         lenis.raf(time)
         requestAnimationFrame(raf)
       }
@@ -26,13 +28,9 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       requestAnimationFrame(raf)
     }
 
-    initLenis()
+    initLenis().catch(console.error) 
 
-    return () => {
-      if (lenis) {
-        lenis.destroy()
-      }
-    }
+    return () => lenis?.destroy() 
   }, [])
 
   return <>{children}</>

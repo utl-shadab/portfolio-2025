@@ -12,44 +12,44 @@ gsap.registerPlugin(ScrollTrigger)
 export function AboutPageContent() {
   const sectionRef = useRef<HTMLElement>(null)
 
- const teamMembers = [
-  {
-    name: "Supriya Dixit",
-    role: "UI/UX & Visual Designer",
-    image: "/placeholder.svg?height=400&width=400",
-    bio: "Supriya brings digital experiences to life through thoughtful user interfaces and impactful visual storytelling. With over 3 years of experience, she ensures every design is both beautiful and intuitive.",
-  },
-  {
-    name: "Ekram Khan",
-    role: "Senior Full Stack Developer",
-    image: "/placeholder.svg?height=400&width=400",
-    bio: "Ekram architects and develops robust, scalable applications from front to back. His deep knowledge of modern web technologies ensures flawless performance and seamless user experiences.",
-  },
-  {
-    name: "Abhishek Tomer",
-    role: "Senior Software Engineer",
-    image: "/placeholder.svg?height=400&width=400",
-    bio: "Abhishek specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
-  },
- {
-  name: "Javed Khan",
-  role: "App Developer",
-  image: "/placeholder.svg?height=400&width=400",
-  bio: "Javed specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
-},
-{
-  name: "Vikas Jain",
-  role: "Software Engineer",
-  image: "/placeholder.svg?height=400&width=400",
-  bio: "Vikas specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
-},
-{
-  name: "Amit Kumar",
-  role: "UI/UX Designer",
-  image: "/placeholder.svg?height=400&width=400",
-  bio: "Amit crafts user-centric and visually compelling designs. His creativity and attention to detail ensure every interface is both beautiful and intuitive.",
-}
-]
+  const teamMembers = [
+    {
+      name: "Supriya Dixit",
+      role: "UI/UX & Visual Designer",
+      image: "/placeholder.svg?height=400&width=400",
+      bio: "Supriya brings digital experiences to life through thoughtful user interfaces and impactful visual storytelling. With over 3 years of experience, she ensures every design is both beautiful and intuitive.",
+    },
+    {
+      name: "Ekram Khan",
+      role: "Senior Full Stack Developer",
+      image: "/placeholder.svg?height=400&width=400",
+      bio: "Ekram architects and develops robust, scalable applications from front to back. His deep knowledge of modern web technologies ensures flawless performance and seamless user experiences.",
+    },
+    {
+      name: "Abhishek Tomer",
+      role: "Senior Software Engineer",
+      image: "/placeholder.svg?height=400&width=400",
+      bio: "Abhishek specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
+    },
+    {
+      name: "Javed Khan",
+      role: "App Developer",
+      image: "/placeholder.svg?height=400&width=400",
+      bio: "Javed specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
+    },
+    {
+      name: "Vikas Jain",
+      role: "Software Engineer",
+      image: "/placeholder.svg?height=400&width=400",
+      bio: "Vikas specializes in building efficient and maintainable software systems. His strong engineering background drives innovation and reliability across every line of code.",
+    },
+    {
+      name: "Amit Kumar",
+      role: "UI/UX Designer",
+      image: "/placeholder.svg?height=400&width=400",
+      bio: "Amit crafts user-centric and visually compelling designs. His creativity and attention to detail ensure every interface is both beautiful and intuitive.",
+    }
+  ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -88,8 +88,8 @@ export function AboutPageContent() {
             <span className="text-4xl md:text-5xl">Est 2024</span>
           </h1>
           <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            Arrow Edge Studio is ontstaan met een duidelijke missie: marktvisionairs vertalen naar digitale ervaringen die{" "}
-            <span className="text-pink-500">de lat hoger leggen</span>.
+            Arrow Edge Studio was founded with a clear mission: to translate market visionaries into digital experiences that{" "}
+            <span className="text-pink-500">raise the bar</span>.
           </p>
         </motion.div>
       </div>

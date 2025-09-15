@@ -95,11 +95,11 @@ const ProcessSlider = ({ processSteps = processStepsData }) => {
   };
 
   return (
-    <section className="bg-[#F5F3EF] w-full py-20 lg:py-28  antialiased">
+    <section className="bg-gray-300 w-full py-20 lg:py-28  antialiased">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="flex justify-between items-center mb-12">
-          <h2 className="text-sm font-medium text-neutral-600 uppercase tracking-[0.2em]">
+          <h2 className="text-sm font-medium text-black uppercase tracking-[0.2em]">
             Our Process
           </h2>
           <div className="flex items-center gap-4">
@@ -137,7 +137,7 @@ const ProcessSlider = ({ processSteps = processStepsData }) => {
                     </h3>
                     <div className="flex justify-between items-end">
                        <div className="overflow-hidden">
-                         <p className="text-neutral-600 leading-relaxed transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                         <p className="text-gray-600 leading-relaxed transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
                             {step.description}
                          </p>
                        </div>

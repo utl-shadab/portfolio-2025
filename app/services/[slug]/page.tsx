@@ -6,7 +6,7 @@ import { ServiceDetail } from "@/components/service-detail"
 import { getServiceBySlug, getRelatedServices, services } from "@/lib/services"
 
 interface ServicePageProps {
-  params: Promise<{ slug: string }> // Update type to reflect that params is a Promise
+  params: Promise<{ slug: string }> 
 }
 
 // Generate static params for all services
@@ -18,8 +18,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
-  const { slug } = await params // Await params to resolve the Promise
-  const service = getServiceBySlug(slug) // Use the resolved slug
+  const { slug } = await params 
+  const service = getServiceBySlug(slug) 
   if (!service) {
     return {
       title: "Service Not Found",
@@ -56,8 +56,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {
-  const { slug } = await params // Await params to resolve the Promise
-  const service = getServiceBySlug(slug) // Use the resolved slug
+  const { slug } = await params 
+  const service = getServiceBySlug(slug) 
   if (!service) {
     notFound()
   }

@@ -25,18 +25,39 @@ export const metadata: Metadata = {
     "Arrow Edge Studio",
     "digital studio"
   ],
+    "Arrow Edge is a digital studio specializing in UI/UX design, modern SPA & SSR development, cross-platform apps, and performance tuning. We help businesses build fast, scalable, and intuitive digital experiences.",
+    keywords: [
+    "UI/UX design", 
+    "web design agency", 
+    "single-page applications", 
+    "Next.js development",
+    "React development", 
+    "cross-platform apps", 
+    "mobile app development",
+    "website performance optimization",
+    "headless CMS", 
+    "API integration", 
+    "digital solutions", 
+    "modern web apps",
+    "Arrow Edge Studio",
+    "digital studio"
+  ],
   authors: [{ name: "Arrow Edge" }],
   openGraph: {
     title: "Arrow Edge: UI/UX, Web Design, & Scalable Digital Solutions",
+    title: "Arrow Edge: UI/UX, Web Design, & Scalable Digital Solutions",
     description:
+      "From user-centered design to cross-platform development, Arrow Edge delivers modern, scalable, and high-performing digital experiences for businesses.",
       "From user-centered design to cross-platform development, Arrow Edge delivers modern, scalable, and high-performing digital experiences for businesses.",
     type: "website",
     url: "https://arrowedge.in/",
     images: [
       {
         url: "/Meta/home.png", 
+        url: "/Meta/home.png", 
         width: 1200,
         height: 630,
+        alt: "Arrow Edge Studio – Digital Services",
         alt: "Arrow Edge Studio – Digital Services",
       },
     ],
@@ -44,7 +65,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Arrow Edge – UI/UX, Web Design, and Scalable Digital Solutions",
+    title: "Arrow Edge – UI/UX, Web Design, and Scalable Digital Solutions",
     description:
+     "We deliver premium UI/UX, SPA & SSR apps, cross-platform mobile solutions, and performance-first websites with headless CMS integrations.",
+    images: ["/Meta/home.png"],
      "We deliver premium UI/UX, SPA & SSR apps, cross-platform mobile solutions, and performance-first websites with headless CMS integrations.",
     images: ["/Meta/home.png"],
   },

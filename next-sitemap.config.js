@@ -2,7 +2,7 @@ const blogPosts = require("./lib/blog-data.json");
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://arrow-2025.netlify.app',
+  siteUrl: process.env.SITE_URL || 'https://arrowedge.in/',
   generateRobotsTxt: true,
   
   

@@ -123,7 +123,7 @@ export function SkillsSection() {
                     <span className="text-2xl">{skill.icon}</span>
                     <span className="text-gray-300 font-medium">{skill.name}</span>
                   </div>
-                  <span className="text-gray-400 font-mono">{skill.level}%</span>
+                  <span className="text-gray-400  ">{skill.level}%</span>
                 </div>
                 <div className="h-3 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
                   <div

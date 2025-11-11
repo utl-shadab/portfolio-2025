@@ -4,10 +4,19 @@ export interface ProjectImage {
   mobile: string
   alt: string
 }
-
+export type TechCategory =
+  | "frontend"
+  | "backend"
+  | "database"
+  | "tools"
+  | "deployment"
+  | "web3"
+  | "webgl"
+  | "3d & webgl"
+  | "animations"
 export interface ProjectTechnology {
   name: string
-  category: "frontend" | "backend" | "database" | "tools" | "deployment"
+  category: TechCategory
   icon?: string
 }
 
@@ -27,7 +36,7 @@ export interface Project {
   id: number
   slug: string
   title: string
-  category: "Branding" | "Digital marketing" | "Web design" | "Design & Development" | "Digital agency" | "Web application" | "Dashboard / Web App Design"
+  category: "Branding" | "Digital marketing" | "Web design" | "Design & Development" | "Digital agency" | "Web application" | "Dashboard / Web App Design" | "web3"
   year: string
   client: string
   duration: string

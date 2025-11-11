@@ -110,7 +110,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
         priority={priority}
         loading={loading}
         className="object-cover block md:hidden "
-        // sizes="(max-width: 768px) 100vw, 0vw"
+      // sizes="(max-width: 768px) 100vw, 0vw"
       />
     </div>
   )
@@ -132,7 +132,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">{project.shortDescription}</p>
 
             {/* Action Buttons */}
-           <LiveSiteButton url={project.liveUrl ?? "#"} />
+            <LiveSiteButton url={project.liveUrl ?? "#"} />
           </motion.div>
         </div>
       </section>
@@ -158,34 +158,34 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
             <div className="space-y-6">
               <Card className="bg-white/5 border-white/10">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-6">Project Details</h3>
+                  <h3 className="text-xl font-semibold mb-6 text-white">Project Details</h3>
                   <div className="space-y-4">
                     <div className="flex items-center">
                       <User className="w-5 h-5 mr-3 text-gray-400" />
                       <div>
                         <p className="text-sm text-gray-400">Client</p>
-                        <p className="font-medium">{project.client}</p>
+                        <p className="font-medium text-white">{project.client}</p>
                       </div>
                     </div>
                     <div className="flex items-center">
                       <Calendar className="w-5 h-5 mr-3 text-gray-400" />
                       <div>
                         <p className="text-sm text-gray-400">Year</p>
-                        <p className="font-medium">{project.year}</p>
+                        <p className="font-medium text-white">{project.year}</p>
                       </div>
                     </div>
                     <div className="flex items-center">
                       <Clock className="w-5 h-5 mr-3 text-gray-400" />
                       <div>
                         <p className="text-sm text-gray-400">Duration</p>
-                        <p className="font-medium">{project.duration}</p>
+                        <p className="font-medium text-white">{project.duration}</p>
                       </div>
                     </div>
                     <div className="flex items-center">
                       <Globe className="w-5 h-5 mr-3 text-gray-400" />
                       <div>
                         <p className="text-sm text-gray-400">Domain</p>
-                        <p className="font-medium">{project.domain}</p>
+                        <p className="font-medium text-white">{project.domain}</p>
                       </div>
                     </div>
                   </div>
@@ -194,7 +194,7 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
               {/* Color Theme */}
               <Card className="bg-white/5 border-white/10">
                 <CardContent className="p-6">
-                  <h3 className="flex items-center text-xl font-semibold mb-4">
+                  <h3 className="flex items-center text-xl font-semibold mb-4 text-white">
                     <Palette className="w-5 h-5 mr-3" />
                     Color Theme
                   </h3>
@@ -203,8 +203,8 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
                       <div key={name} className="flex items-center space-x-3">
                         <div className="w-8 h-8 rounded-lg border border-white/20" style={{ backgroundColor: color }} />
                         <div>
-                          <p className="text-sm capitalize font-medium">{name}</p>
-                          <p className="text-xs text-gray-400 font-mono">{color}</p>
+                          <p className="text-sm capitalize font-medium text-white">{name}</p>
+                          <p className="text-xs text-gray-400  ">{color}</p>
                         </div>
                       </div>
                     ))}
@@ -262,29 +262,57 @@ export function ProjectDetail({ project, relatedProjects = [] }: ProjectDetailPr
         </div>
       </section>
       {/* Image Gallery */}
+      {/* Image Gallery */}
       {project.galleryImages.length > 0 && (
         <section className="py-24 animate-on-scroll">
-          <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold font-space-grotesk text-center mb-16">Project Showcase</h2>
-            <div className="gap-8">
+          <div className="max-w-7xl mx-auto px-6">
+            <h2 className="text-4xl font-bold font-space-grotesk text-center mb-16">
+              Project Showcase
+            </h2>
+
+            <div className="flex flex-col gap-16">
               {project.galleryImages.map((image, index) => (
                 <motion.div
                   key={index}
-                  className="relative h-screen w-full  mx-auto  rounded-2xl overflow-hidden group cursor-pointer"
+                  className="
+              relative 
+              w-full 
+              overflow-hidden 
+              rounded-xl 
+              group 
+              cursor-pointer
+
+              h-[220px]          /* Mobile */
+              sm:h-[300px]       /* Small Tablet */
+              md:h-[380px]       /* Tablet */
+
+              lg:h-[80vh]        /* Desktop → big immersive section */
+              lg:w-screen        /* full width */
+              lg:mx-[calc(50%-50vw)] /* break container → true full width */
+            "
                   whileHover={{ scale: 1.02 }}
                 >
                   <ResponsiveImage
                     image={image}
-                    className="w-full object-contain h-full  "
-                    loading="lazy"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="
+              absolute inset-0 
+              bg-gradient-to-t 
+              from-black/50 
+              to-transparent 
+              opacity-0 
+              group-hover:opacity-100 
+              transition-opacity duration-300
+            " />
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
       )}
+
 
       {/* Key Features */}
       <section className="py-24 animate-on-scroll">

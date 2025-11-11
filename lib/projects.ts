@@ -79,7 +79,7 @@ export const projects: Project[] = [
       avatar: "/work/malik_logo_sm.png",
     },
 
-  
+
     challenges: [],
     results: {
       title: "Measurable Impact",
@@ -216,7 +216,7 @@ export const projects: Project[] = [
       avatar: "/public/testimonials/mark-vandenberg.png",
     },
 
-  
+
 
     results: {
       title: "Digital Transformation Success",
@@ -230,282 +230,282 @@ export const projects: Project[] = [
     },
   },
   {
-  id: 3,
-  slug: "dodhia-group",
-  title: "Dodhia Group",
-  category: "Web design",
-  year: "2024",
-  client: "Dodhia Group",
-  duration: "3 months",
-  domain: "Textile, Chemicals, Recycling",
-  liveUrl: "https://www.dodhiagroup.com/",
+    id: 3,
+    slug: "dodhia-group",
+    title: "Dodhia Group",
+    category: "Web design",
+    year: "2024",
+    client: "Dodhia Group",
+    duration: "3 months",
+    domain: "Textile, Chemicals, Recycling",
+    liveUrl: "https://www.dodhiagroup.com/",
 
-  thumbnailImage: "/work/dodhias.png",
-  heroImage: {
-    desktop: "/work/dhero.jpg",
-    tablet: "/work/dhero.jpg",
-    mobile: "/work/dhero.jpg",
-    alt: "Dodhia Group Homepage",
-  },
-
-  galleryImages: [
-    {
-      desktop: "/work/dgd.png",
-      tablet: "/work/dgd.png",
-      mobile: "/work/dgd.png",
-      alt: "Dodhia Group Website Screens",
-    }
-  ],
-
-  shortDescription: "A future-forward redesign for a global textile and chemical powerhouse driving innovation and sustainability.",
-  
-  fullDescription:
-    "Dodhia Group is a leading Indian industrial conglomerate with presence in textiles, chemicals, and plastic recycling. The redesigned website aimed to unify their brand presence, highlight verticals like PETOPOLY™ recycled yarn and specialty chemicals, and align their online identity with global sustainability goals. With accessibility, performance, and storytelling at its core, the result was a mobile-first, multilingual, and investor-friendly digital experience.",
-  
-  objective:
-    "To showcase Dodhia Group’s legacy and leadership in sustainable manufacturing, highlight product verticals with clarity, and provide a fast, secure, and responsive platform for partners, stakeholders, and global customers.",
-
-  technologies: [
-    { name: "HTML", category: "tools", icon: "/technology/html.svg" },
-    { name: "CSS", category: "tools", icon: "/technology/css.svg" },
-    { name: "JavaScript", category: "tools", icon: "/technology/js.svg" },
-    { name: "GSAP", category: "tools", icon: "/technology/greensock.svg" },
-    { name: "PHP", category: "tools", icon: "/technology/cdi.svg" },
-    { name: "MySQL", category: "tools", icon: "/technology/sql.svg" },
-    { name: "Bootstrap", category: "tools", icon: "/technology/bootstrap.svg" },
-  ],
-
-  framework: [],
-
-  colorTheme: {
-    primary: "#CB2229",
-    secondary: "#2E2E2E",
-    accent: "#fff",
-    background: "#DCDCDC",
-    text: "#969696",
-  },
-
-  challenges: [
-   
-  ],
-
-  achievements: [
-    {
-      metric: "Performance Score",
-      value: "98+",
-      description: "Google Lighthouse performance optimized for all devices through image compression, preloading, and script optimization.",
+    thumbnailImage: "/work/dodhias.png",
+    heroImage: {
+      desktop: "/work/dhero.jpg",
+      tablet: "/work/dhero.jpg",
+      mobile: "/work/dhero.jpg",
+      alt: "Dodhia Group Homepage",
     },
-    {
-      metric: "User Engagement",
-      value: "+120%",
-      description: "New site structure improved time-on-page and reduced bounce rate across service pages.",
-    },
-    {
-      metric: "Mobile Optimization",
-      value: "+160% Mobile Traffic",
-      description: "Mobile-first responsive design with intuitive navigation increased traffic from handheld devices.",
-    },
-    {
-      metric: "Accessibility",
-      value: "WCAG 2.1 AA",
-      description: "All key sections passed accessibility tests, improving usability for broader audiences.",
-    },
-    {
-      metric: "Security",
-      value: "Zero Breaches",
-      description: "Hardened PHP stack and WAF implementation ensured secure launch and zero breach incidents.",
-    }
-  ],
 
-  keyFeatures: [
-    "Modern hero section with motion graphics and vertical switcher",
-    "Three distinct business verticals with deep navigation",
-    "Interactive timeline and leadership sections",
-    "Global partner section with downloadable product catalogs",
-    "CSR & sustainability storytelling with visuals",
-    "SEO-optimized for investor and export visibility",
-    "High-performance image & video optimization",
-  ],
-
-  metaTitle: "Dodhia Group Website Redesign | Global Textile & Chemical Leader | Arrow Edge Studio",
-  metaDescription:
-    "A corporate website overhaul for Dodhia Group highlighting their textile, chemical, and plastic recycling verticals with a sustainable, mobile-first design and 98+ performance score.",
-  
-  tags: ["Corporate Website", "B2B", "Sustainability", "UI/UX", "Textile", "Chemicals", "Plastic Recycling"],
-  featured: false,
-
-  testimonial: {
-    quote:
-      "The new website aligns perfectly with our sustainability mission and global presence. It’s fast, modern, and tells our story in a powerful way.",
-    author: "Pradeep Dodhia",
-    position: "Managing Director",
-    company: "Dodhia Group",
-    avatar: "/work/dodhia_logo.png",
-  },
-
-  
-
-  results: {
-    title: "Strong Digital Footprint for a Global Brand",
-    description:
-      "The redesign significantly improved visibility, performance, and usability for Dodhia Group. With a stronger digital presence, the brand now confidently communicates with global customers and stakeholders.",
-    metrics: [
-      { metric: "Mobile Visitors", value: "+160%", description: "Improved mobile accessibility led to higher traffic" },
-      { metric: "Bounce Rate", value: "-38%", description: "More time spent exploring products and divisions" },
-      { metric: "Performance Score", value: "98+", description: "Exceptional loading time and animation smoothness" },
-    ],
-  }
-},
-  {
-  id: 4,
-  slug: "nifi-payments",
-  title: "Nifi Payments",
-  category: "Web application",
-  year: "2025",
-  client: "Nifi Payments (New Infra Fintech Inclusion Pvt. Ltd.)",
-  duration: "6 months",
-  domain: "Fintech / Payment SaaS",
-  liveUrl: "https://www.nifipayments.com",
-
-  thumbnailImage: "/work/nifi.png",
-  heroImage: {
-    desktop: "/work/nifi.jpg",
-    tablet: "/work/nifi.jpg",
-    mobile: "/work/nifi.jpg",
-    alt: "Nifi Payments Dashboard",
-  },
-
-  galleryImages: [
-    {
-      desktop: "/work/nifi-dash.png",
-      tablet: "/work/nifi-dash.png",
-      mobile: "/work/nifi-dash.png",
-      alt: "Nifi Payments Dashboard Interface",
-    }
-  ],
-
-  shortDescription:
-    "A secure, performant web portal and dashboard built for Nifi Payments’ innovative fintech services platform.",
-  
-  fullDescription:
-    "Nifi Payments (New Infra Fintech Inclusion Pvt. Ltd.) is an Indian SaaS-based payment fintech company offering secure payment solutions and bulk payout APIs for businesses :contentReference[oaicite:1]{index=1}. The platform enables UPI, debit/credit cards, net banking, wallets, QR code acceptance, and instant payouts for salaries, vendor disbursements, and refunds :contentReference[oaicite:2]{index=2}. Our project delivered a modern web dashboard and public site to manage these services efficiently.",
-  
-  objective:
-    "To create a polished client-facing website and a secure, responsive dashboard for transaction processing, payout management, and admin functionalities, aligned with Nifi’s fintech vision.",
-  
-  technologies: [
-    { name: "Next.js", category: "tools", icon: "/technology/nextjs.svg" },
-    { name: "React", category: "tools", icon: "/technology/react.svg" },
-    { name: "Bootstrap", category: "tools", icon: "/technology/bootstrap.svg" },
-    { name: "Framer Motion", category: "tools", icon: "/technology/framer.svg" },
-    { name: "LottieFiles", category: "tools", icon: "/technology/lottiefiles-logo.svg" },
-    { name: "Node.js", category: "tools", icon: "/technology/nodejs.svg" },
-    { name: "MongoDB", category: "tools", icon: "/technology/mongodb.svg" },
-  ],
-
-  framework: [],
-
-  colorTheme: {
-    primary: "#002a4c",
-    secondary: "#E6FD59",
-    accent: "#002141",
-    background: "#EFF5FF",
-    text: "#adb5bd",
-  },
-
-  challenges: [
-    // "Ensuring ultra-low latency and scalability for bulk payouts and real-time dashboards.",
-    // "Securing sensitive financial data across APIs and user flows.",
-    // "Integrating diverse payment rails including UPI, cards, wallets, and instant bank transfers.",
-  ],
-
-  achievements: [
-    {
-      metric: "API Response Time",
-      value: "< 100ms",
-      description:
-        "Optimized Node.js backend and MongoDB queries for lightning-fast transaction loading.",
-    },
-    {
-      metric: "Dashboard Load Time",
-      value: "< 1.5s",
-      description:
-        "Leveraged Next.js server-side rendering and code‑splitting for instant UI load.",
-    },
-    {
-      metric: "Animation Smoothness",
-      value: "60fps",
-      description:
-        "Used Framer Motion and Lottie for silky animations without jank, across device types.",
-    },
-    {
-      metric: "Mobile UX",
-      value: "Responsive & Accessible",
-      description:
-        "Built mobile-first UI with Bootstrap and accessibility best practices."
-    },
-    {
-      metric: "Security",
-      value: "PCI-Compliant",
-      description:
-        "Enforced SSL, token-based auth, role-based access control, and secure storage."
-    }
-  ],
-
-  keyFeatures: [
-    "Public landing pages explaining payment services (UPI, cards, payouts, etc.)",
-    "Interactive admin dashboard for managing bulk payouts, reconciliation & reporting",
-    "Real-time transaction monitoring and API health status",
-    "Animated onboarding using LottieFiles",
-    "Framer Motion transitions for seamless UI interactions",
-    "Multi-role support: admin, vendor, platform user",
-    "Secure APIs built in Node.js with JWT authentication",
-    "Analytics & logs stored in MongoDB with dashboard insight charts",
-  ],
-
-  metaTitle:
-    "Nifi Payments – Secure Fintech Payment & Payout Platform Built with Next.js",
-  metaDescription:
-    "We developed the Nifi Payments web dashboard and site using Next.js, React, Node.js and MongoDB—supporting UPI, bulk payouts, cards, wallets, and instant bank transfers.",
-  
-  tags: ["Fintech", "Payment Gateway", "Dashboard", "Next.js", "Node.js", "SaaS"],
-  featured: false,
-
-  testimonial: {
-    quote:
-      "The new dashboard made payouts and reconciliation intuitive and secure. The UX feels modern and purpose‑built.",
-    author: "CTO, Nifi Payments",
-    position: "Chief Technology Officer",
-    company: "Nifi Payments",
-    avatar: "/work/nifiLogo.svg",
-  },
-
- 
-
-  results: {
-    title: "High‑Performance Fintech Platform Delivery",
-    description:
-      "Post-launch, Nifi Payments saw strong engagement, faster payouts, and increased trust with admin users and partners.",
-    metrics: [
+    galleryImages: [
       {
-        metric: "Dashboard Traffic",
-        value: "+150%",
-        description: "Quick adoption among platform clients",
-      },
-      {
-        metric: "Payout Uptime",
-        value: "99.9%",
-        description: "Reliable payout processing even during peak loads",
-      },
-      {
-        metric: "User Satisfaction",
-        value: "95%",
-        description:
-          "Positive feedback on onboarding animations and overall usability",
+        desktop: "/work/dgd.png",
+        tablet: "/work/dgd.png",
+        mobile: "/work/dgd.png",
+        alt: "Dodhia Group Website Screens",
       }
     ],
-  }
-},
+
+    shortDescription: "A future-forward redesign for a global textile and chemical powerhouse driving innovation and sustainability.",
+
+    fullDescription:
+      "Dodhia Group is a leading Indian industrial conglomerate with presence in textiles, chemicals, and plastic recycling. The redesigned website aimed to unify their brand presence, highlight verticals like PETOPOLY™ recycled yarn and specialty chemicals, and align their online identity with global sustainability goals. With accessibility, performance, and storytelling at its core, the result was a mobile-first, multilingual, and investor-friendly digital experience.",
+
+    objective:
+      "To showcase Dodhia Group’s legacy and leadership in sustainable manufacturing, highlight product verticals with clarity, and provide a fast, secure, and responsive platform for partners, stakeholders, and global customers.",
+
+    technologies: [
+      { name: "HTML", category: "tools", icon: "/technology/html.svg" },
+      { name: "CSS", category: "tools", icon: "/technology/css.svg" },
+      { name: "JavaScript", category: "tools", icon: "/technology/js.svg" },
+      { name: "GSAP", category: "tools", icon: "/technology/greensock.svg" },
+      { name: "PHP", category: "tools", icon: "/technology/cdi.svg" },
+      { name: "MySQL", category: "tools", icon: "/technology/sql.svg" },
+      { name: "Bootstrap", category: "tools", icon: "/technology/bootstrap.svg" },
+    ],
+
+    framework: [],
+
+    colorTheme: {
+      primary: "#CB2229",
+      secondary: "#2E2E2E",
+      accent: "#fff",
+      background: "#DCDCDC",
+      text: "#969696",
+    },
+
+    challenges: [
+
+    ],
+
+    achievements: [
+      {
+        metric: "Performance Score",
+        value: "98+",
+        description: "Google Lighthouse performance optimized for all devices through image compression, preloading, and script optimization.",
+      },
+      {
+        metric: "User Engagement",
+        value: "+120%",
+        description: "New site structure improved time-on-page and reduced bounce rate across service pages.",
+      },
+      {
+        metric: "Mobile Optimization",
+        value: "+160% Mobile Traffic",
+        description: "Mobile-first responsive design with intuitive navigation increased traffic from handheld devices.",
+      },
+      {
+        metric: "Accessibility",
+        value: "WCAG 2.1 AA",
+        description: "All key sections passed accessibility tests, improving usability for broader audiences.",
+      },
+      {
+        metric: "Security",
+        value: "Zero Breaches",
+        description: "Hardened PHP stack and WAF implementation ensured secure launch and zero breach incidents.",
+      }
+    ],
+
+    keyFeatures: [
+      "Modern hero section with motion graphics and vertical switcher",
+      "Three distinct business verticals with deep navigation",
+      "Interactive timeline and leadership sections",
+      "Global partner section with downloadable product catalogs",
+      "CSR & sustainability storytelling with visuals",
+      "SEO-optimized for investor and export visibility",
+      "High-performance image & video optimization",
+    ],
+
+    metaTitle: "Dodhia Group Website Redesign | Global Textile & Chemical Leader | Arrow Edge Studio",
+    metaDescription:
+      "A corporate website overhaul for Dodhia Group highlighting their textile, chemical, and plastic recycling verticals with a sustainable, mobile-first design and 98+ performance score.",
+
+    tags: ["Corporate Website", "B2B", "Sustainability", "UI/UX", "Textile", "Chemicals", "Plastic Recycling"],
+    featured: false,
+
+    testimonial: {
+      quote:
+        "The new website aligns perfectly with our sustainability mission and global presence. It’s fast, modern, and tells our story in a powerful way.",
+      author: "Pradeep Dodhia",
+      position: "Managing Director",
+      company: "Dodhia Group",
+      avatar: "/work/dodhia_logo.png",
+    },
+
+
+
+    results: {
+      title: "Strong Digital Footprint for a Global Brand",
+      description:
+        "The redesign significantly improved visibility, performance, and usability for Dodhia Group. With a stronger digital presence, the brand now confidently communicates with global customers and stakeholders.",
+      metrics: [
+        { metric: "Mobile Visitors", value: "+160%", description: "Improved mobile accessibility led to higher traffic" },
+        { metric: "Bounce Rate", value: "-38%", description: "More time spent exploring products and divisions" },
+        { metric: "Performance Score", value: "98+", description: "Exceptional loading time and animation smoothness" },
+      ],
+    }
+  },
+  {
+    id: 4,
+    slug: "nifi-payments",
+    title: "Nifi Payments",
+    category: "Web application",
+    year: "2025",
+    client: "Nifi Payments (New Infra Fintech Inclusion Pvt. Ltd.)",
+    duration: "6 months",
+    domain: "Fintech / Payment SaaS",
+    liveUrl: "https://www.nifipayments.com",
+
+    thumbnailImage: "/work/nifi.png",
+    heroImage: {
+      desktop: "/work/nifi.jpg",
+      tablet: "/work/nifi.jpg",
+      mobile: "/work/nifi.jpg",
+      alt: "Nifi Payments Dashboard",
+    },
+
+    galleryImages: [
+      {
+        desktop: "/work/nifi-dash.png",
+        tablet: "/work/nifi-dash.png",
+        mobile: "/work/nifi-dash.png",
+        alt: "Nifi Payments Dashboard Interface",
+      }
+    ],
+
+    shortDescription:
+      "A secure, performant web portal and dashboard built for Nifi Payments’ innovative fintech services platform.",
+
+    fullDescription:
+      "Nifi Payments (New Infra Fintech Inclusion Pvt. Ltd.) is an Indian SaaS-based payment fintech company offering secure payment solutions and bulk payout APIs for businesses :contentReference[oaicite:1]{index=1}. The platform enables UPI, debit/credit cards, net banking, wallets, QR code acceptance, and instant payouts for salaries, vendor disbursements, and refunds :contentReference[oaicite:2]{index=2}. Our project delivered a modern web dashboard and public site to manage these services efficiently.",
+
+    objective:
+      "To create a polished client-facing website and a secure, responsive dashboard for transaction processing, payout management, and admin functionalities, aligned with Nifi’s fintech vision.",
+
+    technologies: [
+      { name: "Next.js", category: "tools", icon: "/technology/nextjs.svg" },
+      { name: "React", category: "tools", icon: "/technology/react.svg" },
+      { name: "Bootstrap", category: "tools", icon: "/technology/bootstrap.svg" },
+      { name: "Framer Motion", category: "tools", icon: "/technology/framer.svg" },
+      { name: "LottieFiles", category: "tools", icon: "/technology/lottiefiles-logo.svg" },
+      { name: "Node.js", category: "tools", icon: "/technology/nodejs.svg" },
+      { name: "MongoDB", category: "tools", icon: "/technology/mongodb.svg" },
+    ],
+
+    framework: [],
+
+    colorTheme: {
+      primary: "#002a4c",
+      secondary: "#E6FD59",
+      accent: "#002141",
+      background: "#EFF5FF",
+      text: "#adb5bd",
+    },
+
+    challenges: [
+      // "Ensuring ultra-low latency and scalability for bulk payouts and real-time dashboards.",
+      // "Securing sensitive financial data across APIs and user flows.",
+      // "Integrating diverse payment rails including UPI, cards, wallets, and instant bank transfers.",
+    ],
+
+    achievements: [
+      {
+        metric: "API Response Time",
+        value: "< 100ms",
+        description:
+          "Optimized Node.js backend and MongoDB queries for lightning-fast transaction loading.",
+      },
+      {
+        metric: "Dashboard Load Time",
+        value: "< 1.5s",
+        description:
+          "Leveraged Next.js server-side rendering and code‑splitting for instant UI load.",
+      },
+      {
+        metric: "Animation Smoothness",
+        value: "60fps",
+        description:
+          "Used Framer Motion and Lottie for silky animations without jank, across device types.",
+      },
+      {
+        metric: "Mobile UX",
+        value: "Responsive & Accessible",
+        description:
+          "Built mobile-first UI with Bootstrap and accessibility best practices."
+      },
+      {
+        metric: "Security",
+        value: "PCI-Compliant",
+        description:
+          "Enforced SSL, token-based auth, role-based access control, and secure storage."
+      }
+    ],
+
+    keyFeatures: [
+      "Public landing pages explaining payment services (UPI, cards, payouts, etc.)",
+      "Interactive admin dashboard for managing bulk payouts, reconciliation & reporting",
+      "Real-time transaction monitoring and API health status",
+      "Animated onboarding using LottieFiles",
+      "Framer Motion transitions for seamless UI interactions",
+      "Multi-role support: admin, vendor, platform user",
+      "Secure APIs built in Node.js with JWT authentication",
+      "Analytics & logs stored in MongoDB with dashboard insight charts",
+    ],
+
+    metaTitle:
+      "Nifi Payments – Secure Fintech Payment & Payout Platform Built with Next.js",
+    metaDescription:
+      "We developed the Nifi Payments web dashboard and site using Next.js, React, Node.js and MongoDB—supporting UPI, bulk payouts, cards, wallets, and instant bank transfers.",
+
+    tags: ["Fintech", "Payment Gateway", "Dashboard", "Next.js", "Node.js", "SaaS"],
+    featured: false,
+
+    testimonial: {
+      quote:
+        "The new dashboard made payouts and reconciliation intuitive and secure. The UX feels modern and purpose‑built.",
+      author: "CTO, Nifi Payments",
+      position: "Chief Technology Officer",
+      company: "Nifi Payments",
+      avatar: "/work/nifiLogo.svg",
+    },
+
+
+
+    results: {
+      title: "High‑Performance Fintech Platform Delivery",
+      description:
+        "Post-launch, Nifi Payments saw strong engagement, faster payouts, and increased trust with admin users and partners.",
+      metrics: [
+        {
+          metric: "Dashboard Traffic",
+          value: "+150%",
+          description: "Quick adoption among platform clients",
+        },
+        {
+          metric: "Payout Uptime",
+          value: "99.9%",
+          description: "Reliable payout processing even during peak loads",
+        },
+        {
+          metric: "User Satisfaction",
+          value: "95%",
+          description:
+            "Positive feedback on onboarding animations and overall usability",
+        }
+      ],
+    }
+  },
   {
     id: 5,
     slug: "acecogat-ai",
@@ -575,7 +575,7 @@ export const projects: Project[] = [
         },
       ],
     },
-   achievements: [
+    achievements: [
 
       {
         metric: "Core Web Vitals",
@@ -720,282 +720,420 @@ export const projects: Project[] = [
     tags: ["B2B Marketing", "Web Design", "Creative Agency", "Digital Marketing", "Branding"],
     featured: false,
   },
-{
-  id: 7,
-  slug: "full-bore",
-  title: "Full‑Bore ",
-  category: "Web design",
-  year: "2025",
-  client: "Full‑Bore (Manufacturing Technology & Consulting)",
-  duration: "2 months",
-  domain: "Manufacturing Tech Consulting",
-  liveUrl: "https://www.full-bore.com",
+  {
+    id: 7,
+    slug: "full-bore",
+    title: "Full‑Bore ",
+    category: "Web design",
+    year: "2025",
+    client: "Full‑Bore (Manufacturing Technology & Consulting)",
+    duration: "2 months",
+    domain: "Manufacturing Tech Consulting",
+    liveUrl: "https://www.full-bore.com",
 
-  thumbnailImage: "/work/fullthumb.webp",
-  heroImage: {
-    desktop: "/work/fullhero.jpg",
-    tablet: "/work/fullhero.jpg",
-    mobile: "/work/fullhero.jpg",
-    alt: "Full‑Bore Dashboard Homepage",
-  },
-
-  galleryImages: [
-    {
-      desktop: "/work/fullpro.png",
-      tablet: "/work/fullpro.png",
-      mobile: "/work/fullpro.png",
-      alt: "Consulting Platform Dashboard Interface",
-    }
-  ],
-
-  shortDescription:
-    "Dashboard design for Full‑Bore’s consulting arm that supports smart manufacturing and digital transformation insight delivery.",
-  
-  fullDescription:
-    "Full‑Bore is a manufacturing technology and consulting firm helping SMEs and large enterprises achieve smart‑manufacturing transformation through proven digital interventions and impact‑driven roadmaps :contentReference[oaicite:1]{index=1}. Their consulting platform needed a polished, interactive dashboard to visualize transformation metrics, performance KPIs, and client impact data.",
-
-  objective:
-    "To design a clean, performant, and interactive dashboard UI that communicates real-time project metrics, transformation progress, and impact analytics for Full‑Bore’s clients and internal users.",
-
-  technologies: [
-    { name: "React", category: "tools", icon: "/technology/react.svg" },
-    { name: "Material‑UI", category: "tools", icon: "/technology/mui.svg" },
-    { name: "Redux", category: "tools", icon: "/technology/redux.svg" },
-    { name: "Framer Motion", category: "tools", icon: "/technology/framer.svg" },
-  ],
-
-  framework: [],
-
-  colorTheme: {
-    primary: "#0479D0",
-    secondary: "#F6861A",
-    accent: "#0479D0",
-    background: "#F5F5F5",
-    text: "#2D2D2D",
-  },
-
-  challenges: [
-    // "Presenting complex manufacturing and consulting data in a clear and visual manner.",
-    // "Balancing data density with usability in dashboards for executive and operational users.",
-    // "Animating metric transitions and filters smoothly without sacrificing performance.",
-  ],
-
-  achievements: [
-    {
-      metric: "Performance Score",
-      value: "99+",
-      description: "Dashboard loads in under 800 ms even with heavy data sets, tested with Lighthouse metrics.",
+    thumbnailImage: "/work/fullthumb.webp",
+    heroImage: {
+      desktop: "/work/fullhero.jpg",
+      tablet: "/work/fullhero.jpg",
+      mobile: "/work/fullhero.jpg",
+      alt: "Full‑Bore Dashboard Homepage",
     },
-    {
-      metric: "UX Flow",
-      value: "Streamlined",
-      description: "Users navigate metrics, filters, and project timelines within fewer than 3 clicks, improving intuitive flow.",
-    },
-    {
-      metric: "Animation Fluidity",
-      value: "60 fps",
-      description: "Used Framer Motion to deliver smooth transitions across key charts and panels.",
-    },
-    {
-      metric: "State Management",
-      value: "Redux",
-      description: "Centralized data handling enables consistent real-time updates and filter syncing across components.",
-    }
-  ],
 
-  keyFeatures: [
-    "Real‑time KPI metrics and project dashboards",
-    "Interactive filters and time‑series charts",
-    "Animated transitions with Framer Motion",
-    "Material‑UI based design system for consistency",
-    "Redux‑powered state synchronization across modules",
-    "Responsive layout for desktop and tablet use‑cases",
-    "Accessible color contrasts and keyboard navigation",
-  ],
-
-  metaTitle:
-    "Full‑Bore Consulting Dashboard Design | React, Material‑UI & Framer Motion",
-  metaDescription:
-    "Interactive dashboard UI for Full‑Bore’s manufacturing consulting platform, built with React, Redux, Material‑UI, and Framer Motion for real‑time project impact visualization.",
-  
-  tags: ["Dashboard", "Manufacturing Tech", "React", "Redux", "UI/UX", "Framer Motion"],
-  featured:false,
-
-  testimonial: {
-    quote:
-      "The dashboard translates our manufacturing impact data into actionable insight—clear, fast, and visually compelling.",
-    author: "Sudhi Bangalore",
-    position: "Founder & CEO",
-    company: "Full‑Bore",
-    avatar: "/work/fullbore.webp",
-  },
-
- 
-
-  results: {
-    title: "Insightful Dashboard Delivered",
-    description:
-      "The dashboard empowered internal and client users with on-demand visibility into transformation metrics, boosting data-driven decision‑making.",
-    metrics: [
+    galleryImages: [
       {
-        metric: "User Adoption",
-        value: "+130%",
-        description: "Users regularly engaged with dashboard analytics post-launch",
-      },
-      {
-        metric: "Time‑to‑Insight",
-        value: "-50%",
-        description:
-          "Reduced time needed for users to interpret performance data via interactive visuals",
-      },
-      {
-        metric: "Feedback Score",
-        value: "4.8/5",
-        description: "Positive user feedback on clarity, speed and reliability",
+        desktop: "/work/fullpro.png",
+        tablet: "/work/fullpro.png",
+        mobile: "/work/fullpro.png",
+        alt: "Consulting Platform Dashboard Interface",
       }
     ],
-  }
-},
 
+    shortDescription:
+      "Dashboard design for Full‑Bore’s consulting arm that supports smart manufacturing and digital transformation insight delivery.",
+
+    fullDescription:
+      "Full‑Bore is a manufacturing technology and consulting firm helping SMEs and large enterprises achieve smart‑manufacturing transformation through proven digital interventions and impact‑driven roadmaps :contentReference[oaicite:1]{index=1}. Their consulting platform needed a polished, interactive dashboard to visualize transformation metrics, performance KPIs, and client impact data.",
+
+    objective:
+      "To design a clean, performant, and interactive dashboard UI that communicates real-time project metrics, transformation progress, and impact analytics for Full‑Bore’s clients and internal users.",
+
+    technologies: [
+      { name: "React", category: "tools", icon: "/technology/react.svg" },
+      { name: "Material‑UI", category: "tools", icon: "/technology/mui.svg" },
+      { name: "Redux", category: "tools", icon: "/technology/redux.svg" },
+      { name: "Framer Motion", category: "tools", icon: "/technology/framer.svg" },
+    ],
+
+    framework: [],
+
+    colorTheme: {
+      primary: "#0479D0",
+      secondary: "#F6861A",
+      accent: "#0479D0",
+      background: "#F5F5F5",
+      text: "#2D2D2D",
+    },
+
+    challenges: [
+      // "Presenting complex manufacturing and consulting data in a clear and visual manner.",
+      // "Balancing data density with usability in dashboards for executive and operational users.",
+      // "Animating metric transitions and filters smoothly without sacrificing performance.",
+    ],
+
+    achievements: [
+      {
+        metric: "Performance Score",
+        value: "99+",
+        description: "Dashboard loads in under 800 ms even with heavy data sets, tested with Lighthouse metrics.",
+      },
+      {
+        metric: "UX Flow",
+        value: "Streamlined",
+        description: "Users navigate metrics, filters, and project timelines within fewer than 3 clicks, improving intuitive flow.",
+      },
+      {
+        metric: "Animation Fluidity",
+        value: "60 fps",
+        description: "Used Framer Motion to deliver smooth transitions across key charts and panels.",
+      },
+      {
+        metric: "State Management",
+        value: "Redux",
+        description: "Centralized data handling enables consistent real-time updates and filter syncing across components.",
+      }
+    ],
+
+    keyFeatures: [
+      "Real‑time KPI metrics and project dashboards",
+      "Interactive filters and time‑series charts",
+      "Animated transitions with Framer Motion",
+      "Material‑UI based design system for consistency",
+      "Redux‑powered state synchronization across modules",
+      "Responsive layout for desktop and tablet use‑cases",
+      "Accessible color contrasts and keyboard navigation",
+    ],
+
+    metaTitle:
+      "Full‑Bore Consulting Dashboard Design | React, Material‑UI & Framer Motion",
+    metaDescription:
+      "Interactive dashboard UI for Full‑Bore’s manufacturing consulting platform, built with React, Redux, Material‑UI, and Framer Motion for real‑time project impact visualization.",
+
+    tags: ["Dashboard", "Manufacturing Tech", "React", "Redux", "UI/UX", "Framer Motion"],
+    featured: false,
+
+    testimonial: {
+      quote:
+        "The dashboard translates our manufacturing impact data into actionable insight—clear, fast, and visually compelling.",
+      author: "Sudhi Bangalore",
+      position: "Founder & CEO",
+      company: "Full‑Bore",
+      avatar: "/work/fullbore.webp",
+    },
+
+
+
+    results: {
+      title: "Insightful Dashboard Delivered",
+      description:
+        "The dashboard empowered internal and client users with on-demand visibility into transformation metrics, boosting data-driven decision‑making.",
+      metrics: [
+        {
+          metric: "User Adoption",
+          value: "+130%",
+          description: "Users regularly engaged with dashboard analytics post-launch",
+        },
+        {
+          metric: "Time‑to‑Insight",
+          value: "-50%",
+          description:
+            "Reduced time needed for users to interpret performance data via interactive visuals",
+        },
+        {
+          metric: "Feedback Score",
+          value: "4.8/5",
+          description: "Positive user feedback on clarity, speed and reliability",
+        }
+      ],
+    }
+  },
+
+  {
+    id: 8,
+    slug: "innersmith",
+    title: "Innersmith",
+    category: "Web design",
+    year: "2025",
+    client: "Innersmith",
+    duration: "5 days",
+    domain: "Creative Studio / Personal Brand",
+    liveUrl: "https://innersmith.com",
+
+    thumbnailImage: "/work/innersmiththumb.png",
+    heroImage: {
+      desktop: "/work/innersmithhero.webp",
+      tablet: "/work/innersmithhero.webp",
+      mobile: "/work/innersmithhero.webp",
+      alt: "Innersmith Website Homepage",
+    },
+
+    galleryImages: [
+      {
+        desktop: "/work/inner.gif",
+        tablet: "/work/innertab.gif",
+        mobile: "/work/innersmall.gif",
+        alt: "Innersmith Website Interface",
+      }
+    ],
+
+    shortDescription:
+      "A lightweight, elegant, and performance‑focused redesign for the Innersmith brand, emphasizing smooth interactions and visual storytelling.",
+
+    fullDescription:
+      "Innersmith is a creative branding and design studio showcasing its aesthetic and philosophy through a visually compelling and fast-loading web presence. The redesign leveraged modern web technologies to deliver fluid scroll interactions and immersive animations while keeping code lightweight and accessibility-first.",
+
+    objective:
+      "To build a modern, visually engaging website with smooth scrolling, refined animations, and responsive layout that communicates Innersmith’s creative identity—while ensuring fast performance and minimal weight.",
+
+    technologies: [
+      { name: "Next.js", category: "tools", icon: "/technology/nextjs.svg" },
+      { name: "Tailwind CSS", category: "tools", icon: "/technology/tailwind.svg" },
+      { name: "GSAP", category: "tools", icon: "/technology/greensock.svg" },
+      { name: "Framer Motion", category: "tools", icon: "/technology/framer.svg" },
+      { name: "Lenis", category: "tools", icon: "/technology/lenis.png" },
+    ],
+
+    framework: [],
+
+    colorTheme: {
+      primary: "#525299",
+      secondary: "#FF7171",
+      accent: "#000",
+      background: "#FFFFFF",
+      text: "#747474",
+    },
+
+    challenges: [
+      // "Implementing ultra‑smooth scroll using Lenis within a Next.js application.",
+      // "Combining GSAP scroll‑triggered animations with Framer Motion transitions without bloating bundle size.",
+      // "Maintaining performance while layering complex visual effects and parallax cues.",
+    ],
+
+    achievements: [
+      {
+        metric: "First‑Contentful Paint",
+        value: "< 800 ms",
+        description:
+          "Optimized Next.js SSR, critical CSS subset, and preloading strategies to deliver fast initial rendering.",
+      },
+      {
+        metric: "Smooth Scroll",
+        value: "120 Hz",
+        description:
+          "Lenis-powered smooth scroll delivered buttery fluidity across scrolls, feeling native on both mobile and desktop.",
+      },
+      {
+        metric: "Animation Frame Rate",
+        value: "60 fps",
+        description:
+          "Animations remained stable at 60 fps even during scroll-intensive sequences, using GSAP + Framer Motion with virtualized layering.",
+      },
+      {
+        metric: "Bundle Size",
+        value: "< 150 KB",
+        description:
+          "Tree-shook imports and code splitting kept the initial JS payload lightweight and fast-loading.",
+      }
+    ],
+
+    keyFeatures: [
+      "Lenis‑enabled smooth scrolling with natural ease‑in/out physics",
+      "Scroll-triggered visual reveal using GSAP",
+      "Page transitions and micro‑interactions via Framer Motion",
+      "Tailwind CSS design system for responsive, utility‑first styling",
+      "Modular Next.js architecture with optimized SSR and static rendering",
+      "Parallax and overlapping visual layers with scroll control",
+      "Accessible focus states and lightweight image handling",
+    ],
+
+    metaTitle:
+      "Innersmith — Clean Brand Website with Smooth Scroll & Animation",
+    metaDescription:
+      "Designed a sleek and smooth‑scroll visual website for Innersmith using Next.js, Tailwind CSS, GSAP, Framer Motion, and Lenis—high performance, lightweight and fluid.",
+
+    tags: ["Creative Brand", "Website Design", "Smooth Scroll", "Next.js", "Tailwind", "GSAP", "Framer Motion", "Lenis"],
+    featured: false,
+
+    testimonial: {
+      quote:
+        "The site feels alive. Scrolling is silky smooth, animations feel intentional, and the overall experience aligns with our creative vision.",
+      author: "Owner, Innersmith",
+      position: "Founder & Creative Director",
+      company: "Innersmith",
+      avatar: "/work/innersmithlogo.png",
+    },
+
+
+    results: {
+      title: "A Fluid, Fast Brand Showcase",
+      description:
+        "Innersmith now has a web presence that visually communicates the studio’s craft—while loading quickly and scrolling seamlessly on all devices.",
+      metrics: [
+        {
+          metric: "Load Time",
+          value: "<1 s",
+          description: "Sub‑second page load across key landing sections",
+        },
+        {
+          metric: "Engagement",
+          value: "+45%",
+          description: "Visitors spent more time exploring animations and storytelling",
+        },
+        {
+          metric: "Performance Score",
+          value: "98+",
+          description: "High Lighthouse score with full accessibility and best practices compliance",
+        }
+      ],
+    }
+  },
 {
   id: 8,
-  slug: "innersmith",
-  title: "Innersmith",
+  slug: "mulyantaran",
+  title: "Mulyantaran",
   category: "Web design",
   year: "2025",
-  client: "Innersmith",
-  duration: "5 days",
-  domain: "Creative Studio / Personal Brand",
-  liveUrl: "https://innersmith.com",
+  client: "Mulyantaran",
+  duration: "10 days",
+  domain: "Legal-Tech / Web3",
+  liveUrl: "https://mulyantaran.com",
 
-  thumbnailImage: "/work/innersmiththumb.png",
+  thumbnailImage: "/work/mulyanthumb.png",
   heroImage: {
-    desktop: "/work/innersmithhero.webp",
-    tablet: "/work/innersmithhero.webp",
-    mobile: "/work/innersmithhero.webp",
-    alt: "Innersmith Website Homepage",
+    desktop: "/work/mulyanhero.webp",
+    tablet: "/work/mulyanhero.webp",
+    mobile: "/work/mulyanhero.webp",
+    alt: "Mulyantaran Website Homepage",
   },
 
   galleryImages: [
     {
-      desktop: "/work/inner.gif",
-      tablet: "/work/innertab.gif",
-      mobile: "/work/innersmall.gif",
-      alt: "Innersmith Website Interface",
-    }
+      desktop: "/work/muly.png",
+      tablet: "/work/muly.png",
+      mobile: "/work/mobmuly.png",
+      alt: "Mulyantaran Website Interface Showcase",
+    },
   ],
 
   shortDescription:
-    "A lightweight, elegant, and performance‑focused redesign for the Innersmith brand, emphasizing smooth interactions and visual storytelling.",
+    "A fast, modern, and visually polished Web3-enabled legal technology website designed for high engagement and smooth interactive experience.",
 
   fullDescription:
-    "Innersmith is a creative branding and design studio showcasing its aesthetic and philosophy through a visually compelling and fast-loading web presence. The redesign leveraged modern web technologies to deliver fluid scroll interactions and immersive animations while keeping code lightweight and accessibility-first.",
+    "Mulyantaran is an AI-powered legal-tech and Web3-backed identity platform. The website was redesigned to be minimal, fast, and emotionally expressive—while maintaining premium typography, smooth interactions, and a cinematic reveal style. Built with performance-first architecture and small JS footprint.",
 
   objective:
-    "To build a modern, visually engaging website with smooth scrolling, refined animations, and responsive layout that communicates Innersmith’s creative identity—while ensuring fast performance and minimal weight.",
+    "To build a lightweight, Web3-aligned digital presence with elegant motion, responsive layout, fluid page transitions, and fast load time using animation technologies like GSAP, Framer Motion and smooth physics scrolling via Lenis.",
 
   technologies: [
-    { name: "Next.js", category: "tools", icon: "/technology/nextjs.svg" },
-    { name: "Tailwind CSS", category: "tools", icon: "/technology/tailwind.svg" },
-    { name: "GSAP", category: "tools", icon: "/technology/greensock.svg" },
-    { name: "Framer Motion", category: "tools", icon: "/technology/framer.svg" },
+    { name: "Next.js", category: "frontend", icon: "/technology/nextjs.svg" },
+    { name: "Tailwind CSS", category: "frontend", icon: "/technology/tailwind.svg" },
+    { name: "GSAP", category: "frontend", icon: "/technology/greensock.svg" },
+    { name: "Framer Motion", category: "frontend", icon: "/technology/framer.svg" },
     { name: "Lenis", category: "tools", icon: "/technology/lenis.png" },
+    { name: "Three.js", category: "frontend", icon: "/technology/Three.js.svg" },
+    { name: "Web3 / Wallet Integration", category: "backend", icon: "/technology/web3.svg" },
   ],
 
   framework: [],
 
   colorTheme: {
-    primary: "#525299",
-    secondary: "#FF7171",
-    accent: "#000",
+    primary: "#0052E0",
+    secondary: "#00C2FF",
+    accent: "#111111",
     background: "#FFFFFF",
-    text: "#747474",
+    text: "#4A4A4A",
   },
 
-  challenges: [
-    // "Implementing ultra‑smooth scroll using Lenis within a Next.js application.",
-    // "Combining GSAP scroll‑triggered animations with Framer Motion transitions without bloating bundle size.",
-    // "Maintaining performance while layering complex visual effects and parallax cues.",
-  ],
+  /** ✅ Missing before */
+  challenges: [],
 
   achievements: [
     {
-      metric: "First‑Contentful Paint",
-      value: "< 800 ms",
+      metric: "FCP (First Contentful Paint)",
+      value: "< 900 ms",
       description:
-        "Optimized Next.js SSR, critical CSS subset, and preloading strategies to deliver fast initial rendering.",
+        "Critical CSS extraction + static optimization ensured fast first paint on mobile and desktop.",
     },
     {
-      metric: "Smooth Scroll",
-      value: "120 Hz",
+      metric: "Scroll Performance",
+      value: "120 Hz",
       description:
-        "Lenis-powered smooth scroll delivered buttery fluidity across scrolls, feeling native on both mobile and desktop.",
+        "Lenis + GSAP combination delivered buttery smooth scroll with natural physics.",
     },
     {
-      metric: "Animation Frame Rate",
-      value: "60 fps",
+      metric: "Animation Stability",
+      value: "60 fps",
       description:
-        "Animations remained stable at 60 fps even during scroll-intensive sequences, using GSAP + Framer Motion with virtualized layering.",
+        "Optimized animation layers using Framer Motion + GSAP to maintain silky 60fps motion.",
     },
     {
-      metric: "Bundle Size",
-      value: "< 150 KB",
+      metric: "3D Size",
+      value: "< 200 KB",
       description:
-        "Tree-shook imports and code splitting kept the initial JS payload lightweight and fast-loading.",
-    }
+        "Three.js models compressed and lazy-loaded, keeping performance lightweight.",
+    },
   ],
 
   keyFeatures: [
-    "Lenis‑enabled smooth scrolling with natural ease‑in/out physics",
-    "Scroll-triggered visual reveal using GSAP",
-    "Page transitions and micro‑interactions via Framer Motion",
-    "Tailwind CSS design system for responsive, utility‑first styling",
-    "Modular Next.js architecture with optimized SSR and static rendering",
-    "Parallax and overlapping visual layers with scroll control",
-    "Accessible focus states and lightweight image handling",
+    "Web3-enabled identity and secure component integration",
+    "Smooth Lenis-powered physics scroll",
+    "GSAP animation sequencing with scroll triggers",
+    "Framer Motion page transitions",
+    "Three.js lightweight 3D visual effects",
+    "Mobile-first, responsive UX",
+    "High accessibility and SEO optimized",
   ],
 
   metaTitle:
-    "Innersmith — Clean Brand Website with Smooth Scroll & Animation",
+    "Mulyantaran — Web3 + Smooth Scroll Legal Tech Website",
   metaDescription:
-    "Designed a sleek and smooth‑scroll visual website for Innersmith using Next.js, Tailwind CSS, GSAP, Framer Motion, and Lenis—high performance, lightweight and fluid.",
+    "Designed a premium, animation-rich and Web3-friendly modern website for Mulyantaran using Next.js, Tailwind CSS, GSAP, Framer Motion, Lenis and Three.js.",
 
-  tags: ["Creative Brand", "Website Design", "Smooth Scroll", "Next.js", "Tailwind", "GSAP", "Framer Motion", "Lenis"],
-  featured: false,
+  tags: ["Web3", "Legal-Tech", "Next.js", "Smooth Scroll", "GSAP", "Three.js", "Framer Motion"],
+  featured: true,
 
   testimonial: {
     quote:
-      "The site feels alive. Scrolling is silky smooth, animations feel intentional, and the overall experience aligns with our creative vision.",
-    author: "Owner, Innersmith",
-    position: "Founder & Creative Director",
-    company: "Innersmith",
-    avatar: "/work/innersmithlogo.png",
+      "The website looks elite. The animation work is beautiful, smooth, and lightweight — users love scrolling and interacting with it.",
+    author: "Founder, Mulyantaran",
+    position: "CEO",
+    company: "Mulyantaran",
+    avatar: "/work/mulyanlogo.png",
   },
 
-
   results: {
-    title: "A Fluid, Fast Brand Showcase",
+    title: "A Sleek, Advanced Web3 Digital Identity Platform",
     description:
-      "Innersmith now has a web presence that visually communicates the studio’s craft—while loading quickly and scrolling seamlessly on all devices.",
+      "Mulyantaran now has a modern, emotional, fast and animation-rich website that performs smoothly across devices and represents the brand's innovation.",
     metrics: [
       {
         metric: "Load Time",
-        value: "<1 s",
-        description: "Sub‑second page load across key landing sections",
+        value: "<1 s",
+        description: "Lightning-fast homepage load even with animations",
       },
       {
-        metric: "Engagement",
-        value: "+45%",
-        description: "Visitors spent more time exploring animations and storytelling",
+        metric: "User Engagement",
+        value: "+62%",
+        description: "Visitors spend more time exploring scroll transitions and storytelling sections",
       },
       {
         metric: "Performance Score",
-        value: "98+",
-        description: "High Lighthouse score with full accessibility and best practices compliance",
-      }
+        value: "95+",
+        description: "Optimized images, animations, and bundle",
+      },
     ],
-  }
+  },
 }
+
 
 ]
 

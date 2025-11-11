@@ -1,160 +1,257 @@
 "use client"
 
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useRef } from "react"
 import { motion } from "framer-motion"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import Link from "next/link"
 
-// Import testimonials from the data file
-import { testimonials } from "@/data/testimonials"
+type Testimonial = {
+  id: number
+  name: string
+  logo: string
+  url?: string
+  category: string
+  content: string
+}
 
-gsap.registerPlugin(ScrollTrigger)
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "Malik Architecture",
+    logo: "/logos/malik.jpg",
+    url: "https://malikarchitecture.com/",
+    category: "Architecture",
+    content:
+      "The Arrow Edge Studio team translated our vision into a digital experience that perfectly reflects our architectural ethos. Brilliant design and exceptional execution.",
+  },
+  {
+    id: 2,
+    name: "Khalida Toukkani",
+    logo: "/logos/khalida.jpg",
+    url: "https://khalidatoukkani.com/",
+    category: "Personal Brand",
+    content:
+      "Arrow Edge Studio brought sophistication and clarity to my online identity. Their attention to detail and commitment are unmatched.",
+  },
+  {
+    id: 3,
+    name: "Ace CogAT",
+    logo: "/logos/acecogat.png",
+    url: "https://www.acecogat.com/",
+    category: "EdTech",
+    content:
+      "Outstanding results — fast, modern, and performance-focused. The site exceeded our expectations both visually and functionally.",
+  },
+  {
+    id: 4,
+    name: "Mulyantaran",
+    logo: "/logos/mulyantaran.webp",
+    url: "https://www.mulyantaran.com/",
+    category: "Web 3",
+    content:
+      "Arrow Edge helped us completely reimagine our brand online. The new website has improved engagement and sales significantly.",
+  },
+  {
+    id: 5,
+    name: "Tila",
+    logo: "/logos/tila.webp",
+    url: "https://the-javed.netlify.app/",
+    category: "Portfolio",
+    content:
+      "They understood our creative vision immediately and delivered something beyond expectations. A truly seamless experience.",
+  },
+  {
+    id: 6,
+    name: "Acrebytes",
+    logo: "/logos/acrebyte.svg",
+    url: "https://app.dev.acrebytes.com/",
+    category: "SaaS",
+    content:
+      "Superb UX/UI development. Arrow Edge Studio has become our go-to digital partner for all design-driven builds.",
+  },
+  {
+    id: 7,
+    name: "Allcargo Gati",
+    logo: "/logos/alcargo.svg",
+    url: "https://www.allcargogati.com/",
+    category: "Logistics",
+    content:
+      "Professional, reliable, and forward-thinking. Their team knows how to deliver enterprise-grade performance with modern design.",
+  },
+  {
+    id: 8,
+    name: "Vardhman",
+    logo: "/logos/vardhman.svg",
+    url: "https://www.vardhman.com/",
+    category: "Manufacturing",
+    content:
+      "A fresh, sleek, and high-performance web experience. Arrow Edge brought precision and craftsmanship to digital design.",
+  },
+  {
+    id: 9,
+    name: "AYM Syntex",
+    logo: "/logos/aym-logo.png",
+    url: "https://www.aymsyntex.com/",
+    category: "Manufacturing",
+    content:
+      "Impressive responsiveness and detail-oriented approach. They deliver premium quality work, every time.",
+  },
+  {
+    id: 10,
+    name: "Neon Attack",
+    logo: "/logos/neon.svg",
+    url: "https://www.neonattack.com/",
+    category: "E-Commerce",
+    content:
+      "Incredible design sensibility. The new storefront has enhanced our customer experience and brand appeal massively.",
+  },
+  {
+    id: 11,
+    name: "Full-Bore",
+    logo: "/logos/fullbore.webp",
+    url: "https://www.full-bore.com/",
+    category: "Industrial",
+    content:
+      "Arrow Edge Studio combines strong technical expertise with beautiful, strategic design. Couldn’t recommend them more.",
+  },
+  {
+    id: 12,
+    name: "Nifi Payments",
+    logo: "/logos/nifi.png",
+    url: "https://nifipayments.com/",
+    category: "FinTech",
+    content:
+      "The team at Arrow Edge turned our fintech vision into an intuitive, secure, and elegant web platform.",
+  },
+  {
+    id: 13,
+    name: "TraceGuard",
+    logo: "/logos/traceguard.avif",
+    url: "https://www.traceguard.io/",
+    category: "Cybersecurity",
+    content:
+      "Seamless collaboration from start to finish. The final product showcases technical precision with a refined aesthetic.",
+  },
+  {
+    id: 14,
+    name: "Innersmith",
+    logo: "/logos/InnerSmith-Logo-Final.png",
+    url: "https://innersmith.com/",
+    category: "Wellness",
+    content:
+      "Our new website radiates calm and trust — exactly what we envisioned. Excellent communication and execution.",
+  },
+  {
+    id: 15,
+    name: "IQFin",
+    logo: "/logos/IQFin-RC.png",
+    url: "https://www.iqfin.in/",
+    category: "Finance",
+    content:
+      "Arrow Edge Studio delivered high-caliber design aligned with our corporate standards. A reliable partner for digital transformation.",
+  },
+  {
+    id: 16,
+    name: "Brickland",
+    logo: "/logos/Brickland-Logo.png",
+    url: "https://bricklandindia.com/",
+    category: "Construction",
+    content:
+      "Visually stunning and built for scalability. Arrow Edge’s attention to structural and aesthetic details sets them apart.",
+  },
+  {
+    id: 17,
+    name: "Workfeed",
+    logo: "/logos/workfeed.svg",
+    url: "https://workfeed.io/",
+    category: "SaaS",
+    content:
+      "A flawless blend of creativity and technical execution. Our new platform feels bold, modern, and effortless.",
+  },
+]
 
 export function TestimonialSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
-  const [isNavigating, setIsNavigating] = useState(false)
+  const scrollRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".testimonial-content",
-        { x: -100, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.5, // Increased duration for smoother effect
-          ease: "power2.out", // Smoother easing
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        },
-      )
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
-
-  // Debounced navigation to prevent rapid clicks
-  const debounceNavigation = useCallback((direction: "next" | "prev") => {
-    if (isNavigating) return
-    setIsNavigating(true)
-
-    if (direction === "next") {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-    } else {
-      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-    }
-
-    // Reset navigation lock after animation completes
-    setTimeout(() => setIsNavigating(false), 500) // Matches motion transition duration
-  }, [isNavigating])
-
-  const nextTestimonial = () => debounceNavigation("next")
-  const prevTestimonial = () => debounceNavigation("prev")
-
-  const testimonial = testimonials[currentTestimonial]
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return
+    const { scrollLeft, clientWidth } = scrollRef.current
+    const scrollAmount = direction === "left" ? scrollLeft - clientWidth : scrollLeft + clientWidth
+    scrollRef.current.scrollTo({ left: scrollAmount, behavior: "smooth" })
+  }
 
   return (
-    <section id="testimonials" ref={sectionRef} className="py-32 bg-[#0a0a0a] relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="testimonial-content">
-            <h2 className="text-4xl md:text-6xl font-bold font-space-grotesk mb-8 leading-tight">
-              What clients
-              <br />
-              say
-            </h2>
-          </div>
+    <section className="bg-pink-300 py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col items-center text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0a0a0a] mb-4">
+            What Our Clients Say
+          </h2>
+          <p className="text-[#555] max-w-xl">
+            Collaborations that shaped brands and digital experiences.
+          </p>
+        </div>
 
-          {/* Right Testimonial Card */}
-          <div className="testimonial-card relative">
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 relative">
-              {/* Testimonial Content with Framer Motion Animation */}
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto scroll-smooth pb-6 px-1 snap-x snap-mandatory scrollbar-hide"
+          >
+            {testimonials.map((t) => (
               <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }} // Custom easing for smoother feel
-                className="space-y-6"
+                key={t.id}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="min-w-[320px] md:min-w-[360px] lg:min-w-[400px] bg-[#fafafa] border border-[#e6e6e6] rounded-xl p-8 flex flex-col justify-between text-left snap-start shadow-sm hover:shadow-md transition-shadow"
               >
-                {/* Profile */}
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gradient-to-br from-pink-500 to-cyan-500 p-0.5">
-                    <div className="w-full h-full rounded-full overflow-hidden bg-black">
-                      <Image
-                        src={testimonial.avatar.trimEnd() || "/placeholder.svg"}
-                        alt={testimonial.name}
-                        width={60}
-                        height={60}
-                        className="w-full h-full object-cover"
-                        priority // Load image eagerly for smoother transitions
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold font-space-grotesk">{testimonial.name}</h4>
-                    <p className="text-gray-400 text-sm">{testimonial.title}</p>
-                  </div>
+                <div className="flex mb-4">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span key={i} className="text-pink-600 text-lg mr-0.5">★</span>
+                  ))}
                 </div>
 
-                {/* Content */}
-                <h3 className="text-2xl font-bold font-space-grotesk mb-4 text-white">
-                  {testimonial.name === "D. van Zutphen"
-                    ? "Arrow Edge Studio delivered an outstanding website"
-                    : "An excellent collaboration"}
-                </h3>
+                <p className="text-[#111] text-lg leading-relaxed mb-8">“{t.content}”</p>
 
-                <p className="text-gray-300 leading-relaxed mb-8">{testimonial.content}</p>
+                <div className="flex justify-between items-center">
+                  <Link
+                    href={t.url || "#"}
+                    target="_blank"
+                    className="inline-flex flex-col items-start"
+                  >
+                    <Image
+                      src={t.logo}
+                      alt={t.name}
+                      width={40}
+                      height={40}
+                      className="object-contain mb-3 w-14 h-14"
+                    />
+                  </Link>
+                  <div className="flex flex-col">
 
-                {/* Navigation */}
-                <div className="flex items-center justify-between">
-                  <div className="flex space-x-2">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={prevTestimonial}
-                      className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20"
-                      data-cursor-hover
-                      disabled={isNavigating}
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={nextTestimonial}
-                      className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20"
-                      data-cursor-hover
-                      disabled={isNavigating}
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </Button>
-                  </div>
-
-                  <div className="flex space-x-2">
-                    {testimonials.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => !isNavigating && setCurrentTestimonial(index)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          index === currentTestimonial ? "bg-pink-500" : "bg-white/30"
-                        }`}
-                        data-cursor-hover
-                        disabled={isNavigating}
-                      />
-                    ))}
+                    <span className="text-xs mt-2 inline-block bg-pink-100 text-pink-500 px-4 py-1 rounded-full font-medium">
+                      {t.category}
+                    </span>
+                    {/* <span className="font-semibold text-[#0a0a0a] text-base">{t.name}</span> */}
                   </div>
                 </div>
               </motion.div>
-            </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-10 space-x-6">
+            <button
+              onClick={() => scroll("left")}
+              className="w-12 h-12 rounded-full bg-white border border-[#d1d1d1] flex items-center justify-center shadow-sm hover:shadow-md transition"
+            >
+              <ChevronLeft className="text-[#0a0a0a] w-6 h-6" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="w-12 h-12 rounded-full bg-white border border-[#d1d1d1] flex items-center justify-center shadow-sm hover:shadow-md transition"
+            >
+              <ChevronRight className="text-[#0a0a0a] w-6 h-6" />
+            </button>
           </div>
         </div>
       </div>

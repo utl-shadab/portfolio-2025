@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   ],
 
   authors: [{ name: "Arrow Edge" }],
+  icons: {
+    icon: "/icon-72x72.png",
+    shortcut: "/icon-72x72.png",
+    apple: "/icon-192x192.png",
+  },
   openGraph: {
     title: "Arrow Edge: UI/UX, Web Design, & Scalable Digital Solutions",
     description:
@@ -75,8 +80,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning >
       <head>
-        <link rel="icon" href="/arrow.svg" sizes="any" />
-        <link rel="icon" href="/arrow.svg" type="image/svg+xml" />
+        <link rel="icon" href="/icon-72x72.png" sizes="any" />
+        <link rel="icon" href="/icon-72x72.png" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="canonical" href="https://arrowedge.in/" />

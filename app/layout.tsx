@@ -28,9 +28,9 @@ export const metadata: Metadata = {
 
   authors: [{ name: "Arrow Edge" }],
   icons: {
-    icon: "/icon-72x72.png",
-    shortcut: "/icon-72x72.png",
-    apple: "/icon-192x192.png",
+    icon: "/favicon-96x96.png",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
   },
   openGraph: {
     title: "Arrow Edge: UI/UX, Web Design, & Scalable Digital Solutions",
@@ -80,13 +80,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning >
       <head>
-        <link rel="icon" href="/icon-72x72.png" sizes="any" />
-        <link rel="icon" href="/icon-72x72.png" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/icon1.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/icon0.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon/apple-icon.png" />
+        <link rel="manifest" href="/favicon/manifest.json" />
+        <meta name="theme-color" content="#0a0a0a" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="canonical" href="https://arrowedge.in/" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Arrow Studio" />
+        <meta name="apple-mobile-web-app-title" content="Arrow Edge" />
+        <link rel="canonical" href="https://arrowedge.in/" />
         <meta name="google-site-verification" content="XVhUrt2a-6hJO0Bh17jvlKmIv7JbIkHNHhfsJWL_c5o" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#0a0a0a" />

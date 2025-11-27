@@ -20,7 +20,8 @@ const navItems = [
 
 const socialLinks = [
   { name: "Instagram", href: "#" },
-  { name: "LinkedIn", href: "#" },
+  { name: "Twitter", href: "https://x.com/Arrowedgestudio" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/arrow-edge-studio/" },
 ]
 
 // --- ANIMATION VARIANTS (Corrected & Updated) ---

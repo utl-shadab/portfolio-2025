@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "Arrow Edge Studio",
     images: [
       {
-        url: "/Meta/contact.png", 
+        url: "/Meta/home.png", 
         width: 1200,
         height: 630,
         alt: "Contact Arrow Edge Studio",

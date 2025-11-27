@@ -13,8 +13,7 @@ import OurProcess from "@/components/OurProcess"
 export default function Home() {
   const stickyRef = useRef<HTMLDivElement>(null)
   return (
-    <main className="relative bg-[#0a0a0a] text-white overflow-hidden">
-      
+    <main className="relative bg-[#0a0a0a] text-white overflow-hidden"> 
       <CustomCursor/>
       <Navigation />
       <HeroSection />

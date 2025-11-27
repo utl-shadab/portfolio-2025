@@ -32,10 +32,16 @@ export function Footer() {
           {/* Social Links */}
           <div className="space-y-2">
             <Link
-              href="https://in.linkedin.com/in/shadab--choudhary "
+              href="https://www.linkedin.com/company/arrow-edge-studio/"
               className="block text-white hover:text-pink-400 transition-colors underline decoration-2 underline-offset-4"
             >
               LinkedIn ↗
+            </Link>
+            <Link
+              href="https://x.com/Arrowedgestudio"
+              className="block text-white hover:text-pink-400 transition-colors underline decoration-2 underline-offset-4"
+            >
+              Twitter ↗
             </Link>
            
           </div>

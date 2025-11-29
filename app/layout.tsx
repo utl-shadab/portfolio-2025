@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
   authors: [{ name: "Arrow Edge" }],
   icons: {
-    icon: "/favicon-96x96.png",
+    icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
@@ -80,12 +80,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning >
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/icon1.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/icon0.svg" />
         <link rel="icon" type="image/png" sizes="96x96" href="/icon-96x96.png" />
         <link rel="apple-touch-icon" href="/favicon/apple-icon.png" />
-        <link rel="manifest" href="/favicon/manifest.json" />
+        <link rel="manifest" href="/favicon/manifest.json" /> */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon-384x384.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0a0a0a" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

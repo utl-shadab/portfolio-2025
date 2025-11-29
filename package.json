@@ -76,8 +76,10 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/matter-js": "^0.20.2",
     "@types/node": "^22",
     "@types/nodemailer": "^6.4.17",
+    "@types/p5": "^1.7.7",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postcss": "^8.5",

@@ -296,7 +296,7 @@ export function TestimonialSection() {
 
   return (
     <section
-      className="bg-pink-300 py-24 relative overflow-hidden"
+      className="bg-gray-300 py-24 relative overflow-hidden"
       aria-labelledby="testimonials-heading"
       role="region"
     >

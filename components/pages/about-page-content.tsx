@@ -6,6 +6,8 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
 import Link from "next/link"
+import ClientSection from "../ClientSection"
+import ProcessSlider from "../ProcessSlider"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -50,7 +52,7 @@ export function AboutPageContent() {
       bio: "Amit crafts user-centric and visually compelling designs. His creativity and attention to detail ensure every interface is both beautiful and intuitive.",
     }
   ]
-
+ const prefersReduced = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -71,6 +73,14 @@ export function AboutPageContent() {
 
     return () => ctx.revert()
   }, [])
+ const titleVariant = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+   const sectionVariant = {
+    hidden: { opacity: 0, y: 8 },
+    show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.06 } }),
+  };
 
   return (
     <section ref={sectionRef} className="pt-32 pb-16 bg-[#0a0a0a] relative overflow-hidden">
@@ -144,37 +154,8 @@ export function AboutPageContent() {
           </motion.div>
         </div>
       </div>
-
-      {/* Team Section */}
-      <div className="container mx-auto px-6 mb-32">
-        <motion.div className="about-item text-center mb-16">
-          <span className="text-sm text-gray-400 font-space-grotesk tracking-wider uppercase">OUR TEAM</span>
-          <h2 className="text-4xl md:text-6xl font-bold font-space-grotesk mt-4 mb-8">Meet the team</h2>
-        </motion.div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
-            <motion.div key={member.name} className="about-item group" whileHover={{ y: -10 }} data-cursor-hover>
-              <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500">
-                <div className="relative w-full h-64 rounded-2xl overflow-hidden mb-6">
-                  <Image
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold font-space-grotesk mb-2 text-white">{member.name}</h3>
-                <p className="text-pink-400 mb-4 font-medium">{member.role}</p>
-                <p className="text-gray-300 text-sm leading-relaxed">{member.bio}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
       {/* Values Section */}
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 pb-10">
         <motion.div className="about-item text-center mb-16">
           <span className="text-sm text-gray-400 font-space-grotesk tracking-wider uppercase">OUR VALUES</span>
           <h2 className="text-4xl md:text-6xl font-bold font-space-grotesk mt-4 mb-8">What drives us</h2>
@@ -221,6 +202,45 @@ export function AboutPageContent() {
           ))}
         </div>
       </div>
+      <ProcessSlider/>
+      <ClientSection/>
+      {/* Team Section */}
+      <div className="container mx-auto px-6 my-20">
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-10">
+          <motion.h3 variants={titleVariant} className="text-3xl md:text-4xl font-semibold">Our team</motion.h3>
+          <motion.p variants={sectionVariant} className="text-gray-300 max-w-2xl mx-auto mt-3">
+            A small cross-functional team of designers, engineers and strategists — ready to ship high-quality digital products.
+          </motion.p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {teamMembers.map((m) => (
+            <motion.article
+              key={m.name}
+              initial={prefersReduced ? "show" : "hidden"}
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={sectionVariant}
+              className="bg-white/3 backdrop-blur-sm rounded-2xl p-6 border border-white/6"
+            >
+              <div className="relative w-full h-44 rounded-xl overflow-hidden mb-4">
+                <Image
+                  src={m.image}
+                  alt={m.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <h4 className="text-lg font-semibold mb-1">{m.name}</h4>
+              <div className="text-pink-400 text-sm mb-3 font-medium">{m.role}</div>
+              <p className="text-gray-300 text-sm leading-relaxed">{m.bio}</p>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+
+      
     </section>
   )
 }

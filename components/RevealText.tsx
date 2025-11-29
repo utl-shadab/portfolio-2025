@@ -89,7 +89,7 @@ export function ScrollHighlightText({
             <motion.span
               key={index}
               style={{ x, opacity }}
-              className={`inline-block whitespace-pre text-2xl md:text-5xl font-space-grotesk font-semibold ${
+              className={`inline-block whitespace-pre text-2xl md:text-4xl font-space-grotesk font-semibold ${
                 item.isHighlighted ? "text-pink-500" : "text-gray-400"
               }`}
             >

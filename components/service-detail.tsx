@@ -12,7 +12,8 @@ import { ArrowLeft, CheckCircle, Quote, Target, TrendingUp } from "lucide-react"
 import type { Service } from "@/types/service"
 import ProcessSlider from "./ProcessSlider"
 import PositiveImpact from "./PositiveImpact"
-import { TestimonialSection } from "./sections/testimonial-section"
+import { CtaSection } from "./CtaSection"
+import ClientSection from "./ClientSection"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -245,7 +246,7 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
         </section>
       )}
 
-     <TestimonialSection/>
+   <ClientSection/>
       {/* Related Services (if any) */}
       {relatedServices.length > 0 && (
         <section className="py-24 animate-on-scroll bg-white/5">
@@ -284,22 +285,7 @@ export function ServiceDetail({ service, relatedServices = [] }: ServiceDetailPr
       )}
 
       {/* CTA Section */}
-      <section className="py-24 animate-on-scroll bg-gradient-to-r from-pink-500/20 to-cyan-500/20">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold font-space-grotesk mb-8">Ready to start your project?</h2>
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-            Let's discuss how our services can help bring your vision to life.
-          </p>
-          <Link href="/contact">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-pink-500 to-cyan-500 hover:from-pink-600 hover:to-cyan-600 text-white rounded-full px-8 py-4 font-medium"
-            >
-              Contact Us
-            </Button>
-          </Link>
-        </div>
-      </section>
+     <CtaSection/>
     </div>
   )
 }

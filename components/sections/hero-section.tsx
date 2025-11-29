@@ -43,17 +43,30 @@ export function HeroSection() {
     const node = heroRef.current;
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries.forEach(async (entry) => {
           if (entry.isIntersecting && videoRef.current && !videoLoaded) {
             // set src only when needed to avoid fetching video on initial page load
-            // keep preload="metadata" to give browser minimal info for poster frame
-            // we set attribute rather than JSX binding so the browser begins loading only now
             const src = "/hero.mp4";
+
+            // assign only once
             if (videoRef.current.getAttribute("data-src") !== src) {
-              videoRef.current.setAttribute("src", src);
+              // set data-src for idempotency
               videoRef.current.setAttribute("data-src", src);
-              // attempt to play if autoplay expected (muted & playsInline)
-              // but we don't force play to avoid autoplay policies
+              // set src now -> browser will start fetching
+              videoRef.current.src = src;
+
+              // try to play programmatically (muted + playsInline)
+              try {
+                // only attempt to play if user does not prefer reduced motion
+                const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                if (!prefersReduced) {
+                  await videoRef.current.play();
+                }
+              } catch (err) {
+                // autoplay may be blocked — that's fine. We still have the poster for LCP.
+                // nothing to do, user can unmute/play explicitly if needed.
+              }
+
               setVideoLoaded(true);
             }
           }
@@ -72,45 +85,85 @@ export function HeroSection() {
   return (
     <>
       <Head>
-        {/* Basic SEO */}
-        <title>Arrow Edge Studio — We grow your online business</title>
+        {/* Primary SEO */}
+        <title>Arrow Edge Studio — Website Design, App Development & AI Chatbots (India)</title>
         <meta
           name="description"
-          content="Arrow Edge Studio is a full-service digital agency specializing in e-commerce, online marketing, web optimization, and design."
+          content="Arrow Edge Studio — full-service digital agency in India. Services: Website design, web development, app development, AI chatbots, and branding."
         />
         <link rel="canonical" href="https://arrowedge.in/" />
-        {/* Preconnect to asset CDN if you use one — change to your CDN domain */}
-        {/* <link rel="preconnect" href="https://cdn.your-cdn.com" crossOrigin="anonymous" /> */}
 
-        {/* Preload the poster image to improve LCP */}
-        <link rel="preload" as="image" href="/hero-poster.png" />
+        {/* Preload hero poster (use .webp for smaller size) */}
+        <link rel="preload" as="image" href="/hero-poster.webp" />
+
+        {/* If using custom/local fonts, add preload for font files (replace with your font paths) */}
+        {/* <link rel="preload" href="/fonts/SpaceGrotesk.woff2" as="font" type="font/woff2" crossOrigin="anonymous" /> */}
 
         {/* Open Graph */}
-        <meta property="og:title" content="Arrow Edge Studio — We grow your online business" />
-        <meta property="og:description" content="Full-service digital agency: e-commerce, marketing, optimization, design." />
+        <meta property="og:title" content="Arrow Edge Studio — Website Design, App Development & AI Chatbots" />
+        <meta property="og:description" content="Full-service digital agency in India. We build e-commerce, marketing, optimized websites, and AI chatbots." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://arrowedge.in/" />
-        <meta property="og:image" content="https://arrowedge.in/hero-poster.png" />
+        <meta property="og:image" content="https://arrowedge.in/hero-poster.webp" />
 
         {/* Twitter card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Arrow Edge Studio — We grow your online business" />
-        <meta name="twitter:description" content="Full-service digital agency: e-commerce, marketing, optimization, design." />
-        <meta name="twitter:image" content="https://arrowedge.in/hero-poster.png" />
+        <meta name="twitter:title" content="Arrow Edge Studio — Website Design, App Development & AI Chatbots" />
+        <meta name="twitter:description" content="Full-service digital agency in India. We build e-commerce, marketing, optimized websites, and AI chatbots." />
+        <meta name="twitter:image" content="https://arrowedge.in/hero-poster.webp" />
 
-        {/* Minimal JSON-LD structured data for Organization / Website */}
+        {/* JSON-LD: Organization + Website + Services */}
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Arrow Edge Studio",
-              url: "https://arrowedge.in/",
-              logo: "https://arrowedge.in/LogoArrow.png",
-              sameAs: ["https://www.linkedin.com/company/arrow-edge-studio/", "https://x.com/Arrowedgestudio"],
-              description: "Full-service digital agency specializing in e-commerce, online marketing, web optimization, and design.",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://arrowedge.in/#org",
+                  "name": "Arrow Edge Studio",
+                  "url": "https://arrowedge.in/",
+                  "logo": "https://arrowedge.in/LogoArrow.png",
+                  "sameAs": [
+                    "https://www.linkedin.com/company/arrow-edge-studio/",
+                    "https://x.com/Arrowedgestudio"
+                  ],
+                  "description": "Full-service digital agency specializing in website design, web development, mobile apps, AI chatbots and branding."
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://arrowedge.in/#website",
+                  "url": "https://arrowedge.in/",
+                  "name": "Arrow Edge Studio",
+                  "publisher": { "@id": "https://arrowedge.in/#org" }
+                },
+                {
+                  "@type": "Service",
+                  "serviceType": "Website Design",
+                  "provider": { "@id": "https://arrowedge.in/#org" },
+                  "description": "Custom website design and UI/UX for businesses."
+                },
+                {
+                  "@type": "Service",
+                  "serviceType": "Web Development",
+                  "provider": { "@id": "https://arrowedge.in/#org" },
+                  "description": "Next.js and React web development, performance-first."
+                },
+                {
+                  "@type": "Service",
+                  "serviceType": "App Development",
+                  "provider": { "@id": "https://arrowedge.in/#org" },
+                  "description": "Mobile app development for iOS and Android."
+                },
+                {
+                  "@type": "Service",
+                  "serviceType": "AI Chatbots",
+                  "provider": { "@id": "https://arrowedge.in/#org" },
+                  "description": "AI-powered chatbot solutions for lead capture & automation."
+                }
+              ]
             }),
           }}
         />
@@ -121,17 +174,27 @@ export function HeroSection() {
         ref={heroRef}
         className="relative min-h-screen flex items-center overflow-hidden bg-black"
       >
+        {/* Background video - src is set lazily by IntersectionObserver */}
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/hero-poster.png"
+          poster="/hero-poster.webp"
           preload="metadata"
-          autoPlay
+          // do not set autoPlay attribute — we set src later and attempt play()
           loop
           muted
           playsInline
           aria-hidden="true"
         />
+
+        {/* noscript fallback for crawlers / LCP if JS disabled */}
+        <noscript>
+          <img
+            src="/hero-poster.webp"
+            alt="Arrow Edge Studio — Website Design, App Development & AI Chatbots"
+            style={{ width: "100%", height: "auto", objectFit: "cover" }}
+          />
+        </noscript>
 
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent md:to-black/50" />
@@ -144,7 +207,7 @@ export function HeroSection() {
             animate="animate"
             transition={{ staggerChildren: 0.15 }}
           >
-            {/* Title */}
+            {/* Title (H1) - include location/keyword for homepage */}
             <motion.h1
               variants={FADE_UP_VARIANTS}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-space-grotesk leading-tight"
@@ -154,13 +217,12 @@ export function HeroSection() {
               {" "}online business
             </motion.h1>
 
-            {/* Subtitle */}
+            {/* Subtitle with keyword phrase (keeps hero concise but SEO friendly) */}
             <motion.p
               variants={FADE_UP_VARIANTS}
               className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed"
             >
-              We are a full-service digital agency specializing in e-commerce,
-              online marketing, web optimization, and design.
+              Arrow Edge Studio — Website design, web development, mobile apps and AI chatbot solutions for businesses in India.
             </motion.p>
 
             {/* Buttons */}
@@ -183,7 +245,7 @@ export function HeroSection() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white/30 text-white bg-pink-400  rounded-full px-6 py-3 sm:px-8 sm:py-4 font-medium"
+                  className="border-white/30 bg-pink-500 text-white rounded-full px-6 py-3 sm:px-8 sm:py-4 font-medium"
                   data-cursor-hover
                 >
                   <span>Our Work</span>

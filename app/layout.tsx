@@ -80,10 +80,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning >
       <head>
-        <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/icon1.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/icon0.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/icon0.svg" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/icon-96x96.png" />
         <link rel="apple-touch-icon" href="/favicon/apple-icon.png" />
         <link rel="manifest" href="/favicon/manifest.json" />
         <meta name="theme-color" content="#0a0a0a" />

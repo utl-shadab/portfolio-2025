@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import clsx from "clsx";
 import { ProcessItem, processItems } from "@/data/processItems";
+import Link from "next/link";
+import AnimatedPathLine from "./AnimatedPathLine";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -128,57 +130,117 @@ export default function OurProcess() {
       className="relative bg-[#0c0c0e] text-white overflow-hidden min-h-screen flex items-center"
       aria-labelledby="process-heading"
     >
-      <div className="absolute top-20 left-8 text-sm font-semibold uppercase tracking-widest z-10">
-        <span className="sr-only">Section:</span> Why Arrow Edge
-      </div>
+      {/* JSON-LD injected so crawlers can read the process steps (server-side placement preferred; this is a client-side injection) */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            itemListElement: processItems.map((item, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: item.title,
+              url: item.relatedServiceSlug ? `/services/${item.relatedServiceSlug}` : "/services",
+            })),
+          }),
+        }}
+      />
 
-      <div className="w-full overflow-x-hidden">
-        <div
-          ref={containerRef}
-          className="flex gap-6 mx-auto px-8 items-stretch"
-          role="list"
-          aria-label="Our process steps"
-          // avoid setting width manually — let natural layout determine scrollWidth
-        >
-          {processItems.map((item: ProcessItem, index: number) => {
-            const isActive = activeIndex === index;
-            return (
-              <article
-                key={item.id}
-                role="listitem"
-                aria-current={isActive ? "true" : undefined}
-                className={clsx(
-                  "process-item flex-shrink-0 rounded-3xl border border-neutral-800 bg-[#131417] overflow-hidden transition-all duration-700 ease-in-out",
-                  isActive
-                    ? "w-[90vw] md:w-[45vw] px-8 py-10 scale-100 shadow-lg"
-                    : "w-[78vw] md:w-[35vw] px-6 py-8 opacity-70 transform-gpu"
-                )}
-                style={{
-                  minHeight: "300px",
-                  display: "flex",
-                  alignItems: "center",
-                  // promote to its own layer only when active for better perf
-                  willChange: isActive ? "transform, opacity" : "auto",
-                }}
-              >
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl" aria-hidden>
-                    {isActive ? "→" : "↓"}
-                  </span>
-                  <div>
-                    <h3 className="text-2xl md:text-3xl font-semibold mb-3" id={`process-${item.id}`}>
-                      {item.title}
-                    </h3>
-                    {isActive && (
-                      <p className="text-neutral-400 text-sm leading-relaxed max-w-md transition-opacity duration-500">
-                        {item.description}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+     
+
+      <div className="w-full overflow-x-hidden py-12 md:py-20">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between mb-8 md:mb-12">
+            <h2 id="process-heading" className="text-xl md:text-3xl font-semibold">
+              Our Process
+            </h2>
+            <div className="hidden md:block w-1/2">
+              <AnimatedPathLine />
+            </div>
+          </div>
+
+          <div
+            ref={containerRef}
+            className="flex gap-6 items-stretch"
+            role="list"
+            aria-label="Our process steps"
+            // container will layout horizontally via flex; widths are controlled per item
+          >
+            {processItems.map((item: ProcessItem, index: number) => {
+              const isActive = activeIndex === index;
+
+              return (
+                <article
+                  key={item.id}
+                  role="listitem"
+                  aria-current={isActive ? "true" : undefined}
+                  className={clsx(
+                    "process-item flex-shrink-0 rounded-3xl border border-neutral-800 bg-[#131417] overflow-hidden transition-all duration-700 ease-in-out",
+                    isActive
+                      ? "w-[90vw] md:w-[45vw] px-8 py-10 scale-100 shadow-lg"
+                      : "w-[78vw] md:w-[35vw] px-6 py-8 opacity-70 transform-gpu"
+                  )}
+                  style={{
+                    minHeight: 300,
+                    display: "flex",
+                    alignItems: "flex-start",
+                    willChange: isActive ? "transform, opacity" : "auto",
+                  }}
+                >
+                  {/* Make the entire card tabbable & link to related service or a case-study */}
+                  <Link href={item.relatedServiceSlug ? `/services/${item.relatedServiceSlug}` : "/services"} legacyBehavior>
+                    <a
+                      className="block w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2"
+                      aria-label={`Learn more about ${item.title}`}
+                    >
+                      <div className="flex items-start gap-4">
+                        <span
+                          className={clsx(
+                            "text-2xl md:text-3xl font-mono text-pink-400",
+                            isActive ? "opacity-100" : "opacity-60"
+                          )}
+                          aria-hidden
+                        >
+                          {index + 1}
+                        </span>
+
+                        <div>
+                          <h3
+                            id={`process-${item.id}`}
+                            className="text-xl md:text-2xl font-semibold mb-3"
+                          >
+                            {item.title}
+                          </h3>
+
+                          <p
+                            className={clsx(
+                              "text-neutral-400 text-sm leading-relaxed max-w-lg transition-[max-height,opacity] duration-500 ease-in-out overflow-hidden",
+                              isActive ? "max-h-[400px] opacity-100" : "max-h-[68px] opacity-80"
+                            )}
+                          >
+                            {item.description}
+                          </p>
+
+                          <div className="mt-4">
+                            <span className="inline-block text-xs text-neutral-500 mr-3">Outcome:</span>
+                            <span className="inline-block text-sm text-white font-medium">{item.outcome || "Improved conversion & clarity"}</span>
+                          </div>
+
+                          <div className="mt-4">
+                            <span className="inline-flex items-center text-sm text-pink-400 hover:underline">
+                              Learn more about this service →
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

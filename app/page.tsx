@@ -12,6 +12,7 @@ import { CustomCursor } from "@/components/custom-cursor"
 import OurProcess from "@/components/OurProcess"
 import { CtaSection } from "@/components/CtaSection"
 import ClientSection from "@/components/ClientSection"
+import FaqSection from "@/components/sections/FaqSection"
 export default function Home() {
   const stickyRef = useRef<HTMLDivElement>(null)
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <OurProcess/>
       {/* <TestimonialSection /> */}
       <ClientSection/>
+      <FaqSection/>
       <CtaSection/>
       <ContactSection />
       <Footer />

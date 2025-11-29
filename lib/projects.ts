@@ -997,7 +997,7 @@ export const projects: Project[] = [
     }
   },
 {
-  id: 8,
+  id: 9,
   slug: "mulyantaran",
   title: "Mulyantaran",
   category: "Web design",
